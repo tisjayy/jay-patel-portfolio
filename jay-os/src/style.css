@@ -23,6 +23,10 @@
   box-sizing: content-box !important;
 }
 body {
+  background-image: url('/imgs/windows.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
   -webkit-text-stroke: 0px !important;
