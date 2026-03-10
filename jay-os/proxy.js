@@ -14,6 +14,7 @@ function callBedrock(messages) {
   return new Promise((resolve, reject) => {
     const payload = JSON.stringify({
       system: [{ text: SYSTEM_PROMPT }],
+      inferenceConfig: { maxTokens: 1024 },
       messages: messages.map((m) => ({
         role: m.role,
         content: [{ text: m.content }],
