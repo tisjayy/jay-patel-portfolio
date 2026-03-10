@@ -50,6 +50,10 @@
   <div id="ai-panel">
     <div id="ai-title-bar">&#9632; AI Solver</div>
     <div id="ai-panel-body">
+      <div id="ai-info-box">
+        Powered by <strong>Kociemba's two-phase algorithm</strong> &mdash; the same method used by world-record speedcubers.<br>
+        Solves any scramble in &le;20 moves &amp; animates every step in real time.
+      </div>
       <div id="ai-status-bar">Initializing…</div>
       <div id="ai-btn-row">
         <button id="ai-solve-btn" class="win-btn" onclick="window._triggerAISolve()" disabled>Solve</button>
@@ -86,6 +90,15 @@
       display: flex;
       flex-direction: column;
       gap: 6px;
+    }
+    #ai-info-box {
+      background: #fff;
+      border: 1px solid;
+      border-color: #808080 #dfdfdf #dfdfdf #808080;
+      padding: 4px 6px;
+      font-size: 10px;
+      line-height: 1.5;
+      max-width: 200px;
     }
     #ai-status-bar {
       background: #fff;
