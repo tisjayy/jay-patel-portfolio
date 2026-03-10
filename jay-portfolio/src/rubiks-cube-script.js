@@ -622,8 +622,6 @@ class RubiksCubeApp {
   }
 
   _onSolved() {
-    this._playSound("confetti", 0.5);
-    this._playSound("partyblower", 0.3);
     this.solvedEl.style.display = "block";
     // Spin the whole group as celebration
     gsap.to(this.rubikGroup.rotation, {
@@ -631,7 +629,7 @@ class RubiksCubeApp {
       duration: 2.5,
       ease: "back.out",
     });
-    setTimeout(() => { this.solvedEl.style.display = "none"; }, 5000);
+    setTimeout(() => { /* dialog stays until OK is clicked */ }, 5000);
     if (typeof window._onCubeSolved === "function") window._onCubeSolved();
   }
 

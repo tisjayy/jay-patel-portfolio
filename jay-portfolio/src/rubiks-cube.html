@@ -21,15 +21,72 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
     #solved-message {
-      display: none; position: fixed; top: 24px;
-      left: 50%; transform: translateX(-50%);
-      background: rgba(0,255,100,0.15); color: #00ff64;
-      font-family: sans-serif; font-size: 2rem; font-weight: bold;
-      padding: 14px 36px; border-radius: 14px;
-      border: 2px solid #00ff64; z-index: 100; pointer-events: none;
-      animation: fadeIn 0.4s ease;
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #d4d0c8;
+      border: 2px solid;
+      border-color: #ffffff #808080 #808080 #ffffff;
+      box-shadow: 2px 2px 0 #000;
+      font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+      font-size: 11px;
+      width: 260px;
+      z-index: 200;
     }
-    @keyframes fadeIn { from { opacity:0; transform: translateX(-50%) translateY(-10px); } to { opacity:1; transform: translateX(-50%) translateY(0); } }
+    #solved-title-bar {
+      background: linear-gradient(to right, #000080, #1080c8);
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 3px 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    #solved-body {
+      padding: 16px 14px 10px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    #solved-icon {
+      font-size: 28px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    #solved-text {
+      font-size: 11px;
+      color: #000;
+      line-height: 1.5;
+    }
+    #solved-text strong {
+      font-size: 12px;
+      display: block;
+      margin-bottom: 3px;
+    }
+    #solved-footer {
+      padding: 6px 10px 10px;
+      display: flex;
+      justify-content: center;
+    }
+    #solved-ok-btn {
+      background: #d4d0c8;
+      border: 2px solid;
+      border-color: #ffffff #808080 #808080 #ffffff;
+      padding: 2px 20px;
+      font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+      font-size: 11px;
+      cursor: pointer;
+      box-shadow: 1px 1px 0 #000;
+      min-width: 70px;
+    }
+    #solved-ok-btn:active {
+      border-color: #808080 #ffffff #ffffff #808080;
+      box-shadow: none;
+      padding: 3px 19px 1px 21px;
+    }
     #hint {
       position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
       color: rgba(255,255,255,0.4); font-family: sans-serif; font-size: 0.85rem;
@@ -42,7 +99,19 @@
     <div class="spinner"></div>
     <span>Loading Rubik's Cube...</span>
   </div>
-  <div id="solved-message">🎉 Solved!</div>
+  <div id="solved-message">
+    <div id="solved-title-bar">&#9632; Rubik's Cube Solver</div>
+    <div id="solved-body">
+      <div id="solved-icon">&#9989;</div>
+      <div id="solved-text">
+        <strong>Solved!</strong>
+        The cube has been solved using Kociemba's two-phase algorithm.
+      </div>
+    </div>
+    <div id="solved-footer">
+      <button id="solved-ok-btn" onclick="document.getElementById('solved-message').style.display='none'">OK</button>
+    </div>
+  </div>
   <div id="hint">Drag a face to rotate a layer &nbsp;·&nbsp; Drag empty space to orbit</div>
   <canvas id="canvas"></canvas>
 
@@ -73,7 +142,7 @@
       box-shadow: 1px 1px 0 #000000;
       font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
       font-size: 11px;
-      min-width: 150px;
+      width: 220px;
       z-index: 50;
       color: #000;
     }
