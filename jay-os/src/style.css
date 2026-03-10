@@ -1115,15 +1115,20 @@ input[type="submit"]:hover {
 .company-logo {
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
   width: 9vw;
-  height: auto;
-  display: inline-block;
+  height: 9vw;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   margin: 10px 10px;
   transition: transform 0.5s ease;
   border-radius: 0.2vw;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
 }
 .company-logo img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain;
   border-radius: 0.2vw;
 }
 
