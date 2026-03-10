@@ -38,7 +38,7 @@ module.exports = {
       // CSS
       {
         test: /\.css$/,
-        use: [MiniCSSExtractPlugin.loader, "css-loader"],
+        use: [MiniCSSExtractPlugin.loader, { loader: "css-loader", options: { url: false } }],
       },
 
       // Images

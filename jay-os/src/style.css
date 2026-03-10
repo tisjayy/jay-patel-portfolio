@@ -1,14 +1,14 @@
-@font-face {
+﻿@font-face {
   font-family: "Segoe";
-  src: url("/static/fonts/Segoe\ UI.ttf") format("truetype");
+  src: url("/fonts/Segoe\ UI.ttf") format("truetype");
 }
 @font-face {
   font-family: "Billabong";
-  src: url("/static/fonts/Billabong.ttf") format("truetype");
+  src: url("/fonts/Billabong.ttf") format("truetype");
 }
 @font-face {
   font-family: "BebasNeue";
-  src: url("/static/fonts/BebasNeue-Regular.ttf") format("truetype");
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
 }
 * {
   font-family: "Segoe", Verdana, sans-serif;
@@ -677,7 +677,7 @@ body {
 }
 
 .close {
-  background-image: url("../static/imgs/buttons/close.svg");
+  background-image: url("/imgs/buttons/close.svg");
   background-size: 12px;
   background-repeat: no-repeat;
   background-position: center;
@@ -686,19 +686,19 @@ body {
   background-color: #e81023;
 }
 .minimize {
-  background-image: url("../static/imgs/buttons/minimize.svg");
+  background-image: url("/imgs/buttons/minimize.svg");
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
 }
 .minimize-full {
-  background-image: url("../static/imgs/buttons/minimize_full.svg");
+  background-image: url("/imgs/buttons/minimize_full.svg");
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;
 }
 .restore {
-  background-image: url("../static/imgs/buttons/restore.svg");
+  background-image: url("/imgs/buttons/restore.svg");
   background-size: 15px;
   background-repeat: no-repeat;
   background-position: center;
@@ -992,7 +992,7 @@ h6 {
   transform: translate(50%, -50%);
   width: 30px;
   height: 30px;
-  background-image: url("../static/imgs/about-me/arrow-right.svg");
+  background-image: url("/imgs/about-me/arrow-right.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
@@ -1008,7 +1008,7 @@ h6 {
   transform: translate(50%, -50%);
   width: 30px;
   height: 30px;
-  background-image: url("../static/imgs/about-me/arrow-left.svg");
+  background-image: url("/imgs/about-me/arrow-left.svg");
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
