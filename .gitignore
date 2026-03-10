@@ -1,0 +1,80 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build directories
+dist/
+**/dist/
+build/
+**/build/
+
+# Package locks (optional - uncomment if you want to exclude)
+# package-lock.json
+# **/package-lock.json
+
+# Environment files
+.env
+.env.local
+.env.*.local
+**/.env
+
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+
+# Excluded projects (not needed for deployment)
+joan-portfolio/
+joan-os/
+joan-arcade-machine/
+joan-art-gallery/
+jay-art-gallery/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Cache
+.cache/
+.parcel-cache/
+**/.cache/
+
+# Temporary files
+*.tmp
+tmp/
+temp/
+
+# Original repos (we keep our customized versions)
+joan-*/
+
+# Production builds
+*.tgz
+
+# Vercel
+.vercel
+
+# Debug
+*.log*
+
+# Coverage 
+coverage/
+*.lcov
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
