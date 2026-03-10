@@ -339,8 +339,8 @@ body {
 
 .experience {
   font-family: "BebasNeue", sans-serif;
-  width: 80vw;
-  height: 80vh;
+  width: 75vw;
+  height: 75vh;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   position: absolute;
   top: calc(80vh - 250px);
@@ -350,8 +350,8 @@ body {
   transition: width 0.1s, height 0.1s ease;
 }
 .arcade {
-  width: 80vw;
-  height: 80vh;
+  width: 60vw;
+  height: 70vh;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   position: absolute;
   z-index: 10;
@@ -361,15 +361,18 @@ body {
   transition: width 0.1s, height 0.1s ease;
 }
 .rubiks-cube {
-  width: 80vw;
-  height: 80vh;
+  width: 60vw;
+  height: 70vh;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   position: absolute;
   z-index: 10;
-  top: 40vh;
+  top: 45vh;
   left: 50vw;
   transform: translate(-50%, -50%);
   transition: width 0.1s, height 0.1s ease;
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
 }
 
 .chatbot {
@@ -1663,4 +1666,89 @@ footer .show-desktop hr {
 
 .expand-apps div:nth-child(1) img {
   width: 2.987rem;
+}
+
+/* readme.txt Notepad window */
+.readme-window {
+  position: absolute;
+  width: 54vw;
+  height: 64vh;
+  top: 40vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 2px 2px 0 #000;
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
+  transition: width 0.1s, height 0.1s ease;
+}
+.readme-title-bar {
+  background: linear-gradient(to right, #c96400, #e07800) !important;
+}
+.readme-menubar {
+  background: #d4d0c8;
+  border-bottom: 1px solid #808080;
+  padding: 2px 4px;
+  display: flex;
+  gap: 0;
+  font-size: 12px;
+  color: #000;
+}
+.readme-menubar span {
+  padding: 2px 8px;
+  cursor: default;
+  user-select: none;
+}
+.readme-menubar span:hover {
+  background: #000080;
+  color: #fff;
+}
+.readme-body {
+  position: absolute;
+  top: 58px;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+  border: 2px solid;
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+}
+.readme-text {
+  margin: 0;
+  padding: 14px 16px;
+  font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+  font-size: 13px;
+  color: #000;
+  line-height: 1.7;
+}
+.readme-text p {
+  margin: 0 0 10px 0;
+}
+.readme-btn-row {
+  margin: 4px 0 12px 0;
+}
+.readme-win-btn {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  padding: 3px 14px;
+  font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+  font-size: 11px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #000;
+  min-width: 75px;
+  text-align: center;
+}
+.readme-win-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: none;
+  padding: 4px 13px 2px 15px;
+}
+.readme-section-header {
+  font-weight: bold;
+  margin: 14px 0 6px 0 !important;
 }

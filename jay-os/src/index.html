@@ -44,6 +44,10 @@
             <img src='/imgs/icons/github.webp'>
             <p>GitHub</p>
         </div>
+        <div class='apps' id="readme_app">
+            <img src='/imgs/icons/credits.webp'>
+            <p>readme.txt</p>
+        </div>
     </aside>
     <footer style="z-index:9999999" id="footer">
         <section id="windows-icon-section" class="taskbar-hover windows-hover">
@@ -67,7 +71,7 @@
                 </section>
                 <section class="details">
                     <section class="left-bottom-panel left-panel-hover">
-                        <img src="/imgs/about-me/profile.jpeg" alt="profile">
+                        <img src="/imgs/about-me/profile.jpg" alt="profile">
                         <p style="font-size: 1.4em; margin-bottom: 0px;">Jay Patel</p>
                     </section>
                     <section class="left-bottom-panel left-panel-hover">
@@ -157,6 +161,9 @@
             </div>
             <div class="taskbar-app taskbar-hover" id="about-me_bottom">
                 <img src="/imgs/icons/aboutme.webp" alt="About Me" />
+            </div>
+            <div class="taskbar-app taskbar-hover" id="readme_bottom">
+                <img src="/imgs/icons/credits.webp" alt="readme.txt" />
             </div>
         </section>
 
@@ -1119,6 +1126,16 @@
             </div>
 
             <div class="timeline" style=" display:none" id="nomoko_timeline">
+                <div class="timeline-item">
+                    <p style="font-size: 30px; color: #de1310; font-family: 'BebasNeue', sans-serif;">Research &mdash; AI &amp; Machine Learning</p>
+                    <p style="font-size: 14px; color: #b8b8b8;">York University &nbsp;&nbsp;&bull;&nbsp;&nbsp; Sep. '25 &ndash; Dec. '25</p>
+                    <br>
+                    <p style="font-size: 14px; color: #e0e0e0;">&#10148; Designed a Reinforcement Learning system using PyTorch, Sentence Transformers, and FastAPI.</p>
+                    <p style="font-size: 14px; color: #e0e0e0;">&#10148; Applied NLP and transformer-based reasoning to guide RL rewards, improving code generation accuracy by 15% on 400+ competitive programming problems.</p>
+                    <p style="font-size: 14px; color: #e0e0e0;">&#10148; Analyzed 300+ GitHub logs in Microsoft Excel for faculty research, identifying software bugs.</p>
+                    <p style="font-size: 14px; color: #e0e0e0;">&#10148; Preparing academic submission at ACM International Conference 2026, Montreal.</p>
+                    <br>
+                </div>
             </div>
         </div>
     </div>
@@ -1132,11 +1149,11 @@
             </div>
         </div>
         <div class="content" style="height: calc(100% - 35px); overflow: hidden;">
-            <iframe src="https://jay-patel-arcade.vercel.app" style="width:100%; height:100%; border:none;"></iframe>
+            <iframe data-src="https://jay-patel-arcade.vercel.app" src="https://jay-patel-arcade.vercel.app" style="width:100%; height:100%; border:none;"></iframe>
         </div>
     </div>
     <div id="rubiks-cube" class="rubiks-cube" style="display: none;">
-        <div class="title-bar" id="titleBar" style="background-color: #1a3a1a;">
+        <div class="title-bar" id="titleBar" style="background: linear-gradient(to right, #c96400, #e07800);">
             <div class="title">Rubik's Cube</div>
             <div class="window-controls">
                 <div class="window-button restore"></div>
@@ -1145,9 +1162,45 @@
             </div>
         </div>
         <div class="content" style="height: calc(100% - 35px); overflow: hidden;">
-            <iframe src="https://jay-patel-rubiks.vercel.app/rubiks-cube.html" style="width:100%; height:100%; border:none;"></iframe>
+            <iframe data-src="https://jay-patel-rubiks.vercel.app/rubiks-cube.html" src="https://jay-patel-rubiks.vercel.app/rubiks-cube.html" style="width:100%; height:100%; border:none;"></iframe>
         </div>
     </div>
+    <!-- readme.txt window -->
+    <div id="readme" class="readme-window" style="display: none;">
+        <div class="title-bar readme-title-bar" id="titleBar">
+            <div class="title">readme.txt</div>
+            <div class="window-controls">
+                <div class="window-button restore"></div>
+                <div class="window-button minimize"></div>
+                <div class="window-button close"></div>
+            </div>
+        </div>
+        <div class="readme-menubar">
+            <span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span>
+        </div>
+        <div class="readme-body">
+            <div class="readme-text">
+                <p>Hey, welcome to my portfolio website!</p>
+                <p>This website is meant as an interactive showcase of my work. I like data, design, and machine learning.</p>
+                <p>Please enjoy, and explore as much as you would like.</p>
+                <div class="readme-btn-row">
+                    <button class="readme-win-btn" id="readme-about-btn" onclick="(function(){
+                        var s = document.getElementById('readme-about-content');
+                        var b = document.getElementById('readme-about-btn');
+                        if(s.style.display==='none'){s.style.display='block';b.textContent='About Me \u25B2';}
+                        else{s.style.display='none';b.textContent='About Me \u25BC';}
+                    })()">About Me &#9660;</button>
+                </div>
+                <div id="readme-about-content" style="display:none;">
+                    <p>From a young age I was curious about how computers worked behind the scenes. What started as simple curiosity slowly turned into building programs and experimenting with different technologies.</p>
+                    <p>I&#39;m currently studying Computer Science at York University, expected to graduate in 2027. I have an incoming internship at Royal Bank of Canada from May 2026 &#8212; Dec 2026 as a Data Developer in Group Risk Management. Some of my work includes building machine learning models, designing data pipelines, experimenting with large language models, and contributing to open source software. I like solving complex problems and building systems that are both useful and technically interesting.</p>
+                    <p class="readme-section-header">Outside of work</p>
+                    <p>Outside of programming I spend time improving my fitness, listening to rock music, and exploring challenging problems. I also enjoy martial arts, soccer, and scrolling reddit.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div id="chatbot" class="chatbot" style="display: none;">
         <div class="title-bar chatbot-header">
             <div class="chatbot-header-left">
@@ -1172,7 +1225,7 @@
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
                     </button>
                 </div>
-                <div class="chatbot-disclaimer">Jay AI can make mistakes. Verify important info.</div>
+                <div class="chatbot-disclaimer">AI can make mistakes. Verify important info.</div>
             </div>
         </div>
     </div>

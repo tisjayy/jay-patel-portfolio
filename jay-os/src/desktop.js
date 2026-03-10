@@ -223,7 +223,18 @@ class Desktop {
     this.bottomApps.forEach((bottomApp) => {
       bottomApp.addEventListener("click", () => {
         const appName = bottomApp.id.replace("_bottom", "");
-        this.openWindow(appName);
+        const currentWindow = document.getElementById(appName);
+        if (currentWindow && currentWindow.style.display !== "none") {
+          // minimize: hide window but keep taskbar button lit
+          currentWindow.style.display = "none";
+          bottomApp.classList.remove("taskbar-selected");
+        } else if (currentWindow && bottomApp.classList.contains("taskbar-opened")) {
+          // restore from minimized state
+          currentWindow.style.display = "block";
+          this.incrementMaxZIndex(currentWindow);
+        } else {
+          this.openWindow(appName);
+        }
       });
     });
   };
@@ -231,6 +242,8 @@ class Desktop {
   openWindow = (appName) => {
     const currentWindow = document.getElementById(appName);
     currentWindow.style.display = "block";
+    const iframeToLoad = currentWindow.querySelector("iframe[data-src]");
+    if (iframeToLoad) iframeToLoad.src = iframeToLoad.dataset.src;
     const bottomApp = document.getElementById(appName + "_bottom");
     bottomApp.classList.add("taskbar-opened");
     this.incrementMaxZIndex(currentWindow);
@@ -280,6 +293,8 @@ class Desktop {
           });
         }
         content?.scrollTo(0, 0);
+        const iframeToReset = currentWindow.querySelector("iframe[data-src]");
+        if (iframeToReset) iframeToReset.src = "about:blank";
         currentWindow.style.display = "none";
         const bottomApp = document.getElementById(currentWindow.id + "_bottom");
         if (bottomApp.classList.contains("taskbar-opened")) {

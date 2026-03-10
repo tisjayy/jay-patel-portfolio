@@ -24,7 +24,7 @@ class RubiksCubeApp {
 
   _initScene() {
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color(0x1a1a2e);
+    this.scene.background = new THREE.Color(0xb8b0a4);
 
     this.camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 100);
     this.camera.position.set(10, 6, 10);
