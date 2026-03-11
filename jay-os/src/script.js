@@ -4,6 +4,7 @@ import Chatbot from "./chatbot";
 import MusicPlayer from "./music-player";
 
 const desktop = new Desktop();
+window._desktop = desktop;
 desktop.activateEvents();
 desktop.openWindow("readme");
 

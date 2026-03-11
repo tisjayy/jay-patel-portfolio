@@ -1,5 +1,5 @@
 import DragSelect from "dragselect";
-import Resume from "../static/resume/RBC_Resume_JayPatel.pdf";
+import Resume from "../static/resume/_Resume_JayPatel.pdf";
 import Experience from "./experience";
 import AboutMe from "./about-me";
 import Contact from "./contact";
@@ -253,7 +253,7 @@ class Desktop {
       const iframe = document.getElementById("resume-iframe");
       const link = document.getElementById("resume-download");
       if (iframe) { iframe.src = Resume; }
-      if (link) { link.href = Resume; link.setAttribute("download", "RBC_Resume_JayPatel.pdf"); }
+      if (link) { link.href = Resume; link.setAttribute("download", "_Resume_JayPatel.pdf"); }
       this.openWindow("resume");
     } else if (appName == "linkedin") {
       window.open("https://www.linkedin.com/in/jay-patel-556b8b241/", "_blank");
@@ -287,6 +287,12 @@ class Desktop {
   openWindow = (appName) => {
     const currentWindow = document.getElementById(appName);
     currentWindow.style.display = "block";
+    try {
+      const visited = JSON.parse(localStorage.getItem('jay_visited') || '{}');
+      visited[appName] = true;
+      localStorage.setItem('jay_visited', JSON.stringify(visited));
+      window.dispatchEvent(new CustomEvent('jay-app-opened', { detail: { app: appName } }));
+    } catch(e) {}
     const iframeToLoad = currentWindow.querySelector("iframe[data-src]");
     if (iframeToLoad) iframeToLoad.src = iframeToLoad.dataset.src;
     const bottomApp = document.getElementById(appName + "_bottom");

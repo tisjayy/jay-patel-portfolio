@@ -1095,10 +1095,9 @@
                     <p id="experience-title">EXPERIENCE</p>
                     <nav class="links">
                         <ul>
-                            <li><a>Home</a></li>
+                            <li><a id="exp-tab-home" style="cursor:pointer">Home</a></li>
                             <li><a id="exp-tab-experience" class="exp-tab-active" style="cursor:pointer">Experience</a></li>
                             <li><a id="exp-tab-projects" style="cursor:pointer">Projects</a></li>
-                            <li><a>About</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -1145,6 +1144,35 @@
                     <p style="font-size: 14px; color: #e0e0e0;">&#10148; Preparing academic submission at ACM International Conference 2026, Montreal.</p>
                     <br>
                 </div>
+            </div>
+            <!-- Netflix Home Panel -->
+            <div id="nf-home-panel" style="display:none; height:calc(100% - 120px); overflow-y:auto; background:#141414;">
+              <div class="nf-hero">
+                <div class="nf-hero-content">
+                  <div class="nf-badges">
+                    <span class="nf-badge nf-badge-top10">TOP CANDIDATE</span>
+                    <span class="nf-badge nf-badge-match">96% Match</span>
+                    <span class="nf-badge">2026</span>
+                    <span class="nf-badge">HD</span>
+                  </div>
+                  <h1 class="nf-title">Jay Patel</h1>
+                  <p class="nf-desc">CS student at York University &mdash; Data, ML and AI Systems. Incoming RBC Data Developer Intern.</p>
+                  <div class="nf-hero-btns">
+                    <button class="nf-btn nf-btn-play" id="nf-view-resume">&#9654; View Resume</button>
+                    <button class="nf-btn nf-btn-info" id="nf-more-info">&#x2139; More Info</button>
+                  </div>
+                </div>
+                <div class="nf-hero-img">
+                  <img src="/imgs/about-me/profile.jpg" alt="Jay Patel">
+                </div>
+              </div>
+              <div class="nf-overall-wrap">
+                <span class="nf-overall-label">Portfolio Explored</span>
+                <div class="nf-overall-bar"><div class="nf-overall-fill" id="nf-overall-fill"></div></div>
+                <span class="nf-overall-pct" id="nf-overall-pct">0%</span>
+              </div>
+              <div class="nf-section-title">Continue Exploring</div>
+              <div class="nf-cards-row" id="nf-cards-row"></div>
             </div>
             <!-- Projects Grid Panel -->
             <div id="projects-panel" style="display:none; height:calc(100% - 120px); overflow-y:auto; padding: 20px;">
@@ -1209,6 +1237,7 @@
                 <p>Hey, welcome to my portfolio website!</p>
                 <p>This website is meant as an interactive showcase of my work in data, design, and machine learning.</p>
                 <p>Please enjoy, and explore as much as you would like.</p>
+                <p>-Jay</p>
                 <div class="readme-btn-row">
                     <button class="readme-win-btn" id="readme-about-btn" onclick="(function(){
                         var s = document.getElementById('readme-about-content');
@@ -1364,7 +1393,7 @@
     <!-- Shared Tech Stack Notepad -->
     <div id="techstack-notepad" class="techstack-notepad" style="display:none;">
         <div class="techstack-notepad-titlebar" id="techstack-notepad-titlebar">
-            <span>&#x1F4C4; techstack.txt &mdash; Notepad</span>
+            <span>&#x1F4C4; techstack.txt</span>
             <button id="techstack-notepad-close">&#x2715;</button>
         </div>
         <div class="techstack-notepad-menubar">
@@ -1410,20 +1439,67 @@
           },{passive:false});
         }
 
+        var NF_SECTIONS = [
+          { id: 'readme',       label: 'readme.txt',    sub: 'Start Here',      color: '#1252d0', icon: '/imgs/icons/projects.webp' },
+          { id: 'experience',   label: 'Experience',    sub: 'Work History',    color: '#b71c1c', icon: '/imgs/icons/experience.webp' },
+          { id: 'resume',       label: 'Resume',        sub: 'PDF Viewer',      color: '#e65100', icon: '/imgs/icons/resume.webp' },
+          { id: 'rubiks-cube',  label: "Rubik's Cube",  sub: '3D Puzzle',       color: '#f57f17', icon: '/imgs/icons/rubikscube1.webp' },
+          { id: 'contact',      label: 'Contact',       sub: 'Get In Touch',    color: '#6a1b9a', icon: '/imgs/icons/contact.webp' },
+          { id: 'arcade',       label: 'Arcade',        sub: 'Mini Games',      color: '#004d40', icon: '/imgs/icons/arcade.webp' },
+          { id: 'music-player', label: 'WinAmp',        sub: 'Music Player',    color: '#1565c0', icon: '/imgs/icons/music-player.svg' },
+        ];
+        function updateProgressUI() {
+          var visited = JSON.parse(localStorage.getItem('jay_visited') || '{}');
+          var total = NF_SECTIONS.length;
+          var count = NF_SECTIONS.filter(function(s){ return visited[s.id]; }).length;
+          var pct = Math.round((count / total) * 100);
+          var fill = document.getElementById('nf-overall-fill');
+          var pctEl = document.getElementById('nf-overall-pct');
+          if (fill) fill.style.width = pct + '%';
+          if (pctEl) pctEl.textContent = pct + '%';
+          var row = document.getElementById('nf-cards-row');
+          if (!row) return;
+          row.innerHTML = '';
+          NF_SECTIONS.forEach(function(s) {
+            var done = !!visited[s.id];
+            var card = document.createElement('div');
+            card.className = 'nf-card' + (done ? ' nf-card-done' : '');
+            card.innerHTML = '<div class="nf-card-thumb" style="background:linear-gradient(135deg,' + s.color + ' 0%,#141414 100%)">'
+              + '<img src="' + s.icon + '" alt="' + s.label + '" class="nf-card-icon">'
+              + (done ? '<div class="nf-card-check">&#10003;</div>' : '')
+              + '</div>'
+              + '<div class="nf-card-bar"><div class="nf-progress-fill" style="width:' + (done?'100%':'0%') + '"></div></div>'
+              + '<div class="nf-card-label">' + s.label + '</div>'
+              + '<div class="nf-card-sub">' + s.sub + '</div>';
+            row.appendChild(card);
+          });
+        }
+        function showHome() {
+          document.getElementById('nf-home-panel').style.display = 'block';
+          document.getElementById('projects-panel').style.display = 'none';
+          var cs = document.querySelector('.company-selection');
+          if (cs) cs.style.display = 'none';
+          document.querySelectorAll('.timeline').forEach(function(t){ t.style.display='none'; });
+          document.querySelectorAll('.exp-tab-active').forEach(function(t){ t.classList.remove('exp-tab-active'); });
+          document.getElementById('exp-tab-home').classList.add('exp-tab-active');
+          updateProgressUI();
+        }
         function showProjects() {
+          document.getElementById('nf-home-panel').style.display = 'none';
           var cs = document.querySelector('.company-selection');
           if (cs) cs.style.display = 'none';
           document.querySelectorAll('.timeline').forEach(function(t){ t.style.display='none'; });
           document.getElementById('projects-panel').style.display = 'block';
+          document.querySelectorAll('.exp-tab-active').forEach(function(t){ t.classList.remove('exp-tab-active'); });
           document.getElementById('exp-tab-projects').classList.add('exp-tab-active');
-          document.getElementById('exp-tab-experience').classList.remove('exp-tab-active');
         }
         function showExperience() {
+          document.getElementById('nf-home-panel').style.display = 'none';
           document.getElementById('projects-panel').style.display = 'none';
           var cs = document.querySelector('.company-selection');
           if (cs) cs.style.display = '';
+          document.querySelectorAll('.exp-tab-active').forEach(function(t){ t.classList.remove('exp-tab-active'); });
           document.getElementById('exp-tab-experience').classList.add('exp-tab-active');
-          document.getElementById('exp-tab-projects').classList.remove('exp-tab-active');
         }
         function openPopup(id) {
           var p = document.getElementById('proj-'+id);
@@ -1440,8 +1516,26 @@
 
         var et = document.getElementById('exp-tab-experience');
         var pt = document.getElementById('exp-tab-projects');
+        var ht = document.getElementById('exp-tab-home');
         if (et) et.addEventListener('click', showExperience);
         if (pt) pt.addEventListener('click', showProjects);
+        if (ht) ht.addEventListener('click', showHome);
+        var nfResume = document.getElementById('nf-view-resume');
+        var nfInfo = document.getElementById('nf-more-info');
+        if (nfResume) nfResume.addEventListener('click', function(){
+          var resumeApp = document.getElementById('resume_app');
+          if (resumeApp && window._desktop) window._desktop.openApp(resumeApp);
+        });
+        if (nfInfo) nfInfo.addEventListener('click', function(){
+          if (window._desktop) window._desktop.openWindow('experience');
+          showExperience();
+        });
+        window.addEventListener('jay-app-opened', function(e){
+          if (e.detail && e.detail.app === 'experience') showHome();
+          if (document.getElementById('nf-home-panel').style.display !== 'none') {
+            updateProgressUI();
+          }
+        });
 
         document.querySelectorAll('.proj-folder').forEach(function(f){
           f.addEventListener('click', function(){ openPopup(f.dataset.project); });
