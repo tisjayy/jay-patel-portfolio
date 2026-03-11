@@ -56,6 +56,7 @@ class Desktop {
     this.activateCloseButtons();
     this.activateRestoreButtons();
     this.activateMouseUpEvent();
+    this.activateKeyboardForwarding();
 
     setInterval(this.activateDateTimeUpdates, 1000);
     this.activateDateTimeUpdates();
@@ -67,8 +68,26 @@ class Desktop {
         this.ds.start();
       }
     });
+    document.addEventListener("touchend", () => {
+      window.parent.postMessage("mouseup", "*");
+      if (this.ds.stopped) {
+        this.ds.start();
+      }
+    });
     document.addEventListener("mousedown", () => {
       window.parent.postMessage("mousedown", "*");
+    });
+  };
+
+  activateKeyboardForwarding = () => {
+    document.addEventListener("keydown", (event) => {
+      const arcadeWindow = document.getElementById("arcade");
+      if (arcadeWindow && arcadeWindow.style.display !== "none") {
+        const iframe = arcadeWindow.querySelector("iframe");
+        if (iframe) {
+          iframe.contentWindow.postMessage({ type: "keyDownParent", key: event.key }, "*");
+        }
+      }
     });
   };
 
@@ -78,6 +97,11 @@ class Desktop {
         this.ds.stop();
       }
     });
+    this.footer.addEventListener("touchstart", () => {
+      if (!this.ds.stopped) {
+        this.ds.stop();
+      }
+    }, { passive: true });
   };
 
   activateWindowsIconEvent = () => {
@@ -98,21 +122,26 @@ class Desktop {
   };
 
   activateOutsideWindowsIconEvent = () => {
-    document.addEventListener("mousedown", (event) => {
+    const closeMenu = (event) => {
       if (!event.target.closest(".open-windows-menu")) {
         this.windowsMenu.removeAttribute("style");
       }
-    });
+    };
+    document.addEventListener("mousedown", closeMenu);
+    document.addEventListener("touchstart", closeMenu, { passive: true });
   };
 
   startDrag = (event) => {
+    const isTouch = event.touches !== undefined;
+    const clientX = isTouch ? event.touches[0].clientX : event.clientX;
+    const clientY = isTouch ? event.touches[0].clientY : event.clientY;
     if (!this.ds?.stopped) {
       this.ds.stop();
     }
     this.element = event.srcElement.parentElement;
     this.incrementMaxZIndex(this.element);
-    this.initialMouseX = event.clientX;
-    this.initialMouseY = event.clientY;
+    this.initialMouseX = clientX;
+    this.initialMouseY = clientY;
     this.initialWindowX = parseFloat(
       window.getComputedStyle(this.element).left
     );
@@ -120,6 +149,8 @@ class Desktop {
 
     document.addEventListener("mousemove", this.drag);
     document.addEventListener("mouseup", this.stopDrag);
+    document.addEventListener("touchmove", this.drag, { passive: false });
+    document.addEventListener("touchend", this.stopDrag);
   };
 
   incrementMaxZIndex = (element) => {
@@ -138,19 +169,23 @@ class Desktop {
   };
 
   drag = (event) => {
+    if (event.cancelable) event.preventDefault();
     if (this.element.style.width == "100vw") {
       return;
     }
-    let mouseY = event.clientY;
-    if (event.clientY < 0) {
+    const isTouch = event.touches !== undefined;
+    const rawX = isTouch ? event.touches[0].clientX : event.clientX;
+    const rawY = isTouch ? event.touches[0].clientY : event.clientY;
+    let mouseY = rawY;
+    if (rawY < 0) {
       mouseY = 0;
-    } else if (event.clientY > window.innerHeight - 50) {
+    } else if (rawY > window.innerHeight - 50) {
       mouseY = window.innerHeight - 50;
     }
-    let mouseX = event.clientX;
-    if (event.clientX < 0) {
+    let mouseX = rawX;
+    if (rawX < 0) {
       mouseX = 0;
-    } else if (event.clientX > window.innerWidth) {
+    } else if (rawX > window.innerWidth) {
       mouseX = window.innerWidth;
     }
     const deltaX = mouseX - this.initialMouseX;
@@ -164,11 +199,14 @@ class Desktop {
     }
     document.removeEventListener("mousemove", this.drag);
     document.removeEventListener("mouseup", this.stopDrag);
+    document.removeEventListener("touchmove", this.drag);
+    document.removeEventListener("touchend", this.stopDrag);
   };
 
   activateTitleBarEvents = () => {
     this.titleBar.forEach((title_bar) => {
       title_bar.addEventListener("mousedown", this.startDrag);
+      title_bar.addEventListener("touchstart", this.startDrag, { passive: true });
       title_bar.addEventListener("dblclick", () => {
         const minimizeButton = title_bar.querySelector(".minimize");
         this.resizeWindow(title_bar.parentElement, minimizeButton);
@@ -198,6 +236,10 @@ class Desktop {
   activateAppEvents = () => {
     this.apps.forEach((app) => {
       app.addEventListener("dblclick", () => this.openApp(app));
+      app.addEventListener("touchend", (e) => {
+        e.preventDefault();
+        this.openApp(app);
+      });
     });
   };
   deactivateEvents() {}

@@ -15,6 +15,27 @@
 </head>
 
 <body dir="ltr" style="overflow: hidden;" id="body">
+
+    <!-- Mobile warning dialog (Win98 style, only shown on touch/small screens) -->
+    <div id="mobile-warning-overlay">
+      <div id="mobile-warning-dialog">
+        <div id="mobile-warning-titlebar">
+          <span>Jay OS</span>
+          <button id="mobile-warning-close" title="Close">&#x2715;</button>
+        </div>
+        <div id="mobile-warning-body">
+          <div id="mobile-warning-icon">&#x1F4BB;</div>
+          <div id="mobile-warning-text">
+            <p><strong>Best Viewed on Desktop</strong></p>
+            <p>Jay OS is optimized for a desktop experience. Some features may be limited on mobile devices.</p>
+            <p>For the full experience, please visit on a computer!</p>
+          </div>
+        </div>
+        <div id="mobile-warning-footer">
+          <button id="mobile-warning-ok" onclick="document.getElementById('mobile-warning-overlay').style.display='none'">OK</button>
+        </div>
+      </div>
+    </div>
     <aside>
         <div class='apps' id="chatbot_app">
             <img src='/imgs/icons/copilot.webp'>
@@ -1229,6 +1250,11 @@
             </div>
         </div>
     </div>
+    <script>
+      document.getElementById('mobile-warning-close').addEventListener('click', function() {
+        document.getElementById('mobile-warning-overlay').style.display = 'none';
+      });
+    </script>
 </body>
 
 </html>

@@ -86,5 +86,15 @@ function handleParentMessage(event) {
   }
 }
 
+// Click to select and start
+gameOptions.forEach((option, index) => {
+  option.addEventListener("click", () => {
+    if (currentGame != null) return;
+    selectedIndex = index;
+    updateSelected();
+    startGameSelected();
+  });
+});
+
 window.addEventListener("message", handleParentMessage);
 window.addEventListener("keydown", handleKeyPress);

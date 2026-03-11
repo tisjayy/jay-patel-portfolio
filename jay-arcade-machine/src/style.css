@@ -99,4 +99,11 @@ canvas {
   padding: 24px 0;
   color: green;
   font-size: 48px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#game-menu li:hover {
+  color: #00ff00;
+  text-shadow: 0 0 8px #00ff00;
 }

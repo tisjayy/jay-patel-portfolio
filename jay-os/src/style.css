@@ -350,8 +350,8 @@ body {
   transition: width 0.1s, height 0.1s ease;
 }
 .arcade {
-  width: 60vw;
-  height: 70vh;
+  width: 75vw;
+  height: 80vh;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
   position: absolute;
   z-index: 10;
@@ -1751,4 +1751,115 @@ footer .show-desktop hr {
 .readme-section-header {
   font-weight: bold;
   margin: 14px 0 6px 0 !important;
+}
+
+/* Mobile warning dialog — Win98 retro style, mobile-only */
+#mobile-warning-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 99999999;
+  align-items: center;
+  justify-content: center;
+}
+#mobile-warning-dialog {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 3px 3px 0 #000;
+  width: min(340px, 88vw);
+  font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+}
+#mobile-warning-titlebar {
+  background: linear-gradient(to right, #000080, #1084d0);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+#mobile-warning-titlebar span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#mobile-warning-titlebar span::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-image: url('/imgs/icons/experience.webp');
+  background-size: cover;
+}
+#mobile-warning-close {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: #000;
+  font-size: 11px;
+  width: 18px;
+  height: 18px;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#mobile-warning-close:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+}
+#mobile-warning-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px 18px 12px 18px;
+}
+#mobile-warning-icon {
+  font-size: 2.4rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+#mobile-warning-text {
+  font-size: 12px;
+  color: #000;
+  line-height: 1.55;
+}
+#mobile-warning-text p {
+  margin: 0 0 7px 0;
+}
+#mobile-warning-footer {
+  display: flex;
+  justify-content: center;
+  padding: 8px 18px 16px;
+}
+#mobile-warning-ok {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 1px 1px 0 #000;
+  font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+  font-size: 12px;
+  padding: 4px 28px;
+  cursor: pointer;
+  min-width: 80px;
+}
+#mobile-warning-ok:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: none;
+  padding: 5px 27px 3px 29px;
+}
+#mobile-warning-ok:focus {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+/* Only show on mobile/touch devices */
+@media (max-width: 768px) {
+  #mobile-warning-overlay {
+    display: flex;
+  }
 }
