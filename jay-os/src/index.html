@@ -69,6 +69,10 @@
             <img src='/imgs/icons/credits.webp'>
             <p>readme.txt</p>
         </div>
+        <div class='apps' id="music-player_app">
+            <img src='/imgs/icons/music-player.svg'>
+            <p>WinAmp</p>
+        </div>
     </aside>
     <footer style="z-index:9999999" id="footer">
         <section id="windows-icon-section" class="taskbar-hover windows-hover">
@@ -185,6 +189,9 @@
             </div>
             <div class="taskbar-app taskbar-hover" id="readme_bottom">
                 <img src="/imgs/icons/credits.webp" alt="readme.txt" />
+            </div>
+            <div class="taskbar-app taskbar-hover" id="music-player_bottom">
+                <img src="/imgs/icons/music-player.svg" alt="WinAmp" />
             </div>
         </section>
 
@@ -1220,6 +1227,39 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- WinAmp Music Player window -->
+    <div id="music-player" class="music-player" style="display: none;">
+        <div class="title-bar music-player-titlebar" id="titleBar">
+            <div class="title">&#127925; WinAmp</div>
+            <div class="window-controls">
+                <div class="window-button restore"></div>
+                <div class="window-button minimize"></div>
+                <div class="window-button close"></div>
+            </div>
+        </div>
+        <div class="mp-display">
+            <div class="mp-marquee-wrap">
+                <div class="mp-marquee" id="mp-title-scroll">WINAMP &mdash; PRESS PLAY</div>
+            </div>
+            <div class="mp-time" id="mp-time">0:00</div>
+            <canvas id="mp-eq" class="mp-eq" width="252" height="50"></canvas>
+        </div>
+        <div class="mp-progress-wrap">
+            <input type="range" id="mp-seek" class="mp-slider" min="0" max="100" value="0" step="0.1">
+        </div>
+        <div class="mp-controls">
+            <button class="mp-btn" id="mp-prev" title="Previous">&#9198;</button>
+            <button class="mp-btn" id="mp-stop" title="Stop">&#9209;</button>
+            <button class="mp-btn mp-btn-play" id="mp-play" title="Play/Pause">&#9654;</button>
+            <button class="mp-btn" id="mp-next" title="Next">&#9197;</button>
+        </div>
+        <div class="mp-volume-row">
+            <span class="mp-vol-label">VOL</span>
+            <input type="range" id="mp-volume" class="mp-slider" min="0" max="1" step="0.01" value="0.7">
+        </div>
+        <div class="mp-playlist" id="mp-playlist"></div>
     </div>
 
     <div id="chatbot" class="chatbot" style="display: none;">

@@ -337,6 +337,9 @@ class Desktop {
         content?.scrollTo(0, 0);
         const iframeToReset = currentWindow.querySelector("iframe[data-src]");
         if (iframeToReset) iframeToReset.src = "about:blank";
+        if (currentWindow.id === "music-player" && currentWindow._stopMusic) {
+          currentWindow._stopMusic();
+        }
         currentWindow.style.display = "none";
         const bottomApp = document.getElementById(currentWindow.id + "_bottom");
         if (bottomApp.classList.contains("taskbar-opened")) {

@@ -1753,6 +1753,191 @@ footer .show-desktop hr {
   margin: 14px 0 6px 0 !important;
 }
 
+/* ===== WINAMP MUSIC PLAYER ===== */
+.music-player {
+  position: absolute;
+  width: 280px;
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 2px 2px 0 #000;
+  z-index: 10;
+  top: 42vh;
+  left: 52vw;
+  transform: translate(-50%, -50%);
+  font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+  font-size: 11px;
+  transition: width 0.1s, height 0.1s ease;
+}
+.music-player-titlebar {
+  background: linear-gradient(to right, #c96400, #e07800) !important;
+}
+/* Dark LCD display panel */
+.mp-display {
+  background: #1a1a1a;
+  margin: 4px 4px 2px 4px;
+  padding: 6px 8px 4px 8px;
+  border: 2px solid;
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+}
+/* Scrolling title marquee */
+.mp-marquee-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  height: 16px;
+}
+.mp-marquee {
+  display: inline-block;
+  color: #00ff00;
+  font-size: 10px;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: mp-scroll 10s linear infinite;
+}
+@keyframes mp-scroll {
+  0%   { transform: translateX(100%);  }
+  100% { transform: translateX(-200%); }
+}
+/* Time display */
+.mp-time {
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 4px;
+  margin: 2px 0 4px 0;
+  text-shadow: 0 0 6px #00ff00;
+}
+/* EQ canvas */
+.mp-eq {
+  display: block;
+  width: 100%;
+  height: 50px;
+  background: #000;
+  image-rendering: pixelated;
+}
+/* Seek / Volume shared slider style */
+.mp-progress-wrap {
+  padding: 3px 4px 1px 4px;
+}
+.mp-slider {
+  width: 100%;
+  height: 12px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #1a1a1a;
+  border: 2px solid;
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+  cursor: pointer;
+  display: block;
+}
+.mp-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+}
+.mp-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  cursor: pointer;
+  border-radius: 0;
+}
+/* Transport buttons */
+.mp-controls {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 4px 2px 4px;
+}
+.mp-btn {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  font-size: 13px;
+  width: 36px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 0 #000;
+  padding: 0;
+  line-height: 1;
+}
+.mp-btn:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+.mp-btn-play {
+  width: 44px;
+}
+/* Volume row */
+.mp-volume-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 4px 4px 4px;
+}
+.mp-vol-label {
+  color: #000;
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  flex-shrink: 0;
+  width: 22px;
+}
+.mp-volume-row .mp-slider {
+  flex: 1;
+}
+/* Playlist panel */
+.mp-playlist {
+  background: #1a1a1a;
+  border: 2px solid;
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+  margin: 2px 4px 4px 4px;
+  min-height: 70px;
+  max-height: 130px;
+  overflow-y: auto;
+}
+.mp-playlist-item {
+  color: #00cc00;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  padding: 5px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  user-select: none;
+}
+.mp-playlist-item:hover {
+  background: #003300;
+  color: #00ff00;
+}
+.mp-playlist-active {
+  background: #004400;
+  color: #00ff66;
+}
+.mp-playlist-empty {
+  color: #555;
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  padding: 16px 10px;
+  text-align: center;
+  line-height: 1.8;
+}
+
 /* Mobile warning dialog — Win98 retro style, mobile-only */
 #mobile-warning-overlay {
   display: none;

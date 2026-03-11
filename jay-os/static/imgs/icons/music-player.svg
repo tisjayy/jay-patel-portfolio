@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Win98-style icon background -->
+  <rect x="2" y="2" width="60" height="60" rx="4" fill="#d4d0c8"/>
+  <rect x="2" y="2" width="60" height="60" rx="4" fill="none" stroke="#808080" stroke-width="1"/>
+  <!-- Dark display area -->
+  <rect x="8" y="8" width="48" height="28" rx="1" fill="#1a1a1a"/>
+  <!-- Green EQ bars -->
+  <rect x="11" y="20" width="4" height="12" fill="#00cc00"/>
+  <rect x="17" y="16" width="4" height="16" fill="#00ff00"/>
+  <rect x="23" y="22" width="4" height="10" fill="#00cc00"/>
+  <rect x="29" y="14" width="4" height="18" fill="#00ff00"/>
+  <rect x="35" y="18" width="4" height="14" fill="#00cc00"/>
+  <rect x="41" y="12" width="4" height="20" fill="#00ff00"/>
+  <rect x="47" y="20" width="4" height="12" fill="#00cc00"/>
+  <!-- Transport buttons row -->
+  <rect x="8"  y="42" width="10" height="8" rx="1" fill="#d4d0c8" stroke="#808080" stroke-width="1"/>
+  <rect x="21" y="42" width="10" height="8" rx="1" fill="#d4d0c8" stroke="#808080" stroke-width="1"/>
+  <rect x="34" y="42" width="10" height="8" rx="1" fill="#d4d0c8" stroke="#808080" stroke-width="1"/>
+  <rect x="47" y="42" width="9"  height="8" rx="1" fill="#d4d0c8" stroke="#808080" stroke-width="1"/>
+  <!-- Play symbol on middle button -->
+  <polygon points="36,44 36,50 42,47" fill="#000080"/>
+</svg>
