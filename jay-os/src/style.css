@@ -1,4 +1,4 @@
-﻿@font-face {
+@font-face {
   font-family: "Segoe";
   src: url("/fonts/Segoe\ UI.ttf") format("truetype");
 }
@@ -292,78 +292,101 @@ body {
 .about-me {
   width: 80vw;
   height: 60vh;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #003C74;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
   position: absolute;
   z-index: 10;
   top: 35vh;
   left: 50vw;
   transform: translate(-50%, -50%);
   transition: width 0.1s, height 0.1s ease;
+  overflow: hidden;
 }
 .credits {
   font-family: "Consolas", monospace;
   width: 60vw;
   height: 70vh;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #003C74;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
   position: absolute;
   z-index: 10;
   top: 40vh;
   left: 50vw;
   transform: translate(-50%, -50%);
   transition: width 0.1s, height 0.1s ease;
+  overflow: hidden;
 }
 .resume {
   width: 70vw;
   height: 85vh;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #1252d0;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
   position: absolute;
-  top: calc(80vh - 270px);
+  top: calc(85vh - 270px);
   left: 50vw;
   z-index: 10;
   transform: translate(-50%, -50%);
   transition: width 0.1s, height 0.1s ease;
+  overflow: hidden;
 }
 
 .contact {
   font-family: "Consolas", monospace;
   width: 80vw;
   height: 80vh;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #1252d0;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
   position: absolute;
   top: calc(80vh - 270px);
   left: 50vw;
   z-index: 10;
   transform: translate(-50%, -50%);
   transition: width 0.1s, height 0.1s ease;
+  overflow: hidden;
 }
 
 .experience {
   font-family: "BebasNeue", sans-serif;
   width: 75vw;
   height: 75vh;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #000;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #555, 2px 4px 16px rgba(0,0,0,0.6);
   position: absolute;
   top: calc(80vh - 250px);
   left: 50vw;
   z-index: 10;
   transform: translate(-50%, -50%);
   transition: width 0.1s, height 0.1s ease;
+  overflow: hidden;
+}
+.experience .title-bar {
+  border-bottom-color: #000;
 }
 .arcade {
   width: 75vw;
   height: 80vh;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #003C74;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
   position: absolute;
   z-index: 10;
   top: 40vh;
   left: 50vw;
   transform: translate(-50%, -50%);
   transition: width 0.1s, height 0.1s ease;
+  overflow: hidden;
 }
 .rubiks-cube {
   width: 60vw;
   height: 70vh;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  border: 1px solid #003C74;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
   position: absolute;
   z-index: 10;
   top: 45vh;
@@ -371,8 +394,7 @@ body {
   transform: translate(-50%, -50%);
   transition: width 0.1s, height 0.1s ease;
   background: #d4d0c8;
-  border: 2px solid;
-  border-color: #ffffff #808080 #808080 #ffffff;
+  overflow: hidden;
 }
 
 .chatbot {
@@ -644,68 +666,195 @@ body {
   margin-top: 7px;
 }
 .title-bar {
-  border-bottom: 1px white;
-  background-color: #242526;
+  border-bottom: 1px solid #002A5E;
+  background: linear-gradient(to bottom, #3A6EA5 0%, #2B5FB3 50%, #1F4E8C 100%);
   display: flex;
-  color: #f5f5f5;
-  height: 35px;
+  color: #fff;
+  height: 30px;
   font-family: "Segoe", Verdana, sans-serif;
   justify-content: space-between;
+  border-radius: 2px 2px 0 0;
 }
 
 .window-controls {
   display: flex;
+  align-items: center;
+  gap: 2px;
+  padding-right: 5px;
 }
 
-.window-button {
-  right: 0;
-  width: 46px;
-  height: 100%;
-  transition: background-color 0.2s;
-}
-
-.window-button:hover {
-  background-color: #3a3b3c;
-}
+/* ===== WINDOWS XP CLASSIC BUTTONS ===== */
+.window-button,
 .window-button-blue {
-  background-color: #0078d7;
   right: 0;
-  width: 46px;
-  height: 100%;
-  transition: background-color 0.2s;
+  width: 21px;
+  height: 21px;
+  border-radius: 4px;
+  border: 1px solid #0A246A;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), inset 0 -1px 2px rgba(0,0,0,0.35);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, #7EA9E6 0%, #3F7BD9 50%, #1C4FA3 100%);
+  transition: background 0.1s;
+  flex-shrink: 0;
+  background-image: none !important;
 }
-
+.window-button:hover,
 .window-button-blue:hover {
-  background-color: #0072c6;
+  background: linear-gradient(to bottom, #9CC2F5 0%, #3F7BD9 50%, #2E6BE0 100%);
 }
 
-.close {
-  background-image: url("/imgs/buttons/close.svg");
-  background-size: 12px;
-  background-repeat: no-repeat;
-  background-position: center;
+/* ── XP buttons: scoped to .window-button only ── */
+.window-button.minimize::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-.close:hover {
-  background-color: #e81023;
+.window-button.minimize-full::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #fff;
+  border-radius: 1px;
+  top: 2px;
+  right: 2px;
+  box-sizing: border-box;
 }
-.minimize {
-  background-image: url("/imgs/buttons/minimize.svg");
-  background-size: 16px;
-  background-repeat: no-repeat;
-  background-position: center;
+.window-button.minimize-full::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #fff;
+  border-radius: 1px;
+  bottom: 2px;
+  left: 2px;
+  box-sizing: border-box;
+  background: linear-gradient(to bottom, #7EA9E6 0%, #3F7BD9 50%, #1C4FA3 100%);
 }
-.minimize-full {
-  background-image: url("/imgs/buttons/minimize_full.svg");
-  background-size: 16px;
-  background-repeat: no-repeat;
-  background-position: center;
+.window-button.restore::before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 1px;
+  box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 1px));
 }
-.restore {
-  background-image: url("/imgs/buttons/restore.svg");
-  background-size: 15px;
-  background-repeat: no-repeat;
-  background-position: center;
+.window-button.close {
+  background: linear-gradient(to bottom, #FF9B8F 0%, #E04343 50%, #9B1E1E 100%) !important;
 }
+.window-button.close:hover {
+  background: linear-gradient(to bottom, #FFB3AA 0%, #D73232 100%) !important;
+}
+.window-button.close::before,
+.window-button.close::after {
+  content: '';
+  position: absolute;
+  width: 11px;
+  height: 2px;
+  background: #fff;
+  border-radius: 1px;
+  top: 50%;
+  left: 50%;
+}
+.window-button.close::before { transform: translate(-50%, calc(-50% + 1px)) rotate(45deg); }
+.window-button.close::after  { transform: translate(-50%, calc(-50% + 1px)) rotate(-45deg); }
+
+/* ── Win98 gray title bar buttons ── */
+.window-button-98 {
+  width: 18px;
+  height: 18px;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 1px 1px 0 #000;
+  background: #d4d0c8;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.window-button-98:active {
+  border-color: #808080 #ffffff #ffffff #808080;
+  box-shadow: none;
+}
+.window-button-98.minimize::before {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 2px;
+  background: #000;
+  bottom: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.window-button-98.restore::before {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 8px;
+  border: 1.5px solid #000;
+  border-top-width: 2px;
+  box-sizing: border-box;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, calc(-50% + 1px));
+}
+.window-button-98.minimize-full::before {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 6px;
+  border: 1.5px solid #000;
+  border-top-width: 2px;
+  box-sizing: border-box;
+  top: 2px;
+  right: 2px;
+  left: auto;
+  bottom: auto;
+  background: none;
+  transform: none;
+  border-radius: 0;
+}
+.window-button-98.minimize-full::after {
+  content: '';
+  position: absolute;
+  width: 7px;
+  height: 6px;
+  border: 1.5px solid #000;
+  border-top-width: 2px;
+  box-sizing: border-box;
+  bottom: 2px;
+  left: 2px;
+  background: #d4d0c8;
+}
+.window-button-98.close::before,
+.window-button-98.close::after {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 1.5px;
+  background: #000;
+  top: 50%;
+  left: 50%;
+}
+.window-button-98.close::before { transform: translate(-50%, calc(-50% + 1px)) rotate(45deg); }
+.window-button-98.close::after  { transform: translate(-50%, calc(-50% + 1px)) rotate(-45deg); }
 
 .title {
   padding: 10px;
@@ -1331,20 +1480,20 @@ header {
 
 footer {
   display: grid;
-  grid-template-columns: minmax(2rem, 4rem) 22rem 3rem auto 4rem minmax(
-      auto,
-      18rem
-    );
+  grid-template-columns: auto 22rem 3rem auto 4rem minmax(auto, 18rem);
   grid-template-rows: auto;
   align-items: center;
   justify-items: center;
+  justify-content: start;
   grid-auto-flow: column;
   position: fixed;
   width: 100%;
   min-height: 2.5rem;
   opacity: 1;
   bottom: 0;
-  background: linear-gradient(to bottom right, #121213, #232325);
+  background: linear-gradient(to bottom, #3A6EA5 0%, #2F5E9E 55%, #1F4E8C 100%);
+  border-top: 2px solid #5a8cdc;
+  box-shadow: inset 0 1px 0 #5a9ef0;
 }
 
 footer svg {
@@ -1367,13 +1516,21 @@ footer .windows-hover:hover #windows-icon {
 }
 footer .open-windows-menu {
   display: none;
-  width: 33rem;
-  min-height: 36rem;
+  width: 38rem;
+  min-height: 24rem;
   position: absolute;
-  bottom: 3rem;
+  bottom: 2.6rem;
   z-index: 8;
   left: 0;
-  background-color: black;
+  background: #ece9d8;
+  border: 2px solid #003bab;
+  border-bottom: none;
+  border-radius: 6px 6px 0 0;
+  box-shadow: 4px -4px 12px rgba(0,0,0,0.55);
+  overflow: hidden;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
 }
 footer .open-windows-menu .left-panel {
   display: grid;
@@ -1519,7 +1676,7 @@ footer label {
 }
 
 .taskbar-hover:hover {
-  background-color: #414141;
+  background-color: rgba(255,255,255,0.18);
 }
 .left-panel-hover:hover {
   background-color: #4c4c4c;
@@ -1540,6 +1697,7 @@ footer .pinned-apps {
   grid-template-rows: minmax(1rem, 3rem);
   height: 100%;
   align-content: center;
+  align-items: center;
   display: grid;
   grid-auto-flow: column;
   grid-gap: 0rem;
@@ -1558,7 +1716,7 @@ footer .taskbar-app {
   display: none;
   justify-content: center;
   align-items: center;
-  height: auto;
+  height: 100%;
   width: 3.5rem;
   transition: all 0.51s ease;
 }
@@ -1569,10 +1727,12 @@ footer .taskbar-app.taskbar-selected {
 }
 
 .taskbar-selected {
-  background-color: #414141;
+  background-color: rgba(0,0,0,0.3);
+  border-bottom: 2px solid #a0d0ff !important;
 }
 .taskbar-opened {
-  border-bottom: 2px solid #76b9edee !important;
+  border-bottom: 2px solid #a0d0ff !important;
+  background-color: rgba(0,0,0,0.28);
   background-clip: padding-box;
 }
 footer .other-apps {
@@ -1590,7 +1750,11 @@ footer .other-apps {
   transform: rotate(270deg);
 }
 #windows-icon-section {
-  width: 60px;
+  width: auto !important;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  align-items: stretch;
 }
 #expand-other-apps:checked ~ .other-apps {
   display: grid;
@@ -1678,14 +1842,15 @@ footer .show-desktop hr {
   transform: translate(-50%, -50%);
   z-index: 10;
   background: #d4d0c8;
-  border: 2px solid;
-  border-color: #ffffff #808080 #808080 #ffffff;
-  box-shadow: 2px 2px 0 #000;
+  border: 1px solid #1252d0;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
   font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
   transition: width 0.1s, height 0.1s ease;
+  overflow: hidden;
 }
 .readme-title-bar {
-  background: linear-gradient(to right, #c96400, #e07800) !important;
+  background: linear-gradient(to bottom, #1252d0 0%, #0e40aa 100%);
 }
 .readme-menubar {
   background: #d4d0c8;
@@ -1758,9 +1923,10 @@ footer .show-desktop hr {
   position: absolute;
   width: 280px;
   background: #d4d0c8;
-  border: 2px solid;
-  border-color: #ffffff #808080 #808080 #ffffff;
-  box-shadow: 2px 2px 0 #000;
+  ;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 0 0 0 1px rgba(255,180,180,0.3), 2px 4px 16px rgba(80,0,0,0.6);
+  outline: 1px solid #5a0000;
   z-index: 10;
   top: 42vh;
   left: 52vw;
@@ -1768,9 +1934,10 @@ footer .show-desktop hr {
   font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
   font-size: 11px;
   transition: width 0.1s, height 0.1s ease;
+  overflow: hidden;
 }
 .music-player-titlebar {
-  background: linear-gradient(to right, #c96400, #e07800) !important;
+  background: linear-gradient(to right, #8b0000 0%, #cc1010 50%, #ee2020 100%) !important;
 }
 /* Dark LCD display panel */
 .mp-display {
@@ -1938,7 +2105,7 @@ footer .show-desktop hr {
   line-height: 1.8;
 }
 
-/* Mobile warning dialog — Win98 retro style, mobile-only */
+/* Mobile warning dialog � Win98 retro style, mobile-only */
 #mobile-warning-overlay {
   display: none;
   position: fixed;
@@ -2048,3 +2215,419 @@ footer .show-desktop hr {
     display: flex;
   }
 }
+
+/* ===== PROJECTS SECTION ===== */
+.exp-tab-active { color: #de1310 !important; border-bottom: 2px solid #de1310; padding-bottom: 2px; }
+nav.links ul li a { cursor: pointer; transition: color 0.15s; }
+nav.links ul li a:hover { color: #de1310; }
+
+.projects-explorer {
+  background: #1a1a1a;
+  border: 2px solid;
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  min-height: 160px;
+}
+.proj-folder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 90px;
+  cursor: pointer;
+  padding: 8px;
+  border: 1px solid transparent;
+  user-select: none;
+}
+.proj-folder:hover { background: rgba(255,255,255,0.08); border-color: #555; }
+.proj-folder-icon { font-size: 2.6rem; line-height: 1; }
+.proj-folder-name {
+  color: #e0e0e0;
+  font-size: 11px;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.project-popup {
+  position: fixed;
+  width: min(540px, 90vw);
+  max-height: 80vh;
+  background: #d4d0c8;
+  border: 1px solid #003C74;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  flex-direction: column;
+  z-index: 300;
+  overflow: hidden;
+}
+.project-popup-titlebar {
+  background: linear-gradient(to right, #3A6EA5 0%, #2F5E9E 40%, #1F4E8C 100%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  cursor: default;
+  user-select: none;
+}
+.project-popup-title { font-size: 12px; font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif; }
+.project-popup-titlebar button {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: #000;
+  font-size: 11px;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.project-popup-titlebar button:active { border-color: #808080 #ffffff #ffffff #808080; }
+.project-popup-body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 10px 12px;
+  background: #1a1a1a;
+}
+.proj-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: 6px 0 10px 0;
+  border-bottom: 1px solid #333;
+  margin-bottom: 10px;
+}
+.proj-date { color: #b8b8b8; font-size: 11px; flex: 1; min-width: 110px; }
+.proj-techstack-btn {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  font-size: 11px;
+  padding: 2px 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #000;
+}
+.proj-techstack-btn:active { border-color: #808080 #ffffff #ffffff #808080; box-shadow: none; }
+.proj-github-btn {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  font-size: 11px;
+  padding: 2px 10px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0 #000;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.proj-github-btn:hover { text-decoration: underline; }
+.proj-github-btn:active { border-color: #808080 #ffffff #ffffff #808080; box-shadow: none; }
+.project-popup-desc { margin-bottom: 12px; }
+.project-popup-desc p { color: #e0e0e0; font-size: 12px; line-height: 1.6; margin: 0 0 8px 0; }
+.proj-screenshots { display: flex; flex-wrap: wrap; gap: 8px; padding-top: 4px; }
+.proj-img {
+  max-width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  border: 2px solid #444;
+  cursor: pointer;
+}
+.proj-img:hover { border-color: #e07800; }
+
+/* Tech Stack Notepad popup */
+.techstack-notepad {
+  position: fixed;
+  width: min(380px, 85vw);
+  background: #d4d0c8;
+  border: 4px solid #006600;
+  border-radius: 6px 6px 4px 4px;
+  box-shadow: inset 0 0 0 1px rgba(180,255,180,0.25), 2px 4px 16px rgba(0,50,0,0.6);
+  outline: 1px solid #003a00;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  z-index: 350;
+  overflow: hidden;
+}
+.techstack-notepad-titlebar {
+  background: linear-gradient(to right, #004400 0%, #006600 50%, #008800 100%);
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: default;
+  user-select: none;
+}
+.techstack-notepad-titlebar button {
+  background: #d4d0c8;
+  border: 2px solid;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  color: #000;
+  font-size: 11px;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.techstack-notepad-titlebar button:active { border-color: #808080 #ffffff #ffffff #808080; }
+.techstack-notepad-menubar {
+  background: #d4d0c8;
+  border-bottom: 1px solid #808080;
+  padding: 2px 4px;
+  display: flex;
+  font-size: 12px;
+  color: #000;
+}
+.techstack-notepad-menubar span { padding: 2px 8px; cursor: default; user-select: none; }
+.techstack-notepad-menubar span:hover { background: #000080; color: #fff; }
+.techstack-notepad-body {
+  background: #fff;
+  border: 2px solid;
+  border-color: #808080 #dfdfdf #dfdfdf #808080;
+  margin: 3px;
+  padding: 8px 10px;
+  min-height: 80px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+#techstack-content {
+  margin: 0;
+  font-family: 'Courier New',Courier,monospace;
+  font-size: 12px;
+  color: #000;
+  line-height: 1.7;
+  white-space: pre-wrap;
+}
+
+/* ===== WINDOWS XP TASKBAR + START MENU ===== */
+
+/* Start button using saved XP logo image */
+.xp-start-btn {
+  background: linear-gradient(to bottom, #6ee06e 0%, #3fb83f 30%, #2d9a2d 100%);
+  border: none;
+  border-right: 2px solid #1a621a;
+  border-top: 1px solid #a8f0a8;
+  border-bottom: 1px solid #1a621a;
+  color: #fff;
+  height: 100%;
+  padding: 0 14px 0 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 0 12px 12px 0;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 2px 0 6px rgba(0,0,0,0.4);
+  min-width: 90px;
+  justify-content: center;
+}
+.xp-start-btn:active {
+  background: linear-gradient(to bottom, #2d9a2d 0%, #3ab03a 55%, #5cd45c 100%);
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.4);
+}
+.xp-start-btn:hover {
+  background: linear-gradient(to bottom, #6de86d 0%, #4ec04e 45%, #3aaa3a 100%);
+}
+#windows-xp-logo {
+  height: 26px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  flex-shrink: 0;
+}
+.xp-start-text {
+  font-family: 'Franklin Gothic Medium','Arial Narrow Bold','Tahoma',Arial,sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  font-style: italic;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.6), 0 0 1px rgba(0,0,0,0.4);
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+/* Open-windows-menu overrides: XP two-column layout */
+footer .open-windows-menu {
+  display: none;
+  flex-direction: column;
+}
+/* When shown via JS (display:flex set inline) restore two-column layout */
+footer .open-windows-menu[style] {
+  display: flex !important;
+  flex-direction: column;
+}
+
+/* Two-column panels sit side-by-side */
+.xp-columns {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* XP Start left column: dark blue user banner + white program list */
+.xp-start-left {
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  border-right: 1px solid #b0a878;
+  background: #fff;
+  flex-shrink: 0;
+  min-height: 20rem;
+}
+
+.xp-user-banner {
+  background: linear-gradient(to bottom, #1252d0 0%, #0e40aa 100%);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 2px solid #f0b000;
+}
+.xp-user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 4px;
+  border: 2px solid #6fa8f8;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.xp-user-name {
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  white-space: nowrap;
+}
+
+.xp-prog-list {
+  padding: 6px 0;
+  flex: 1;
+}
+.xp-prog-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #111;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  transition: background 0.1s;
+}
+.xp-prog-item:hover {
+  background: linear-gradient(to bottom, #316ac5, #2452a8);
+  color: #fff;
+}
+.xp-prog-icon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.xp-prog-separator {
+  height: 1px;
+  background: #c0c0c0;
+  margin: 4px 8px;
+}
+
+/* XP Start right column: beige links panel */
+.xp-start-right {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background: #ece9d8;
+  padding: 6px 0;
+}
+.xp-right-title {
+  font-size: 11px;
+  font-weight: bold;
+  color: #003bab;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  padding: 6px 12px 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.xp-right-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 12px;
+  color: #111;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  transition: background 0.1s;
+}
+.xp-right-link:hover {
+  background: linear-gradient(to bottom, #316ac5, #2452a8);
+  color: #fff;
+}
+.xp-right-separator {
+  height: 1px;
+  background: #c0b488;
+  margin: 4px 8px;
+}
+
+/* Two-column layout: left + right side by side */
+.open-windows-menu .xp-start-left,
+.open-windows-menu .xp-start-right {
+  /* these are direct children, flex-direction handled above */
+}
+
+/* The footer bar with Log Off / Shut Down */
+.xp-start-footer {
+  width: 100%;
+  background: linear-gradient(to bottom, #1252d0 0%, #0e40aa 100%);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 6px 10px;
+  border-top: 2px solid #f0b000;
+  box-sizing: border-box;
+}
+.xp-footer-btn {
+  background: linear-gradient(to bottom, #4578cc, #2d5eb0);
+  border: 1px solid #1030a0;
+  border-top-color: #7090e0;
+  color: #fff;
+  font-family: 'Tahoma','MS Sans Serif',Arial,sans-serif;
+  font-size: 11px;
+  padding: 3px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.xp-footer-btn:hover {
+  background: linear-gradient(to bottom, #5888dd, #3868c0);
+}
+.xp-footer-btn:active {
+  background: linear-gradient(to bottom, #2d5eb0, #4578cc);
+}
+
+/* Override open-windows-menu display to use flex-row for columns */
+footer .open-windows-menu[style*="flex"] .xp-start-left,
+footer .open-windows-menu[style*="flex"] .xp-start-right {
+  display: flex;
+}
+
+

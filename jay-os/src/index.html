@@ -75,86 +75,67 @@
         </div>
     </aside>
     <footer style="z-index:9999999" id="footer">
-        <section id="windows-icon-section" class="taskbar-hover windows-hover">
-            <svg id="windows-icon" viewBox="0 0 150 150" width="24px" height="24px"
-                style="width: 1.5rem; height: auto; ">
-
-                <path color="#ffffff" fill="#ffffff"
-                    d="M 59.554688 23.28125 L 14.554688 30.03125 C 13.085938 30.253906 12 31.515625 12 33 L 12 69 C 12 70.660156 13.34375 72 15 72 L 60 72 C 61.65625 72 63 70.660156 63 69 L 63 26.25 C 63 25.378906 62.617188 24.550781 61.957031 23.976562 C 61.296875 23.410156 60.417969 23.164062 59.554688 23.28125 Z M 136.957031 12.726562 C 136.296875 12.160156 135.421875 11.914062 134.554688 12.03125 L 71.554688 21.484375 C 70.085938 21.703125 69 22.964844 69 24.449219 L 69 69 C 69 70.660156 70.34375 72 72 72 L 135 72 C 136.65625 72 138 70.660156 138 69 L 138 15 C 138 14.128906 137.617188 13.300781 136.957031 12.726562 Z M 60 78 L 15 78 C 13.34375 78 12 79.339844 12 81 L 12 117 C 12 118.484375 13.085938 119.746094 14.554688 119.96875 L 59.554688 126.71875 C 59.707031 126.738281 59.851562 126.75 60 126.75 C 60.714844 126.75 61.410156 126.496094 61.957031 126.023438 C 62.617188 125.449219 63 124.621094 63 123.75 L 63 81 C 63 79.339844 61.65625 78 60 78 Z M 135 78 L 72 78 C 70.34375 78 69 79.339844 69 81 L 69 125.550781 C 69 127.035156 70.085938 128.296875 71.554688 128.515625 L 134.554688 137.96875 C 134.703125 137.988281 134.851562 138 135 138 C 135.714844 138 136.410156 137.746094 136.957031 137.273438 C 137.617188 136.699219 138 135.871094 138 135 L 138 81 C 138 79.339844 136.65625 78 135 78 Z M 135 78 " />
-
-            </svg>
+        <section id="windows-icon-section" class="windows-hover">
+            <button id="start-btn" class="xp-start-btn">
+                <img src="/imgs/icons/windowslogo.png" alt="Windows XP" id="windows-xp-logo" />
+                <span class="xp-start-text">start</span>
+            </button>
         </section>
 
         <article class="open-windows-menu">
-            <section class="left-panel">
-                <section class="start left-panel-hover">
-                    <svg viewBox="0 0 150 150" width="24px" height="24px" style="padding-top: 10px;">
-                        <path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;"
-                            d="M 8 44 L 88 44 L 88 52 L 8 52 Z M 8 20 L 88 20 L 88 28 L 8 28 Z M 8 68 L 88 68 L 88 76 L 8 76 Z M 8 68 " />
-                    </svg>
-                    <p style="font-size: 1.4em; margin-bottom: 0px;">Start</p>
-                </section>
-                <section class="details">
-                    <section class="left-bottom-panel left-panel-hover">
-                        <img src="/imgs/about-me/profile.jpg" alt="profile">
-                        <p style="font-size: 1.4em; margin-bottom: 0px;">Jay Patel</p>
-                    </section>
-                    <section class="left-bottom-panel left-panel-hover">
-                        <svg width="16" height="16" x="0" y="0" viewBox="0 0 477.867 477.867"
-                            style="enable-background:new 0 0 16 16" xml:space="preserve" class="">
-                            <path
-                                d="M421.649,90.317L336.316,4.983c-1.589-1.593-3.481-2.852-5.564-3.703c-2.059-0.841-4.261-1.276-6.485-1.28H102.4    C74.123,0,51.2,22.923,51.2,51.2v375.467c0,28.277,22.923,51.2,51.2,51.2h273.067c28.277,0,51.2-22.923,51.2-51.2V102.4    C426.643,97.87,424.841,93.531,421.649,90.317z M341.333,58.266l27.068,27.068h-27.068V58.266z M392.533,426.667    c0,9.426-7.641,17.067-17.067,17.067H102.4c-9.426,0-17.067-7.641-17.067-17.067V51.2c0-9.426,7.641-17.067,17.067-17.067h204.8    V102.4c0,9.426,7.641,17.067,17.067,17.067h68.267V426.667z"
-                                fill="#ffffff" data-original="#000000" class="" />
-                        </svg>
-                        <p style="font-size: 1.4em; margin-bottom: 0px;">Documents</p>
-                    </section>
-
-                    <section class="left-bottom-panel left-panel-hover">
-                        <svg width="16" height="16" x="0" y="0" viewBox="0 0 265.257 265.257"
-                            style="enable-background:new 0 0 16 16" xml:space="preserve">
-                            <path
-                                d="M247.757,27.677H17.5c-9.649,0-17.5,7.851-17.5,17.5V220.08c0,9.65,7.851,17.5,17.5,17.5h230.257   c9.649,0,17.5-7.85,17.5-17.5V45.177C265.257,35.528,257.407,27.677,247.757,27.677z M17.5,42.677h230.257   c1.355,0,2.5,1.145,2.5,2.5v116.474l-40.108-51.474c-2.976-3.819-7.332-6.108-11.952-6.278c-4.619-0.173-9.132,1.791-12.382,5.382   l-52.039,57.512c-1.253,1.384-4.033,1.766-5.614,0.772l-42.788-26.946c-7.332-4.619-18.063-4.143-24.958,1.105L15,176.288V45.177   C15,43.822,16.145,42.677,17.5,42.677z M247.757,222.58H17.5c-1.355,0-2.5-1.145-2.5-2.5v-24.942l54.501-41.478   c1.893-1.44,5.87-1.616,7.881-0.349l42.788,26.946c7.734,4.871,18.596,3.377,24.729-3.4l52.039-57.512   c0.312-0.345,0.535-0.45,0.708-0.457c0.131,0.005,0.385,0.141,0.671,0.508l51.94,66.658v34.025   C250.257,221.435,249.112,222.58,247.757,222.58z"
-                                fill="#ffffff" data-original="#000002" />
-                            <path
-                                d="M110.843,129.224c14.649,0,26.566-11.917,26.566-26.566s-11.918-26.566-26.566-26.566   c-14.649,0-26.566,11.918-26.566,26.566S96.194,129.224,110.843,129.224z M110.843,91.091c6.378,0,11.566,5.188,11.566,11.566   c0,6.378-5.188,11.566-11.566,11.566c-6.378,0-11.566-5.188-11.566-11.566C99.277,96.28,104.465,91.091,110.843,91.091z"
-                                fill="#ffffff" data-original="#000002" />
-                        </svg>
-                        <p style="font-size: 1.4em; margin-bottom: 0px;">Pictures</p>
-                    </section>
-
-                    <section class="left-bottom-panel left-panel-hover">
-                        <svg width="16" height="16" x="0" y="0" viewBox="0 0 512 512"
-                            style="enable-background:new 0 0 16 16" xml:space="preserve" class="">
-                            <path xmlns="http://www.w3.org/2000/svg"
-                                d="m272.066 512h-32.133c-25.989 0-47.134-21.144-47.134-47.133v-10.871c-11.049-3.53-21.784-7.986-32.097-13.323l-7.704 7.704c-18.659 18.682-48.548 18.134-66.665-.007l-22.711-22.71c-18.149-18.129-18.671-48.008.006-66.665l7.698-7.698c-5.337-10.313-9.792-21.046-13.323-32.097h-10.87c-25.988 0-47.133-21.144-47.133-47.133v-32.134c0-25.989 21.145-47.133 47.134-47.133h10.87c3.531-11.05 7.986-21.784 13.323-32.097l-7.704-7.703c-18.666-18.646-18.151-48.528.006-66.665l22.713-22.712c18.159-18.184 48.041-18.638 66.664.006l7.697 7.697c10.313-5.336 21.048-9.792 32.097-13.323v-10.87c0-25.989 21.144-47.133 47.134-47.133h32.133c25.989 0 47.133 21.144 47.133 47.133v10.871c11.049 3.53 21.784 7.986 32.097 13.323l7.704-7.704c18.659-18.682 48.548-18.134 66.665.007l22.711 22.71c18.149 18.129 18.671 48.008-.006 66.665l-7.698 7.698c5.337 10.313 9.792 21.046 13.323 32.097h10.87c25.989 0 47.134 21.144 47.134 47.133v32.134c0 25.989-21.145 47.133-47.134 47.133h-10.87c-3.531 11.05-7.986 21.784-13.323 32.097l7.704 7.704c18.666 18.646 18.151 48.528-.006 66.665l-22.713 22.712c-18.159 18.184-48.041 18.638-66.664-.006l-7.697-7.697c-10.313 5.336-21.048 9.792-32.097 13.323v10.871c0 25.987-21.144 47.131-47.134 47.131zm-106.349-102.83c14.327 8.473 29.747 14.874 45.831 19.025 6.624 1.709 11.252 7.683 11.252 14.524v22.148c0 9.447 7.687 17.133 17.134 17.133h32.133c9.447 0 17.134-7.686 17.134-17.133v-22.148c0-6.841 4.628-12.815 11.252-14.524 16.084-4.151 31.504-10.552 45.831-19.025 5.895-3.486 13.4-2.538 18.243 2.305l15.688 15.689c6.764 6.772 17.626 6.615 24.224.007l22.727-22.726c6.582-6.574 6.802-17.438.006-24.225l-15.695-15.695c-4.842-4.842-5.79-12.348-2.305-18.242 8.473-14.326 14.873-29.746 19.024-45.831 1.71-6.624 7.684-11.251 14.524-11.251h22.147c9.447 0 17.134-7.686 17.134-17.133v-32.134c0-9.447-7.687-17.133-17.134-17.133h-22.147c-6.841 0-12.814-4.628-14.524-11.251-4.151-16.085-10.552-31.505-19.024-45.831-3.485-5.894-2.537-13.4 2.305-18.242l15.689-15.689c6.782-6.774 6.605-17.634.006-24.225l-22.725-22.725c-6.587-6.596-17.451-6.789-24.225-.006l-15.694 15.695c-4.842 4.843-12.35 5.791-18.243 2.305-14.327-8.473-29.747-14.874-45.831-19.025-6.624-1.709-11.252-7.683-11.252-14.524v-22.15c0-9.447-7.687-17.133-17.134-17.133h-32.133c-9.447 0-17.134 7.686-17.134 17.133v22.148c0 6.841-4.628 12.815-11.252 14.524-16.084 4.151-31.504 10.552-45.831 19.025-5.896 3.485-13.401 2.537-18.243-2.305l-15.688-15.689c-6.764-6.772-17.627-6.615-24.224-.007l-22.727 22.726c-6.582 6.574-6.802 17.437-.006 24.225l15.695 15.695c4.842 4.842 5.79 12.348 2.305 18.242-8.473 14.326-14.873 29.746-19.024 45.831-1.71 6.624-7.684 11.251-14.524 11.251h-22.148c-9.447.001-17.134 7.687-17.134 17.134v32.134c0 9.447 7.687 17.133 17.134 17.133h22.147c6.841 0 12.814 4.628 14.524 11.251 4.151 16.085 10.552 31.505 19.024 45.831 3.485 5.894 2.537 13.4-2.305 18.242l-15.689 15.689c-6.782 6.774-6.605 17.634-.006 24.225l22.725 22.725c6.587 6.596 17.451 6.789 24.225.006l15.694-15.695c3.568-3.567 10.991-6.594 18.244-2.304z"
-                                fill="#ffffff" data-original="#000000" class="" />
-                            <path xmlns="http://www.w3.org/2000/svg"
-                                d="m256 367.4c-61.427 0-111.4-49.974-111.4-111.4s49.973-111.4 111.4-111.4 111.4 49.974 111.4 111.4-49.973 111.4-111.4 111.4zm0-192.8c-44.885 0-81.4 36.516-81.4 81.4s36.516 81.4 81.4 81.4 81.4-36.516 81.4-81.4-36.515-81.4-81.4-81.4z"
-                                fill="#ffffff" data-original="#000000" class="" />
-                        </svg>
-                        <p style="font-size: 1.4em; margin-bottom: 0px;">Settings</p>
-                    </section>
-
-                    <section class="left-bottom-panel left-panel-hover">
-                        <svg width="16" height="16" x="0" y="0" viewBox="0 0 512 512"
-                            style="enable-background:new 0 0 16 16" xml:space="preserve" class="">
-                            <path
-                                d="M336.709,74.843c-10.322-3.944-21.88,1.219-25.825,11.537c-3.945,10.316,1.22,21.879,11.536,25.824    C393.115,139.239,442,207.384,442,286c0,102.561-83.439,186-186,186S70,388.561,70,286c0-78.659,48.908-146.766,119.573-173.793    c10.317-3.946,15.481-15.509,11.536-25.825c-3.947-10.317-15.512-15.48-25.825-11.536C89.185,107.777,30,190.692,30,286    c0,124.922,101.09,226,226,226c124.922,0,226-101.09,226-226C482,190.65,422.778,107.759,336.709,74.843z"
-                                fill="#ffffff" data-original="#000000" class="" />
-                            <path
-                                d="M256,0c-11.046,0-20,8.954-20,20v195.851c0,11.046,8.954,20,20,20s20-8.955,20-20V20C276,8.954,267.046,0,256,0z"
-                                fill="#ffffff" data-original="#000000" class="" />
-                        </svg>
-                        <p style="font-size: 1.4em; margin-bottom: 0px;">Power</p>
-                    </section>
-                </section>
+            <div class="xp-columns">
+            <!-- Left column: blue banner + app list -->
+            <section class="xp-start-left">
+                <div class="xp-user-banner">
+                    <img src="/imgs/about-me/profile.jpg" alt="Jay Patel" class="xp-user-avatar" />
+                    <span class="xp-user-name">Jay Patel</span>
+                </div>
+                <div class="xp-prog-list">
+                    <div class="xp-prog-item" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('experience_bottom').click()">
+                        <img src="/imgs/icons/experience.webp" class="xp-prog-icon" alt="" /><span>Experience</span>
+                    </div>
+                    <div class="xp-prog-item" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('arcade_bottom').click()">
+                        <img src="/imgs/icons/arcade.webp" class="xp-prog-icon" alt="" /><span>Arcade</span>
+                    </div>
+                    <div class="xp-prog-item" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('music-player_bottom').click()">
+                        <img src="/imgs/icons/music-player.svg" class="xp-prog-icon" alt="" /><span>WinAmp</span>
+                    </div>
+                    <div class="xp-prog-item" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('chatbot_bottom').click()">
+                        <img src="/imgs/icons/copilot.webp" class="xp-prog-icon" alt="" /><span>Ask AI</span>
+                    </div>
+                    <div class="xp-prog-item" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('rubiks-cube_bottom').click()">
+                        <img src="/imgs/icons/rubikscube1.webp" class="xp-prog-icon" alt="" /><span>Rubik's Cube</span>
+                    </div>
+                    <div class="xp-prog-separator"></div>
+                    <div class="xp-prog-item" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('contact_bottom').click()">
+                        <img src="/imgs/icons/contact.webp" class="xp-prog-icon" alt="" /><span>Contact Jay</span>
+                    </div>
+                </div>
             </section>
-
-            <section class="middle-panel">
+            <!-- Right column: beige quick-links panel -->
+            <section class="xp-start-right">
+                <div class="xp-right-title">My Files</div>
+                <div class="xp-right-link" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('resume_bottom').click()">
+                    <img src="/imgs/icons/resume.webp" class="xp-prog-icon" alt="" /><span>My Resume</span>
+                </div>
+                <div class="xp-right-link" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('readme_bottom').click()">
+                    <img src="/imgs/icons/credits.webp" class="xp-prog-icon" alt="" /><span>readme.txt</span>
+                </div>
+                <div class="xp-right-separator"></div>
+                <div class="xp-right-title">Internet</div>
+                <div class="xp-right-link" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); window.open('https://github.com/tisjayy','_blank')">
+                    <img src="/imgs/icons/github.webp" class="xp-prog-icon" alt="" /><span>GitHub</span>
+                </div>
+                <div class="xp-right-link" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); window.open('https://www.linkedin.com/in/jay-patel-556b8b241/','_blank')">
+                    <svg class="xp-prog-icon" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0077b5"/><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.28-7.14-6.05-8.68-2.96l.01-1.63z" fill="#fff"/></svg><span>LinkedIn</span>
+                </div>
             </section>
-            <section class="right-panel">
-
-            </section>
+            </div><!-- end .xp-columns -->
+            <!-- Footer bar: log off / turn off -->
+            <div class="xp-start-footer">
+                <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); window.open('https://github.com/tisjayy','_blank')">&#128274; Log Off</button>
+                <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style')">&#9211; Turn Off Computer</button>
+            </div>
         </article>
 
 
@@ -169,10 +150,10 @@
             <div class="taskbar-app taskbar-hover taskbar-pinned" id="resume_bottom">
                 <img src="/imgs/icons/resume.webp" alt="Resume" />
             </div>
-            <div class="taskbar-app taskbar-hover taskbar-pinned" id="rubiks-cube_bottom">
+            <div class="taskbar-app taskbar-hover" id="rubiks-cube_bottom">
                 <img src="/imgs/icons/rubikscube1.webp" alt="Rubiks Cube" />
             </div>
-            <div class="taskbar-app taskbar-hover" id="chatbot_bottom">
+            <div class="taskbar-app taskbar-hover taskbar-pinned" id="chatbot_bottom">
                 <img src="/imgs/icons/copilot.webp" alt="Ask AI" />
             </div>
             <div class="taskbar-app taskbar-hover" id="experience_bottom">
@@ -190,7 +171,7 @@
             <div class="taskbar-app taskbar-hover" id="readme_bottom">
                 <img src="/imgs/icons/credits.webp" alt="readme.txt" />
             </div>
-            <div class="taskbar-app taskbar-hover" id="music-player_bottom">
+            <div class="taskbar-app taskbar-hover taskbar-pinned" id="music-player_bottom">
                 <img src="/imgs/icons/music-player.svg" alt="WinAmp" />
             </div>
         </section>
@@ -255,9 +236,9 @@
         <div class="title-bar" id="titleBar">
             <div class="title">About me</div>
             <div class="window-controls">
-                <div class="window-button restore"></div>
-                <div class="window-button minimize"></div>
-                <div class="window-button close"></div>
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
             </div>
         </div>
         <nav class="navbar bg-black" style="display: flex; justify-content: center;">
@@ -356,12 +337,12 @@
                                 <div class="d-flex flex-wrap">
                                     <h6 class="ms-1">jrefusta</h6>
                                     <p style="text-align: justify;  flex-basis: 100%; line-height: 1.5;" class="ms-1">
-                                        Hello there! ðŸ‘‹ I'm Joan, and these are some of my very first baby pictures. I
+                                        Hello there! 👋 I'm Joan, and these are some of my very first baby pictures. I
                                         was born and raised in El Masnou,
                                         Barcelona, Spain, a charming coastal town by the sea.<br><br> As you can
                                         imagine, I
                                         don't hold many memories from this time, but
-                                        my parents have always told me that I was a curious and cheerful baby ðŸ‘¶.
+                                        my parents have always told me that I was a curious and cheerful baby 👶.
                                     </p>
                                 </div>
 
@@ -461,7 +442,7 @@
                                         with my parents, who provided unwavering
                                         support, and with my sister, my partner in crime. <br><br> Together, we
                                         shared unforgettable moments filled with
-                                        laughter and adventure.ðŸª
+                                        laughter and adventure.🪁
                                     </p>
                                 </div>
 
@@ -471,7 +452,7 @@
                                 <div class="d-flex justify-content-between pe-4">
                                     <div class="d-flex">
                                         <h6 class="ms-1">sister</h6>
-                                        <p class="ms-1">Those were the days! We always had so much fun! ðŸ¤¹â€â™€ï¸
+                                        <p class="ms-1">Those were the days! We always had so much fun! 🤹‍♀️
                                         </p>
                                     </div>
                                     <img id="comment-like" class="mt-1"
@@ -569,7 +550,7 @@
                                         During those years I spent a lot of time in front of a screen, whether it was a
                                         PC or a console.
                                         <br><br>
-                                        That initial interest eventually turned into a deep passion. ðŸŽ®
+                                        That initial interest eventually turned into a deep passion. 🎮
                                 </div>
 
                                 <div>
@@ -671,18 +652,18 @@
                                         ever-evolving landscape of video games that
                                         truly captured my imagination. Ultimately, recognizing my affinity for
                                         problem-solving and innovation, I made the
-                                        decision to pursue Computer Science.ðŸ’»
+                                        decision to pursue Computer Science.💻
                                         <br><br>
                                         Once entering university, I chose to specialize in Computing, which
                                         embrace fields such as Artificial
                                         Intelligence, algorithms and computer graphics. During my education, I
                                         selected relevant subjects such as Video Games,
-                                        Computational Geometry, and Design of curves and surfaces. ðŸ“š
+                                        Computational Geometry, and Design of curves and surfaces. 📚
                                         <br><br>
                                         Finally, in 2021, I culminated my academic career by graduating as a Computer
-                                        Engineer at the Universitat PolitÃ¨cnica de Catalunya (FIB, UPC), where I could
+                                        Engineer at the Universitat Politècnica de Catalunya (FIB, UPC), where I could
                                         materialize my passion for computing and
-                                        disciplines related to the 3D world. ðŸŽ“
+                                        disciplines related to the 3D world. 🎓
                                         <br><br>
                                     </p>
                                 </div>
@@ -792,7 +773,7 @@
                                         These destinations are just a few
                                         among many that I have visited in Spain. Each travel trip has been an
                                         opportunity to disconnect, discover fascinating
-                                        places, and enrich my life with unique experiences. ðŸšž
+                                        places, and enrich my life with unique experiences. 🚞
                                     </p>
                                 </div>
 
@@ -802,7 +783,7 @@
                                 <div class="d-flex justify-content-between pe-4">
                                     <div class="d-flex">
                                         <h6 class="ms-1">friend</h6>
-                                        <p class="ms-1">landscape is stunning ðŸž</p>
+                                        <p class="ms-1">landscape is stunning 🏞</p>
                                     </div>
                                 </div>
                                 <div>
@@ -891,7 +872,7 @@
                                         As someone who loves being part of the video game creation process, I've
                                         participated in various Game Jams. Sometimes,
                                         I team up with my friend Victor, and other times, I work as a solodev.
-                                        These events really push my creativity. ðŸ‘¾
+                                        These events really push my creativity. 👾
                                         <br><br>
                                         Together, Victor and I took one of our projects, STARDUSTER, and expanded it
                                         into something more significant. We're
@@ -994,11 +975,11 @@
                                     <p style="text-align: justify;  flex-basis: 100%; line-height: 1.5;" class="ms-1">
 
                                         Additionally, I've had the opportunity to explore international destinations
-                                        such as London, Amsterdam, and Budapest.âœˆ<br><br>
+                                        such as London, Amsterdam, and Budapest.✈<br><br>
                                         I particularly enjoyed exploring places further from home., and I am eager to
                                         continue
                                         discovering new places and cultures
-                                        around the globe.ðŸŒ
+                                        around the globe.🌍
                                     </p>
                                 </div>
 
@@ -1024,9 +1005,9 @@
         <div class="title-bar" style="background-color: #0078d7;">
             <div class="title">Resume</div>
             <div class="window-controls">
-                <div class="window-button-blue restore"></div>
-                <div class="window-button-blue minimize"></div>
-                <div class="window-button close"></div>
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
             </div>
         </div>
         <div style="display:flex; flex-direction:column; height:calc(100% - 32px);">
@@ -1044,9 +1025,9 @@
         <div class="title-bar" id="titleBar" style="background-color: #0078d7;">
             <div class="title">Contact</div>
             <div class="window-controls">
-                <div class="window-button-blue restore"></div>
-                <div class="window-button-blue minimize"></div>
-                <div class="window-button close"></div>
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
             </div>
         </div>
         <div id="contact-content" style="font-family: Consolas, monospace; font-size: 13px;" class="content-light">
@@ -1099,12 +1080,12 @@
         </div>
     </div>
     <div id="experience" class="experience" style="display: none;">
-        <div class="title-bar" id="titleBar" style="background-color: black;">
+        <div class="title-bar" id="titleBar" style="background: black;">
             <div class="title">Experience</div>
             <div class="window-controls">
-                <div class="window-button restore"></div>
-                <div class="window-button minimize"></div>
-                <div class="window-button close"></div>
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
             </div>
         </div>
         <div id="experience-content" class="content"
@@ -1115,8 +1096,8 @@
                     <nav class="links">
                         <ul>
                             <li><a>Home</a></li>
-                            <li><a>Experience</a></li>
-                            <li><a>Projects</a></li>
+                            <li><a id="exp-tab-experience" class="exp-tab-active" style="cursor:pointer">Experience</a></li>
+                            <li><a id="exp-tab-projects" style="cursor:pointer">Projects</a></li>
                             <li><a>About</a></li>
                         </ul>
                     </nav>
@@ -1165,15 +1146,32 @@
                     <br>
                 </div>
             </div>
+            <!-- Projects Grid Panel -->
+            <div id="projects-panel" style="display:none; height:calc(100% - 120px); overflow-y:auto; padding: 20px;">
+                <div class="projects-explorer">
+                    <div class="proj-folder" data-project="nyc-taxi">
+                        <div class="proj-folder-icon">&#x1F4C1;</div>
+                        <div class="proj-folder-name">NYC Taxi</div>
+                    </div>
+                    <div class="proj-folder" data-project="emotion-detection">
+                        <div class="proj-folder-icon">&#x1F4C1;</div>
+                        <div class="proj-folder-name">Emotion Detection</div>
+                    </div>
+                    <div class="proj-folder" data-project="transformers">
+                        <div class="proj-folder-icon">&#x1F4C1;</div>
+                        <div class="proj-folder-name">NMT Transformers</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="arcade" class="arcade" style="display: none;">
         <div class="title-bar" id="titleBar" style="background-color: #1a1a2e;">
             <div class="title">Arcade Machine</div>
             <div class="window-controls">
-                <div class="window-button restore"></div>
-                <div class="window-button minimize"></div>
-                <div class="window-button close"></div>
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
             </div>
         </div>
         <div class="content" style="height: calc(100% - 35px); overflow: hidden;">
@@ -1184,9 +1182,9 @@
         <div class="title-bar" id="titleBar" style="background: linear-gradient(to right, #c96400, #e07800);">
             <div class="title">Rubik's Cube</div>
             <div class="window-controls">
-                <div class="window-button restore"></div>
-                <div class="window-button minimize"></div>
-                <div class="window-button close"></div>
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
             </div>
         </div>
         <div class="content" style="height: calc(100% - 35px); overflow: hidden;">
@@ -1198,8 +1196,8 @@
         <div class="title-bar readme-title-bar" id="titleBar">
             <div class="title">readme.txt</div>
             <div class="window-controls">
-                <div class="window-button restore"></div>
                 <div class="window-button minimize"></div>
+                <div class="window-button restore"></div>
                 <div class="window-button close"></div>
             </div>
         </div>
@@ -1232,11 +1230,11 @@
     <!-- WinAmp Music Player window -->
     <div id="music-player" class="music-player" style="display: none;">
         <div class="title-bar music-player-titlebar" id="titleBar">
-            <div class="title">&#127925; WinAmp</div>
+            <div class="title">WinAmp</div>
             <div class="window-controls">
-                <div class="window-button restore"></div>
-                <div class="window-button minimize"></div>
-                <div class="window-button close"></div>
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
             </div>
         </div>
         <div class="mp-display">
@@ -1272,9 +1270,9 @@
                 </div>
             </div>
             <div class="window-controls">
-                <div class="window-button restore"></div>
-                <div class="window-button minimize"></div>
-                <div class="window-button close"></div>
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
             </div>
         </div>
         <div class="chatbot-body">
@@ -1294,6 +1292,179 @@
       document.getElementById('mobile-warning-close').addEventListener('click', function() {
         document.getElementById('mobile-warning-overlay').style.display = 'none';
       });
+    </script>
+
+    <!-- +-- Project popups (Win98 chrome, body-level) --+ -->
+    <div id="proj-nyc-taxi" class="project-popup" style="display:none; flex-direction:column;">
+        <div class="project-popup-titlebar" id="proj-nyc-taxi-titlebar">
+            <div class="project-popup-title">&#x1F4C1; NYC Taxi &mdash; Demand Forecasting &amp; Anomaly Detection</div>
+            <button class="proj-popup-close-btn" data-popup="proj-nyc-taxi">&#x2715;</button>
+        </div>
+        <div class="project-popup-body">
+            <div class="proj-meta-row">
+                <span class="proj-date">Apr 2025 &ndash; May 2025</span>
+                <button class="proj-techstack-btn" data-project="nyc-taxi">&#x1F4C4; Tech Stack</button>
+                <a href="https://github.com/tisjayy/nyctaxi" target="_blank" class="proj-github-btn">GitHub &#x2197;</a>
+            </div>
+            <div class="project-popup-desc">
+                <p>Processed 40M+ NYC taxi trips, removed 1.2M+ outliers, and engineered features using PySpark, Dask, and Pandas.</p>
+                <p>Trained XGBoost (13% MAPE) for demand forecasting and LSTM (0.055 MSLE) for anomaly detection.</p>
+                <p>Power BI dashboard from model outputs stored in MySQL for visualization and analysis.</p>
+            </div>
+            <div class="proj-screenshots">
+                <img class="proj-img" src="/imgs/Projects/nyc_taxi/nyctaxi_1.png" alt="NYC Taxi Dashboard" title="Click to open full size">
+            </div>
+        </div>
+    </div>
+
+    <div id="proj-emotion-detection" class="project-popup" style="display:none; flex-direction:column;">
+        <div class="project-popup-titlebar" id="proj-emotion-detection-titlebar">
+            <div class="project-popup-title">&#x1F4C1; ResNet-Based Real-Time Emotion Detection</div>
+            <button class="proj-popup-close-btn" data-popup="proj-emotion-detection">&#x2715;</button>
+        </div>
+        <div class="project-popup-body">
+            <div class="proj-meta-row">
+                <span class="proj-date">Jan 2025 &ndash; Mar 2025</span>
+                <button class="proj-techstack-btn" data-project="emotion-detection">&#x1F4C4; Tech Stack</button>
+                <a href="https://github.com/tisjayy/Emotion_Detection" target="_blank" class="proj-github-btn">GitHub &#x2197;</a>
+            </div>
+            <div class="project-popup-desc">
+                <p>ResNet-based CNN classifying 7 human emotions from facial images in real time. Trained on FER2013, achieving 75% test accuracy after 40 epochs with L2 regularization and batch normalization.</p>
+                <p>Integrated with OpenCV for live webcam input with MLflow experiment tracking.</p>
+                <p>Containerized with Docker and deployed on Azure Container Apps with a Streamlit + WebRTC interface.</p>
+            </div>
+            <div class="proj-screenshots">
+                <img class="proj-img" src="/imgs/Projects/emotion_detection/emotion1.png" alt="Emotion Detection 1" title="Click to open full size">
+                <img class="proj-img" src="/imgs/Projects/emotion_detection/emotion2.png" alt="Emotion Detection 2" title="Click to open full size">
+            </div>
+        </div>
+    </div>
+
+    <div id="proj-transformers" class="project-popup" style="display:none; flex-direction:column;">
+        <div class="project-popup-titlebar" id="proj-transformers-titlebar">
+            <div class="project-popup-title">&#x1F4C1; German&rarr;English NMT Transformer</div>
+            <button class="proj-popup-close-btn" data-popup="proj-transformers">&#x2715;</button>
+        </div>
+        <div class="project-popup-body">
+            <div class="proj-meta-row">
+                <span class="proj-date">Mar 2025 &ndash; May 2025</span>
+                <button class="proj-techstack-btn" data-project="transformers">&#x1F4C4; Tech Stack</button>
+                <a href="https://github.com/tisjayy/genai" target="_blank" class="proj-github-btn">GitHub &#x2197;</a>
+            </div>
+            <div class="project-popup-desc">
+                <p>Sequence-to-sequence Transformer built from scratch in PyTorch for German-to-English translation on Multi30K, following Vaswani et al. (2017).</p>
+                <p>Token embedding + positional encoding, multi-head self-attention with masking to prevent future token leakage, greedy decoding, and BLEU score evaluation.</p>
+            </div>
+            <div class="proj-screenshots">
+                <img class="proj-img" src="/imgs/Projects/transformers/transformers_architecture.png" alt="Transformer Architecture" title="Click to open full size">
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared Tech Stack Notepad -->
+    <div id="techstack-notepad" class="techstack-notepad" style="display:none;">
+        <div class="techstack-notepad-titlebar" id="techstack-notepad-titlebar">
+            <span>&#x1F4C4; techstack.txt &mdash; Notepad</span>
+            <button id="techstack-notepad-close">&#x2715;</button>
+        </div>
+        <div class="techstack-notepad-menubar">
+            <span>File</span><span>Edit</span><span>Format</span><span>Help</span>
+        </div>
+        <div class="techstack-notepad-body">
+            <pre id="techstack-content"></pre>
+        </div>
+    </div>
+
+    <script>
+      (function() {
+        var STACKS = {
+          'nyc-taxi': 'Tech Stack\nData Processing: PySpark, Dask, Pandas, NumPy\nForecasting: scikit-learn, XGBoost\nDeep Learning: TensorFlow / Keras (LSTM, quantile regression)\nVisualization: Matplotlib, Seaborn, Plotly, Folium',
+          'emotion-detection': 'tensorflow==2.19.0\nstreamlit==1.47.0\nstreamlit-webrtc==0.63.3\nopencv-python-headless==4.12.0.88\nnumpy==2.1.3\npandas\nPillow==11.3.0\nav==14.4.0\nscikit-learn==1.7.1',
+          'transformers': 'Python 3.7+\nPyTorch\nTorchText\nNumPy\nSacreBLEU (for BLEU score evaluation)\ntqdm'
+        };
+        var maxZ = 300;
+        function front(el) { el.style.zIndex = ++maxZ; }
+
+        function makeDraggable(el, handle) {
+          if (!handle) return;
+          var sx, sy, sl, st;
+          handle.addEventListener('mousedown', function(e) {
+            if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A') return;
+            e.preventDefault();
+            var r = el.getBoundingClientRect();
+            sx = e.clientX; sy = e.clientY; sl = r.left; st = r.top;
+            el.style.transform = 'none'; el.style.left = sl+'px'; el.style.top = st+'px'; el.dataset.positioned='1';
+            function mv(e){ el.style.left=(sl+e.clientX-sx)+'px'; el.style.top=(st+e.clientY-sy)+'px'; }
+            function up(){ document.removeEventListener('mousemove',mv); document.removeEventListener('mouseup',up); }
+            document.addEventListener('mousemove',mv); document.addEventListener('mouseup',up);
+          });
+          handle.addEventListener('touchstart', function(e){
+            var t=e.touches[0], r=el.getBoundingClientRect();
+            sx=t.clientX; sy=t.clientY; sl=r.left; st=r.top;
+            el.style.transform='none'; el.style.left=sl+'px'; el.style.top=st+'px'; el.dataset.positioned='1';
+          },{passive:true});
+          handle.addEventListener('touchmove', function(e){
+            if(e.cancelable)e.preventDefault();
+            var t=e.touches[0];
+            el.style.left=(sl+t.clientX-sx)+'px'; el.style.top=(st+t.clientY-sy)+'px';
+          },{passive:false});
+        }
+
+        function showProjects() {
+          var cs = document.querySelector('.company-selection');
+          if (cs) cs.style.display = 'none';
+          document.querySelectorAll('.timeline').forEach(function(t){ t.style.display='none'; });
+          document.getElementById('projects-panel').style.display = 'block';
+          document.getElementById('exp-tab-projects').classList.add('exp-tab-active');
+          document.getElementById('exp-tab-experience').classList.remove('exp-tab-active');
+        }
+        function showExperience() {
+          document.getElementById('projects-panel').style.display = 'none';
+          var cs = document.querySelector('.company-selection');
+          if (cs) cs.style.display = '';
+          document.getElementById('exp-tab-experience').classList.add('exp-tab-active');
+          document.getElementById('exp-tab-projects').classList.remove('exp-tab-active');
+        }
+        function openPopup(id) {
+          var p = document.getElementById('proj-'+id);
+          if (!p) return;
+          p.style.display = 'flex'; front(p);
+          if (!p.dataset.positioned) { p.style.left='50%'; p.style.top='50%'; p.style.transform='translate(-50%,-50%)'; p.dataset.positioned='1'; }
+        }
+        function openTechStack(id) {
+          document.getElementById('techstack-content').textContent = STACKS[id]||'';
+          var n = document.getElementById('techstack-notepad');
+          n.style.display='block'; front(n);
+          if (!n.dataset.positioned) { n.style.left='calc(50% + 90px)'; n.style.top='calc(50% - 50px)'; n.style.transform='none'; n.dataset.positioned='1'; }
+        }
+
+        var et = document.getElementById('exp-tab-experience');
+        var pt = document.getElementById('exp-tab-projects');
+        if (et) et.addEventListener('click', showExperience);
+        if (pt) pt.addEventListener('click', showProjects);
+
+        document.querySelectorAll('.proj-folder').forEach(function(f){
+          f.addEventListener('click', function(){ openPopup(f.dataset.project); });
+        });
+        document.querySelectorAll('.proj-popup-close-btn').forEach(function(b){
+          b.addEventListener('click', function(){ document.getElementById(b.dataset.popup).style.display='none'; });
+        });
+        document.querySelectorAll('.proj-techstack-btn').forEach(function(b){
+          b.addEventListener('click', function(){ openTechStack(b.dataset.project); });
+        });
+        var tc = document.getElementById('techstack-notepad-close');
+        if (tc) tc.addEventListener('click', function(){ document.getElementById('techstack-notepad').style.display='none'; });
+
+        document.querySelectorAll('.project-popup').forEach(function(p){
+          p.addEventListener('mousedown', function(){ front(p); });
+          makeDraggable(p, p.querySelector('.project-popup-titlebar'));
+        });
+        var np = document.getElementById('techstack-notepad');
+        if (np) { np.addEventListener('mousedown', function(){ front(np); }); makeDraggable(np, document.getElementById('techstack-notepad-titlebar')); }
+        document.querySelectorAll('.proj-img').forEach(function(img){
+          img.addEventListener('click', function(){ window.open(img.src,'_blank'); });
+        });
+      })();
     </script>
 </body>
 

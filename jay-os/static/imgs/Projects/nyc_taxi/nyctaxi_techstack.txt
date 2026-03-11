@@ -1,0 +1,5 @@
+Tech Stack
+Data Processing: PySpark, Dask, Pandas, NumPy
+Forecasting: scikit-learn, XGBoost
+Deep Learning: TensorFlow / Keras (LSTM, quantile regression)
+Visualization: Matplotlib, Seaborn, Plotly, Folium

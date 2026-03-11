@@ -123,7 +123,7 @@ class Desktop {
 
   activateOutsideWindowsIconEvent = () => {
     const closeMenu = (event) => {
-      if (!event.target.closest(".open-windows-menu")) {
+      if (!event.target.closest(".open-windows-menu") && !event.target.closest("#windows-icon-section")) {
         this.windowsMenu.removeAttribute("style");
       }
     };
@@ -157,13 +157,16 @@ class Desktop {
     if (!element.id) {
       return;
     }
+    // Remove active focus from all windows, then mark this one active
+    document.querySelectorAll('.window-active').forEach(w => w.classList.remove('window-active'));
+    element.classList.add('window-active');
     this.bottomApps.forEach((bottomApp) => {
       if (bottomApp.classList.contains("taskbar-selected")) {
         bottomApp.classList.remove("taskbar-selected");
       }
     });
     const currentBottomApp = document.getElementById(element.id + "_bottom");
-    currentBottomApp.classList.add("taskbar-selected");
+    if (currentBottomApp) currentBottomApp.classList.add("taskbar-selected");
     element.style.zIndex = this.maxZIndex + 1;
     ++this.maxZIndex;
   };
@@ -306,7 +309,11 @@ class Desktop {
       minimizeButton.addEventListener("click", () => {
         const currentWindow =
           minimizeButton.parentElement.parentElement.parentElement;
-        this.resizeWindow(currentWindow, minimizeButton);
+        currentWindow.style.display = "none";
+        const bottomApp = document.getElementById(currentWindow.id + "_bottom");
+        if (bottomApp && bottomApp.classList.contains("taskbar-selected")) {
+          bottomApp.classList.remove("taskbar-selected");
+        }
       });
     });
   };
@@ -355,11 +362,7 @@ class Desktop {
     this.restoreButtons.forEach((restore) => {
       restore.addEventListener("click", () => {
         const currentWindow = restore.parentElement.parentElement.parentElement;
-        currentWindow.style.display = "none";
-        const bottomApp = document.getElementById(currentWindow.id + "_bottom");
-        if (bottomApp.classList.contains("taskbar-selected")) {
-          bottomApp.classList.remove("taskbar-selected");
-        }
+        this.resizeWindow(currentWindow, restore);
       });
     });
   };
