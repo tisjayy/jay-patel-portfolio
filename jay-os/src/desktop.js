@@ -218,22 +218,28 @@ class Desktop {
   };
 
   getCurrentDateTime = () => {
-    const now = new Date();
+    const now = new Date(Date.now() + (window._clockOffset || 0));
     const options = {
       year: "numeric",
       month: "numeric",
       day: "numeric",
     };
-    const formattedDate = now.toLocaleDateString(undefined, options);
+    const altOptions = { weekday: "short", month: "short", day: "numeric" };
+    const formattedDate = window._clockAltFormat
+      ? now.toLocaleDateString(undefined, altOptions)
+      : now.toLocaleDateString(undefined, options);
     const hours = now.getHours().toString().padStart(2, "0");
     const minutes = now.getMinutes().toString().padStart(2, "0");
-    return { formattedDate, hours, minutes };
+    const seconds = now.getSeconds().toString().padStart(2, "0");
+    return { formattedDate, hours, minutes, seconds };
   };
 
   activateDateTimeUpdates = () => {
-    const { formattedDate, hours, minutes } = this.getCurrentDateTime();
+    const { formattedDate, hours, minutes, seconds } = this.getCurrentDateTime();
     this.currentDate.textContent = formattedDate;
-    this.hoursMinutes.textContent = `${hours}:${minutes}`;
+    this.hoursMinutes.textContent = window._clockAltFormat
+      ? `${hours}:${minutes}:${seconds}`
+      : `${hours}:${minutes}`;
   };
 
   activateAppEvents = () => {

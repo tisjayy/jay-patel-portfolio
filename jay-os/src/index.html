@@ -8,6 +8,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' type='text/css' href='style.css' />
+    <style id="xp-wait-cursor">html { cursor: url('/imgs/cursors/default_wait.cur'), wait !important; }</style>
+    <script>window.addEventListener('load', function(){ var s = document.getElementById('xp-wait-cursor'); if(s) s.remove(); });</script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -15,6 +17,8 @@
 </head>
 
 <body dir="ltr" style="overflow: hidden;" id="body">
+    <!-- CRT overlay -->
+    <div id="crt-overlay" aria-hidden="true"></div>
 
     <!-- Mobile warning dialog (Win98 style, only shown on touch/small screens) -->
     <div id="mobile-warning-overlay">
@@ -27,7 +31,7 @@
           <div id="mobile-warning-icon">&#x1F4BB;</div>
           <div id="mobile-warning-text">
             <p><strong>Best Viewed on Desktop</strong></p>
-            <p>Jay OS is optimized for a desktop experience. Some features may be limited on mobile devices.</p>
+            <p>Features are not optimized for mobile devices.</p>
             <p>For the full experience, please visit on a computer!</p>
           </div>
         </div>
@@ -190,12 +194,12 @@
 
                     </svg>
                 </span>
-                <div class="image-container-win taskbar-hover">
+                <div class="image-container-win taskbar-hover" id="battery-icon-wrap">
                     <svg class="taskbar-hover" width="16" height="16" x="0" y="0" viewBox="0 0 512 512"
                         style="enable-background:new 0 0 16 16" xml:space="preserve" class="">
-                        <path d="M56.5,126.354V197H0v118h56.5v70.647H512V126.354H56.5z M474.5,348h-380V164h380V348z"
+                        <path id="battery-shell" d="M56.5,126.354V197H0v118h56.5v70.647H512V126.354H56.5z M474.5,348h-380V164h380V348z"
                             fill="#ffffff" data-original="#000000" />
-                        <rect x="124.5" y="194" width="320" height="124" fill="#ffffff" data-original="#000000" />
+                        <rect id="battery-fill-rect" x="124.5" y="194" width="320" height="124" fill="#ffffff" data-original="#000000" />
                     </svg>
                 </div>
                 <div class="image-container-win taskbar-hover">
@@ -217,7 +221,7 @@
                 </div>
             </section>
 
-            <section class="date-section taskbar-hover">
+            <section class="date-section taskbar-hover" id="clock-section">
                 <time id="hours-minutes" datetime=""></time>
                 <time id="current-date" datetime=""></time>
             </section>
@@ -231,6 +235,16 @@
             </section>
         </article>
     </footer>
+
+    <!-- CRT tray popup -->
+    <div id="crt-tray-popup">
+      <div class="crt-popup-title">&#x1F5B5; Display Settings</div>
+      <div class="crt-popup-sep"></div>
+      <div class="crt-popup-item" id="crt-toggle-item">
+        <span class="crt-popup-check" id="crt-popup-check">&#9633;</span>
+        CRT Scanlines
+      </div>
+    </div>
 
     <div id="about-me" class="about-me" style="display: none;">
         <div class="title-bar" id="titleBar">
@@ -1160,6 +1174,7 @@
                   <div class="nf-hero-btns">
                     <button class="nf-btn nf-btn-play" id="nf-view-resume">&#9654; View Resume</button>
                     <button class="nf-btn nf-btn-info" id="nf-more-info">&#x2139; More Info</button>
+                    <button class="nf-btn-ai-icon" id="nf-ask-ai" title="Ask AI"><img src="/imgs/icons/copilot.webp" alt="Ask AI"></button>
                   </div>
                 </div>
                 <div class="nf-hero-img">
@@ -1321,6 +1336,98 @@
       document.getElementById('mobile-warning-close').addEventListener('click', function() {
         document.getElementById('mobile-warning-overlay').style.display = 'none';
       });
+      // Easter egg: right-click toggles cursor between normal select and Arrow.cur
+      (function() {
+        document.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          document.documentElement.classList.toggle('cursor-arrow');
+        });
+      })();
+
+      // ── Battery easter egg ──
+      (function() {
+        var dead = false;
+        var wrap = document.getElementById('battery-icon-wrap');
+        if (!wrap) return;
+        wrap.style.cursor = 'pointer';
+        wrap.addEventListener('click', function() {
+          dead = !dead;
+          var shell = document.getElementById('battery-shell');
+          var fill  = document.getElementById('battery-fill-rect');
+          if (dead) {
+            document.body.style.backgroundColor = '#000';
+            document.body.style.backgroundImage = 'none';
+            if (shell) shell.setAttribute('fill', '#cc0000');
+            if (fill)  fill.setAttribute('fill', '#1a0000');
+          } else {
+            document.body.style.backgroundColor = '';
+            document.body.style.backgroundImage = '';
+            if (shell) shell.setAttribute('fill', '#ffffff');
+            if (fill)  fill.setAttribute('fill', '#ffffff');
+          }
+        });
+      })();
+
+      // ── CRT tray toggle ──
+      (function() {
+        var overlay = document.getElementById('crt-overlay');
+        var btn     = document.getElementById('expand-other-apps');
+        var popup   = document.getElementById('crt-tray-popup');
+        var check   = document.getElementById('crt-popup-check');
+        var item    = document.getElementById('crt-toggle-item');
+        var on = false;
+        function setCheck() {
+          check.innerHTML = on ? '&#10003;' : '&#9633;';
+          check.style.color = on ? '#316AC5' : '#000';
+        }
+        function togglePopup(e) {
+          e.stopPropagation();
+          var open = popup.classList.toggle('open');
+          if (open) {
+            requestAnimationFrame(function(){
+              var r = btn.getBoundingClientRect();
+              popup.style.left = Math.max(0, r.right - popup.offsetWidth) + 'px';
+              popup.style.top  = (r.top - popup.offsetHeight - 4) + 'px';
+            });
+          }
+        }
+        if (btn) btn.addEventListener('click', togglePopup);
+        if (item) item.addEventListener('click', function(e) {
+          e.stopPropagation();
+          on = !on;
+          overlay.classList.toggle('crt-active', on);
+          setCheck();
+          popup.classList.remove('open');
+        });
+        document.addEventListener('click', function() { popup.classList.remove('open'); });
+        setCheck();
+      })();
+
+      // ── Clock easter egg ──
+      (function() {
+        window._clockOffset = 0;
+        window._clockAltFormat = false;
+        var fastInterval = null;
+        var section = document.getElementById('clock-section');
+        if (!section) return;
+        function stopFast() {
+          if (fastInterval) { clearInterval(fastInterval); fastInterval = null; }
+          window._clockOffset = 0;
+          window._clockAltFormat = false;
+          if (window._desktop) window._desktop.activateDateTimeUpdates();
+        }
+        section.addEventListener('mouseenter', function() {
+          fastInterval = setInterval(function() {
+            window._clockOffset = (window._clockOffset || 0) + 60000;
+            if (window._desktop) window._desktop.activateDateTimeUpdates();
+          }, 1000); // +1 min every real second
+        });
+        section.addEventListener('mouseleave', stopFast);
+        section.addEventListener('click', function() {
+          window._clockAltFormat = !window._clockAltFormat;
+          if (window._desktop) window._desktop.activateDateTimeUpdates();
+        });
+      })();
     </script>
 
     <!-- +-- Project popups (Win98 chrome, body-level) --+ -->
@@ -1440,13 +1547,17 @@
         }
 
         var NF_SECTIONS = [
-          { id: 'readme',       label: 'readme.txt',    sub: 'Start Here',      color: '#1252d0', icon: '/imgs/icons/projects.webp' },
-          { id: 'experience',   label: 'Experience',    sub: 'Work History',    color: '#b71c1c', icon: '/imgs/icons/experience.webp' },
-          { id: 'resume',       label: 'Resume',        sub: 'PDF Viewer',      color: '#e65100', icon: '/imgs/icons/resume.webp' },
+         
+          { id: 'experience',   label: 'Work History',  sub: 'Employment',      color: '#b71c1c', icon: '/imgs/icons/WorkHistory.jpg', cover: true },
+          { id: 'projects',     label: 'Projects',      sub: 'My Work',         color: '#1b5e20', icon: '/imgs/icons/Projects.jpg',    cover: true },
+          { id: 'resume',       label: 'Resume',        sub: 'PDF Viewer',      color: '#e65100', icon: '/imgs/icons/Resume.png', cover: true },
+          { id: 'chatbot',      label: 'Ask AI',        sub: 'Chat with Jay',   color: '#0d47a1', icon: '/imgs/icons/AskAI.png',       cover: true },
+
           { id: 'rubiks-cube',  label: "Rubik's Cube",  sub: '3D Puzzle',       color: '#f57f17', icon: '/imgs/icons/rubikscube1.webp' },
           { id: 'contact',      label: 'Contact',       sub: 'Get In Touch',    color: '#6a1b9a', icon: '/imgs/icons/contact.webp' },
           { id: 'arcade',       label: 'Arcade',        sub: 'Mini Games',      color: '#004d40', icon: '/imgs/icons/arcade.webp' },
           { id: 'music-player', label: 'WinAmp',        sub: 'Music Player',    color: '#1565c0', icon: '/imgs/icons/music-player.svg' },
+          { id: 'readme',       label: 'readme.txt',    sub: '',      color: '#1252d0', icon: '/imgs/icons/projects.webp' },
         ];
         function updateProgressUI() {
           var visited = JSON.parse(localStorage.getItem('jay_visited') || '{}');
@@ -1464,8 +1575,19 @@
             var done = !!visited[s.id];
             var card = document.createElement('div');
             card.className = 'nf-card' + (done ? ' nf-card-done' : '');
-            card.innerHTML = '<div class="nf-card-thumb" style="background:linear-gradient(135deg,' + s.color + ' 0%,#141414 100%)">'
-              + '<img src="' + s.icon + '" alt="' + s.label + '" class="nf-card-icon">'
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', (function(sec){
+              return function(){
+                if (sec.id === 'experience') { showExperience(); }
+                else if (sec.id === 'projects') { showProjects(); }
+                else if (window._desktop) { window._desktop.openWindow(sec.id); }
+              };
+            })(s));
+            var thumbStyle = s.cover
+              ? 'background-image:url(' + s.icon + ');background-size:cover;background-position:center;'
+              : 'background:linear-gradient(135deg,' + s.color + ' 0%,#141414 100%)';
+            card.innerHTML = '<div class="nf-card-thumb" style="' + thumbStyle + '">'
+              + (s.cover ? '' : '<img src="' + s.icon + '" alt="' + s.label + '" class="nf-card-icon">')
               + (done ? '<div class="nf-card-check">&#10003;</div>' : '')
               + '</div>'
               + '<div class="nf-card-bar"><div class="nf-progress-fill" style="width:' + (done?'100%':'0%') + '"></div></div>'
@@ -1492,6 +1614,10 @@
           document.getElementById('projects-panel').style.display = 'block';
           document.querySelectorAll('.exp-tab-active').forEach(function(t){ t.classList.remove('exp-tab-active'); });
           document.getElementById('exp-tab-projects').classList.add('exp-tab-active');
+          // mark projects as visited
+          var v = JSON.parse(localStorage.getItem('jay_visited') || '{}');
+          v['projects'] = true;
+          localStorage.setItem('jay_visited', JSON.stringify(v));
         }
         function showExperience() {
           document.getElementById('nf-home-panel').style.display = 'none';
@@ -1529,6 +1655,10 @@
         if (nfInfo) nfInfo.addEventListener('click', function(){
           if (window._desktop) window._desktop.openWindow('experience');
           showExperience();
+        });
+        var nfAskAi = document.getElementById('nf-ask-ai');
+        if (nfAskAi) nfAskAi.addEventListener('click', function(){
+          if (window._desktop) window._desktop.openWindow('chatbot');
         });
         window.addEventListener('jay-app-opened', function(e){
           if (e.detail && e.detail.app === 'experience') showHome();
