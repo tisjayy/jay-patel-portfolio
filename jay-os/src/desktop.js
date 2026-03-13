@@ -173,7 +173,7 @@ class Desktop {
 
   drag = (event) => {
     if (event.cancelable) event.preventDefault();
-    if (this.element.style.width == "100vw") {
+    if (this.element.dataset.maximized) {
       return;
     }
     const isTouch = event.touches !== undefined;
@@ -381,7 +381,7 @@ class Desktop {
 
   resizeWindow = (window, minimizeButton) => {
     this.incrementMaxZIndex(window);
-    if (window.style.width !== "100vw") {
+    if (!window.dataset.maximized) {
       minimizeButton.classList.add("minimize-full");
       this.maximizeWindow(window);
     } else {
@@ -393,27 +393,40 @@ class Desktop {
   };
 
   maximizeWindow = (currentWindow) => {
-    const currentWindowID = currentWindow.id;
-    let offset = 105;
-    if (currentWindowID == "experience") {
-      offset = 95;
-    } else if (currentWindowID == "about-me") {
-      offset = 175;
-    }
-    currentWindow.style.width = "100vw";
-    currentWindow.style.height = "calc(100vh - " + offset + "px)";
-    currentWindow.style.top = "calc(calc(100vh - " + offset + "px)/2)";
-    currentWindow.style.left = "calc(100vw /2)";
+    // save current inline styles so we can restore them later
+    currentWindow.dataset.prevWidth     = currentWindow.style.width;
+    currentWindow.dataset.prevHeight    = currentWindow.style.height;
+    currentWindow.dataset.prevTop       = currentWindow.style.top;
+    currentWindow.dataset.prevLeft      = currentWindow.style.left;
+    currentWindow.dataset.prevTransform = currentWindow.style.transform;
+    currentWindow.dataset.maximized     = '1';
+
+    const taskbarH = 34; // px — must match footer height
+    currentWindow.style.transform = 'none';
+    currentWindow.style.left      = '0';
+    currentWindow.style.top       = '0';
+    currentWindow.style.width     = 'calc(100vw / 1.1)';
+    currentWindow.style.height    = 'calc((100vh - ' + taskbarH + 'px) / 1.1)';
   };
 
   minimizeWindow = (currentWindow) => {
-    const currentWindowID = currentWindow.id;
-    let offset = 80;
-    if (currentWindowID == "credits" || currentWindowID == "about-me") {
-      offset = 60;
+    if (currentWindow.dataset.maximized) {
+      // restore from maximized state
+      delete currentWindow.dataset.maximized;
+      currentWindow.style.width     = currentWindow.dataset.prevWidth     || '';
+      currentWindow.style.height    = currentWindow.dataset.prevHeight    || '';
+      currentWindow.style.top       = currentWindow.dataset.prevTop       || '';
+      currentWindow.style.left      = currentWindow.dataset.prevLeft      || '';
+      currentWindow.style.transform = currentWindow.dataset.prevTransform || '';
+    } else {
+      const currentWindowID = currentWindow.id;
+      let offset = 80;
+      if (currentWindowID == "credits" || currentWindowID == "about-me") {
+        offset = 60;
+      }
+      currentWindow.style.width = offset + "vw";
+      currentWindow.style.height = offset + "vh";
     }
-    currentWindow.style.width = offset + "vw";
-    currentWindow.style.height = offset + "vh";
   };
 }
 export default Desktop;

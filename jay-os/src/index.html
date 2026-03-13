@@ -14,6 +14,14 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Preload critical images to prevent flash-of-unloaded-content -->
+    <link rel="preload" as="image" href="/imgs/windows.webp">
+    <!-- Prefetch experience card images during idle time before user opens Experience -->
+    <link rel="prefetch" as="image" href="/imgs/icons/WorkHistory.jpg">
+    <link rel="prefetch" as="image" href="/imgs/icons/Projects.jpg">
+    <link rel="prefetch" as="image" href="/imgs/icons/Resume.png">
+    <link rel="prefetch" as="image" href="/imgs/icons/AskAI.png">
+    <link rel="prefetch" as="image" href="/imgs/about-me/profile.jpg">
 </head>
 
 <body dir="ltr" style="overflow: hidden;" id="body">
@@ -149,34 +157,34 @@
 
         <section class="pinned-apps">
             <div class="taskbar-app taskbar-hover taskbar-pinned" id="contact_bottom">
-                <img src="/imgs/icons/contact.webp" alt="Contact" />
+                <img src="/imgs/icons/contact.webp" alt="Contact" /><span class="taskbar-app-label">Contact</span>
             </div>
             <div class="taskbar-app taskbar-hover taskbar-pinned" id="resume_bottom">
-                <img src="/imgs/icons/resume.webp" alt="Resume" />
+                <img src="/imgs/icons/resume.webp" alt="Resume" /><span class="taskbar-app-label">Resume</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="rubiks-cube_bottom">
-                <img src="/imgs/icons/rubikscube1.webp" alt="Rubiks Cube" />
+                <img src="/imgs/icons/rubikscube1.webp" alt="Rubiks Cube" /><span class="taskbar-app-label">Rubik's Cube</span>
             </div>
             <div class="taskbar-app taskbar-hover taskbar-pinned" id="chatbot_bottom">
-                <img src="/imgs/icons/copilot.webp" alt="Ask AI" />
+                <img src="/imgs/icons/copilot.webp" alt="Ask AI" /><span class="taskbar-app-label">Ask AI</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="experience_bottom">
-                <img src="/imgs/icons/experience.webp" alt="Experience" />
+                <img src="/imgs/icons/experience.webp" alt="Experience" /><span class="taskbar-app-label">Experience</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="arcade_bottom">
-                <img src="/imgs/icons/arcade.webp" alt="Arcade" />
+                <img src="/imgs/icons/arcade.webp" alt="Arcade" /><span class="taskbar-app-label">Arcade</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="github_bottom">
-                <img src="/imgs/icons/github.webp" alt="GitHub" />
+                <img src="/imgs/icons/github.webp" alt="GitHub" /><span class="taskbar-app-label">GitHub</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="about-me_bottom">
-                <img src="/imgs/icons/aboutme.webp" alt="About Me" />
+                <img src="/imgs/icons/aboutme.webp" alt="About Me" /><span class="taskbar-app-label">About Me</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="readme_bottom">
-                <img src="/imgs/icons/credits.webp" alt="readme.txt" />
+                <img src="/imgs/icons/credits.webp" alt="readme.txt" /><span class="taskbar-app-label">readme.txt</span>
             </div>
             <div class="taskbar-app taskbar-hover taskbar-pinned" id="music-player_bottom">
-                <img src="/imgs/icons/music-player.svg" alt="WinAmp" />
+                <img src="/imgs/icons/music-player.svg" alt="WinAmp" /><span class="taskbar-app-label">WinAmp</span>
             </div>
         </section>
 
@@ -1237,35 +1245,110 @@
     <!-- readme.txt window -->
     <div id="readme" class="readme-window" style="display: none;">
         <div class="title-bar readme-title-bar" id="titleBar">
-            <div class="title">readme.txt</div>
+            <div class="title" id="readme-win-title">readme.txt</div>
             <div class="window-controls">
                 <div class="window-button minimize"></div>
                 <div class="window-button restore"></div>
                 <div class="window-button close"></div>
             </div>
         </div>
-        <div class="readme-menubar">
-            <span>File</span><span>Edit</span><span>Format</span><span>View</span><span>Help</span>
-        </div>
-        <div class="readme-body">
-            <div class="readme-text">
-                <p>Hey, welcome to my portfolio website!</p>
-                <p>This website is meant as an interactive showcase of my work in data, design, and machine learning.</p>
-                <p>Please enjoy, and explore as much as you would like.</p>
-                <p>-Jay</p>
-                <div class="readme-btn-row">
-                    <button class="readme-win-btn" id="readme-about-btn" onclick="(function(){
-                        var s = document.getElementById('readme-about-content');
-                        var b = document.getElementById('readme-about-btn');
-                        if(s.style.display==='none'){s.style.display='block';b.textContent='About Me \u25B2';}
-                        else{s.style.display='none';b.textContent='About Me \u25BC';}
-                    })()">About Me &#9660;</button>
+        <div class="readme-inner-flex">
+            <!-- XP Menu Bar (File/Edit/View/Favorites/Tools/Help) -->
+            <div class="xp-menubar">
+                <span class="xp-menu-item">File</span>
+                <span class="xp-menu-item">Edit</span>
+                <span class="xp-menu-item">View</span>
+                <span class="xp-menu-item">Favorites</span>
+                <span class="xp-menu-item">Tools</span>
+                <span class="xp-menu-item">Help</span>
+            </div>
+            <!-- XP Explorer Toolbar -->
+            <div class="xp-explorer-toolbar">
+                <div class="xp-tb-group">
+                    <button class="xp-tb-btn" id="readme-back-btn" onclick="window._readmeGoBack()">
+                        <img src="/imgs/about/green_arrow.png" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">Back</span>
+                    </button>
+                    <button class="xp-tb-btn" disabled>
+                        <img src="/imgs/about/green_arrow.png" class="xp-tb-ico-img xp-tb-ico-fwd" alt="">
+                        <span class="xp-tb-label">Forward</span>
+                    </button>
                 </div>
-                <div id="readme-about-content" style="display:none;">
-                    <p>From a young age I was curious about how computers worked behind the scenes. What started as simple curiosity slowly turned into building programs and experimenting with different technologies.</p>
-                    <p>I&#39;m currently studying Computer Science at York University, expected to graduate in 2027. I have an incoming internship at Royal Bank of Canada from May 2026 &#8212; Dec 2026 as a Data Developer in Group Risk Management. Some of my work includes building machine learning models, designing data pipelines, experimenting with large language models, and contributing to open source software. I like solving complex problems and building systems that are both useful and technically interesting.</p>
-                    <p class="readme-section-header">Outside of work</p>
-                    <p>Outside of programming I spend time improving my fitness, listening to rock music, and exploring challenging problems. I also enjoy martial arts, soccer, and scrolling reddit.</p>
+                <div class="xp-tb-sep"></div>
+                <div class="xp-tb-group">
+                    <button class="xp-tb-btn" disabled>
+                        <img src="/imgs/about/Folder%20Conflict.ico" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">Up</span>
+                    </button>
+                </div>
+                <div class="xp-tb-sep"></div>
+                <div class="xp-tb-group">
+                    <button class="xp-tb-btn">
+                        <img src="/imgs/about/Windows%20Explorer.ico" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">Search</span>
+                    </button>
+                    <button class="xp-tb-btn">
+                        <img src="/imgs/about/Computer%20Folder.ico" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">Folders</span>
+                    </button>
+                </div>
+            </div>
+            <!-- Address Bar -->
+            <div class="xp-address-bar">
+                <div class="xp-address-label">Address</div>
+                <div class="xp-address-content">
+                    <img src="/imgs/icons/credits.webp" class="xp-addr-icon" alt="">
+                    <span class="xp-address-text" id="readme-address-text">My Documents/readme.txt</span>
+                </div>
+                <button class="xp-addr-dropdown">&#9660;</button>
+                <button class="xp-go-btn"><span class="xp-go-arrow">&#10148;</span> Go</button>
+            </div>
+            <!-- Main Explorer Body -->
+            <div class="xp-explorer-main">
+                <!-- Right Content Area -->
+                <div class="xp-content-area">
+                    <!-- FILE LIST VIEW (Documents.vue) -->
+                    <div id="readme-file-list" class="xp-doc-list" style="display:none;">
+                        <div class="xp-doc-item" onclick="window._readmeFocusFile(this)" ondblclick="window._readmeOpenDoc()">
+                            <img src="/imgs/icons/credits.webp" class="xp-doc-icon" alt="readme.txt">
+                            <div class="xp-doc-info">
+                                <p class="xp-doc-name">readme.txt</p>
+                                <p class="xp-doc-meta">Text Document</p>
+                                <p class="xp-doc-meta">5 KB</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ABOUT CONTENT VIEW (About.vue) -->
+                    <div id="readme-about-view" class="xp-about-content">
+                        <div class="xp-about-header">
+                            <h1 class="xp-about-h1">About</h1>
+                            <img src="/imgs/icons/windowslogo.png" class="xp-about-badge" alt="Windows XP">
+                        </div>
+                        <hr class="xp-about-hr">
+                        <div class="xp-about-body">
+                            <p class="xp-about-p">Hey, welcome to my portfolio!</p>
+                            <p class="xp-about-p">I'm Jay and this website is meant to showcase my work in data, systems and machine learning.</p>
+                            <p class="xp-about-p">The idea was to recreate a Windows XP desktop interface, allowing visitors to browse through my projects and work like they're exploring a real computer.</p>
+                            <p class="xp-about-p">Please enjoy, and explore as much as you'd like!</p>
+                            <div class="xp-more-btn" id="xp-more-btn" onclick="(function(el){
+                              var d=document.getElementById('xp-more-content');
+                              var open=d.style.display==='block';
+                              d.style.display=open?'none':'block';
+                              el.querySelector('.xp-more-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';
+                            })(this)">
+                              <span class="xp-more-label">Read More</span>
+                              <span class="xp-more-chevron"><svg style="transform:rotate(90deg)" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="1,2 5,6 1,10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,2 10,6 6,10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                            </div>
+                            <div id="xp-more-content" style="display:none;">
+                              <p class="xp-about-p">I&#39;m a third year undergraduate student at <span class="xp-highlight">York University</span> studying Computer Science. I have an upcoming internship at <span class="xp-highlight">Royal Bank of Canada</span> as a <span class="xp-highlight">Data Developer</span> in Group Risk Management.</p>
+                              <br>
+                              <p class="xp-about-p">Some of my work includes building <span class="xp-highlight">machine learning models</span>, designing <span class="xp-highlight">data pipelines</span>, experimenting with <span class="xp-highlight">large language models</span>, and contributing to <span class="xp-highlight">open source software</span>. I like solving complex problems and building systems that are both useful and technically interesting.</p>
+                              <br>
+                              <p class="xp-about-p">Outside of programming I spend time improving my fitness, listening to <span class="xp-highlight">rock music</span>, and exploring challenging problems. I also enjoy <span class="xp-highlight">martial arts</span>, <span class="xp-highlight">soccer</span>, and scrolling reddit.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
@@ -1689,6 +1772,34 @@
           img.addEventListener('click', function(){ window.open(img.src,'_blank'); });
         });
       })();
+    </script>
+    <script>
+      // readme.txt — Documents.vue / About.vue interaction
+      window._readmeFocusFile = function(el) {
+        document.querySelectorAll('#readme-file-list .xp-doc-item').forEach(function(item) {
+          item.classList.remove('xp-focused');
+        });
+        el.classList.add('xp-focused');
+      };
+      window._readmeOpenDoc = function() {
+        document.getElementById('readme-file-list').style.display = 'none';
+        document.getElementById('readme-about-view').style.display = 'block';
+        var backBtn = document.getElementById('readme-back-btn');
+        backBtn.disabled = false;
+        document.getElementById('readme-address-text').textContent = 'My Documents/readme.txt';
+        document.getElementById('readme-win-title').textContent = 'readme.txt - My Documents';
+      };
+      window._readmeGoBack = function() {
+        document.getElementById('readme-about-view').style.display = 'none';
+        document.getElementById('readme-file-list').style.display = 'flex';
+        var backBtn = document.getElementById('readme-back-btn');
+        backBtn.disabled = true;
+        document.getElementById('readme-address-text').textContent = 'My Documents';
+        document.getElementById('readme-win-title').textContent = 'My Documents';
+        document.querySelectorAll('#readme-file-list .xp-doc-item').forEach(function(item) {
+          item.classList.remove('xp-focused');
+        });
+      };
     </script>
 </body>
 
