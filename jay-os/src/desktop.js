@@ -305,6 +305,11 @@ class Desktop {
       if (iframe && (!iframe.src || iframe.src === "about:blank" || iframe.src === location.href)) { iframe.src = Resume; }
       if (link) { link.href = Resume; link.setAttribute("download", "Resume_Jay.pdf"); }
     }
+    // If rubiks iframe hasn't been loaded yet by idle callback, load it now on demand
+    if (appName === "rubiks-cube") {
+      var rubiks = document.getElementById("rubiks-iframe");
+      if (rubiks && !rubiks.src) { rubiks.src = rubiks.dataset.idleSrc; }
+    }
     const iframeToLoad = currentWindow.querySelector("iframe[data-src]");
     if (iframeToLoad) iframeToLoad.src = iframeToLoad.dataset.src;
     const bottomApp = document.getElementById(appName + "_bottom");
@@ -435,4 +440,21 @@ class Desktop {
     }
   };
 }
+
+// Silently pre-load the Rubik's Cube iframe during browser idle time
+// so it's already initialized the first time the user opens it.
+window.addEventListener('load', function () {
+  var loadRubiks = function () {
+    var iframe = document.getElementById('rubiks-iframe');
+    if (iframe && !iframe.src) {
+      iframe.src = iframe.dataset.idleSrc;
+    }
+  };
+  if ('requestIdleCallback' in window) {
+    requestIdleCallback(loadRubiks, { timeout: 3000 });
+  } else {
+    setTimeout(loadRubiks, 2000);
+  }
+});
+
 export default Desktop;
