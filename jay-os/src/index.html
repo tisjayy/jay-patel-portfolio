@@ -19,7 +19,7 @@
     <!-- Prefetch experience card images during idle time before user opens Experience -->
     <link rel="prefetch" as="image" href="/imgs/icons/WorkHistory.jpg">
     <link rel="prefetch" as="image" href="/imgs/icons/Projects.jpg">
-    <link rel="prefetch" as="image" href="/imgs/icons/Resume.png">
+    <link rel="prefetch" as="image" href="/imgs/icons/resume.webp">
     <link rel="prefetch" as="image" href="/imgs/icons/AskAI.png">
     <link rel="prefetch" as="image" href="/imgs/about-me/profile.jpg">
 </head>
@@ -49,41 +49,47 @@
       </div>
     </div>
     <aside>
-        <div class='apps' id="chatbot_app">
-            <img src='/imgs/icons/copilot.webp'>
-            <p>Ask AI</p>
+        <div class="desktop-col">
+            <div class='apps' id="chatbot_app">
+                <img src='/imgs/icons/copilot.webp'>
+                <p>Ask AI</p>
+            </div>
+            <div class='apps' id="experience_app">
+                <img src='/imgs/icons/experience.webp'>
+                <p>Experience</p>
+            </div>
+            <div class='apps' id="resume_app">
+                <img src='/imgs/icons/resume.webp'>
+                <p>Resume</p>
+            </div>
+            <div class='apps' id="arcade_app">
+                <img src='/imgs/icons/arcade.webp'>
+                <p>Arcade</p>
+            </div>
+            <div class='apps' id="readme_app">
+                <img src='/imgs/icons/credits.webp'>
+                <p>readme.txt</p>
+            </div>
         </div>
-        <div class='apps' id="experience_app">
-            <img src='/imgs/icons/experience.webp'>
-            <p>Experience</p>
+        <div class="desktop-col">
+            <div class='apps' id="rubiks-cube_app">
+                <img src='/imgs/icons/rubikscube1.webp'>
+                <p>Rubik's Cube</p>
+            </div>
+            <div class='apps' id="music-player_app">
+                <img src='/imgs/icons/music-player.svg'>
+                <p>WinAmp</p>
+            </div>
         </div>
-        <div class='apps' id="resume_app">
-            <img src='/imgs/icons/resume.webp'>
-            <p>Resume</p>
-        </div>
-        <div class='apps' id="arcade_app">
-            <img src='/imgs/icons/arcade.webp'>
-            <p>Arcade</p>
-        </div>
-        <div class='apps' id="rubiks-cube_app">
-            <img src='/imgs/icons/rubikscube1.webp'>
-            <p>Rubik's Cube</p>
-        </div>
-        <div class='apps' id="contact_app">
-            <img src='/imgs/icons/contact.webp'>
-            <p>Contact</p>
-        </div>
-        <div class='apps' id="github_app">
-            <img src='/imgs/icons/github.webp'>
-            <p>GitHub</p>
-        </div>
-        <div class='apps' id="readme_app">
-            <img src='/imgs/icons/credits.webp'>
-            <p>readme.txt</p>
-        </div>
-        <div class='apps' id="music-player_app">
-            <img src='/imgs/icons/music-player.svg'>
-            <p>WinAmp</p>
+        <div class="desktop-col desktop-col-right">
+            <div class='apps' id="contact_app">
+                <img src='/imgs/icons/contact.webp'>
+                <p>Contact</p>
+            </div>
+            <div class='apps' id="github_app">
+                <img src='/imgs/icons/github.webp'>
+                <p>GitHub</p>
+            </div>
         </div>
     </aside>
     <footer style="z-index:9999999" id="footer">
@@ -145,8 +151,8 @@
             </div><!-- end .xp-columns -->
             <!-- Footer bar: log off / turn off -->
             <div class="xp-start-footer">
-                <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); window.open('https://github.com/tisjayy','_blank')">&#128274; Log Off</button>
-                <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style')">&#9211; Turn Off Computer</button>
+                <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); window.open('https://github.com/tisjayy','_blank')"><img src="/imgs/buttons/logoff.png" class="xp-footer-ico" alt="Log Off"><span>Log Off</span></button>
+                <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style')"><img src="/imgs/buttons/turnoff.png" class="xp-footer-ico" alt="Shut Down"><span>Shut Down</span></button>
             </div>
         </article>
 
@@ -1024,22 +1030,55 @@
         </div>
     </div>
     <div id="resume" class="resume" style="display: none;">
-        <div class="title-bar" style="background-color: #0078d7;">
-            <div class="title">Resume</div>
+        <div class="title-bar resume-titlebar" id="titleBar">
+            <div class="resume-title-left">
+                <img src="/imgs/icons/resume.webp" class="resume-title-icon" alt="">
+                <span class="title">Resume</span>
+            </div>
             <div class="window-controls">
-                <div class="window-button-98 minimize"></div>
-                <div class="window-button-98 restore"></div>
-                <div class="window-button-98 close"></div>
+                <div class="window-button minimize"></div>
+                <div class="window-button restore"></div>
+                <div class="window-button close"></div>
             </div>
         </div>
-        <div style="display:flex; flex-direction:column; height:calc(100% - 32px);">
-            <div style="padding:8px 12px; background:#f3f3f3; border-bottom:1px solid #ddd; display:flex; align-items:center; gap:10px;">
-                <a id="resume-download" href="#"
-                    style="background:#0078d7; color:white; padding:5px 14px; border-radius:3px; text-decoration:none; font-family:Consolas,monospace; font-size:13px;">
-                    &#8595; Download PDF
-                </a>
+        <!-- Menu Bar -->
+        <div class="resume-menubar">
+            <div class="resume-menu-item" id="resume-menu-file" tabindex="0">
+                File
+                <div class="resume-dropdown" id="resume-dropdown-file">
+                    <div class="resume-dd-item" id="resume-dd-save"><img src="/imgs/buttons/Save.png" class="resume-dd-ico" alt=""> Save</div>
+                    <div class="resume-dd-sep"></div>
+                    <div class="resume-dd-item" id="resume-dd-exit">&#x2715; Exit</div>
+                </div>
             </div>
-            <iframe id="resume-iframe" src="about:blank" style="flex:1; width:100%; border:none;"></iframe>
+            <div class="resume-menu-item" id="resume-menu-view" tabindex="0">
+                View
+                <div class="resume-dropdown" id="resume-dropdown-view">
+                    <div class="resume-dd-item" id="resume-dd-minimize">&#x2014; Minimize</div>
+                    <div class="resume-dd-item" id="resume-dd-maximize">&#x26F6; Maximize</div>
+                </div>
+            </div>
+            <div class="resume-menu-item" tabindex="0">Help</div>
+            <div class="resume-menubar-logo"><img src="/imgs/icons/windowslogo.png" alt=""></div>
+        </div>
+        <!-- Toolbar -->
+        <div class="resume-toolbar">
+            <button class="resume-tb-btn" id="resume-tb-save">
+                <img src="/imgs/buttons/Save.png" class="resume-tb-ico" alt="">
+                <span>Save</span>
+            </button>
+            <button class="resume-tb-btn" id="resume-tb-print">
+                <img src="/imgs/icons/resume-print.png" class="resume-tb-ico" alt="" onerror="this.style.fontSize='14px';this.outerHTML='<span style=\'font-size:14px\'>🖨️</span>'">
+                <span>Print</span>
+            </button>
+            <button class="resume-tb-btn" id="resume-tb-contact">
+                <img src="/imgs/icons/contact.webp" class="resume-tb-ico" alt="">
+                <span>Contact Me</span>
+            </button>
+        </div>
+        <!-- Content -->
+        <div class="resume-body">
+            <iframe id="resume-iframe" src="about:blank"></iframe>
         </div>
     </div>
 
@@ -1239,7 +1278,7 @@
             </div>
         </div>
         <div class="content" style="height: calc(100% - 35px); overflow: hidden;">
-            <iframe data-src="https://jay-patel-rubiks.vercel.app/rubiks-cube.html" src="https://jay-patel-rubiks.vercel.app/rubiks-cube.html" style="width:100%; height:100%; border:none;"></iframe>
+            <iframe src="https://jay-patel-rubiks.vercel.app/rubiks-cube.html" style="width:100%; height:100%; border:none;"></iframe>
         </div>
     </div>
     <!-- readme.txt window -->
@@ -1801,6 +1840,146 @@
         });
       };
     </script>
-</body>
+    <script>
+      // ── Resume window interactivity ──
+      (function () {
+        // Menu item click → toggle .rm-open
+        document.querySelectorAll('.resume-menu-item').forEach(function (item) {
+          item.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var wasOpen = item.classList.contains('rm-open');
+            document.querySelectorAll('.resume-menu-item').forEach(function (i) { i.classList.remove('rm-open'); });
+            if (!wasOpen && item.querySelector('.resume-dropdown')) item.classList.add('rm-open');
+          });
+        });
+        // Click outside → close all dropdowns
+        document.addEventListener('click', function () {
+          document.querySelectorAll('.resume-menu-item').forEach(function (i) { i.classList.remove('rm-open'); });
+        });
 
+        function closeDropdowns() {
+          document.querySelectorAll('.resume-menu-item').forEach(function (i) { i.classList.remove('rm-open'); });
+        }
+
+        // Save (dropdown + toolbar) → download PDF
+        function doSave() {
+          var iframe = document.getElementById('resume-iframe');
+          if (!iframe || !iframe.src || iframe.src === 'about:blank') return;
+          var a = document.createElement('a');
+          a.href = iframe.src;
+          a.download = 'Resume_Jay.pdf';
+          a.click();
+          closeDropdowns();
+        }
+        var ddSave = document.getElementById('resume-dd-save');
+        if (ddSave) ddSave.addEventListener('click', doSave);
+        var tbSave = document.getElementById('resume-tb-save');
+        if (tbSave) tbSave.addEventListener('click', doSave);
+
+        // Exit → close window
+        var ddExit = document.getElementById('resume-dd-exit');
+        if (ddExit) ddExit.addEventListener('click', function () {
+          var win = document.getElementById('resume');
+          if (win) win.style.display = 'none';
+          var tb = document.getElementById('resume_bottom');
+          if (tb) { tb.classList.remove('taskbar-opened'); tb.classList.remove('taskbar-selected'); }
+          closeDropdowns();
+        });
+
+        // View > Minimize → hide window (taskbar item keeps it restoreable)
+        var ddMin = document.getElementById('resume-dd-minimize');
+        if (ddMin) ddMin.addEventListener('click', function () {
+          var minBtn = document.querySelector('#resume .window-button.minimize');
+          if (minBtn) minBtn.click();
+          closeDropdowns();
+        });
+
+        // View > Maximize → click the restore/maximize button
+        var ddMax = document.getElementById('resume-dd-maximize');
+        if (ddMax) ddMax.addEventListener('click', function () {
+          var restoreBtn = document.querySelector('#resume .window-button.restore');
+          if (restoreBtn) restoreBtn.click();
+          closeDropdowns();
+        });
+
+        // Toolbar: Zoom → open PDF in new tab
+        var tbZoom = document.getElementById('resume-tb-zoom');
+        if (tbZoom) tbZoom.addEventListener('click', function () {
+          var src = document.getElementById('resume-iframe').src;
+          if (src && src !== 'about:blank') window.open(src, '_blank');
+        });
+
+        // Toolbar: Print
+        var tbPrint = document.getElementById('resume-tb-print');
+        if (tbPrint) tbPrint.addEventListener('click', function () {
+          var iframe = document.getElementById('resume-iframe');
+          try { if (iframe && iframe.contentWindow) iframe.contentWindow.print(); } catch (e) {
+            window.open(iframe.src, '_blank');
+          }
+        });
+
+        // Toolbar: Contact Me → open contact window
+        var tbContact = document.getElementById('resume-tb-contact');
+        if (tbContact) tbContact.addEventListener('click', function () {
+          var contactWin = document.getElementById('contact');
+          if (contactWin) { contactWin.style.display = 'block'; }
+          var tb = document.getElementById('contact_bottom');
+          if (tb) { tb.classList.add('taskbar-opened'); }
+        });
+      })();
+    </script>
+    <script>
+      // Shut Down teleport only — Log Off stays put
+      (function () {
+        var FLEE_RADIUS   = 60;   // px - teleport trigger radius
+        var TELEPORT_COOL = 320;  // ms between teleports
+        var shutdownLeft  = false;
+        var lastTeleport  = 0;
+
+        function isMenuOpen() {
+          var m = document.querySelector('.open-windows-menu');
+          return m && m.style.display && m.style.display !== 'none';
+        }
+
+        document.addEventListener('mousemove', function (e) {
+          if (!isMenuOpen()) return;
+          var now = Date.now();
+          if (now - lastTeleport < TELEPORT_COOL) return;
+
+          var shutdown = document.querySelectorAll('.xp-footer-btn')[1];
+          if (!shutdown) return;
+
+          var r1  = shutdown.getBoundingClientRect();
+          var dx1 = e.clientX - (r1.left + r1.width  / 2);
+          var dy1 = e.clientY - (r1.top  + r1.height / 2);
+          var d1  = Math.sqrt(dx1 * dx1 + dy1 * dy1);
+
+          if (d1 < FLEE_RADIUS) {
+            lastTeleport = now;
+            shutdown.style.transition = 'none';
+            if (!shutdownLeft) {
+              var footer     = shutdown.closest('.xp-start-footer');
+              var footerRect = footer ? footer.getBoundingClientRect() : { left: 0 };
+              shutdown.style.transform = 'translateX(' + (-(r1.left - footerRect.left - 8)) + 'px)';
+              shutdownLeft = true;
+            } else {
+              shutdown.style.transform = '';
+              shutdownLeft = false;
+            }
+          }
+        });
+
+        // Reset when start menu closes
+        var observer = new MutationObserver(function () {
+          if (!isMenuOpen()) {
+            shutdownLeft = false;
+            lastTeleport = 0;
+            var shutdown = document.querySelectorAll('.xp-footer-btn')[1];
+            if (shutdown) { shutdown.style.transition = ''; shutdown.style.transform = ''; }
+          }
+        });
+        var menu = document.querySelector('.open-windows-menu');
+        if (menu) observer.observe(menu, { attributes: true, attributeFilter: ['style'] });
+      })();
+    </script>
 </html>
