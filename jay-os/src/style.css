@@ -34,11 +34,11 @@
   99%      { opacity: 1; }
 }
 
-/* ── Experience app — always-on CRT scanlines ── */
-#experience-content {
+/* ── Arcade — always-on CRT scanlines (H + V) ── */
+#arcade-content {
   position: relative;
 }
-#experience-content::after {
+#arcade-content::after {
   content: '';
   pointer-events: none;
   position: absolute;
@@ -3393,8 +3393,11 @@ footer .open-windows-menu[style] {
   justify-content: center;
   position: relative;
   overflow: hidden;
+  image-rendering: high-quality;
   image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
+  transform: translateZ(0);
+  background-size: cover;
+  background-position: center;
 }
 .nf-card-icon {
   width: 44px;

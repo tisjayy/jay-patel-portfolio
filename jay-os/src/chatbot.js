@@ -65,7 +65,10 @@ export default class Chatbot {
       }
     } catch (err) {
       typing.remove();
-      this.renderMessage("assistant", "Could not connect. Make sure the proxy is running.");
+      this.showRetroError(
+        "CRITICAL ERROR",
+        "Neural link severed.\nFailed to reach AI backend.\n\nIf behind a corporate firewall, please view the Resume app instead."
+      );
     }
   }
 
@@ -89,6 +92,44 @@ export default class Chatbot {
       this.messages.appendChild(row);
     }
     this.messages.scrollTop = this.messages.scrollHeight;
+  }
+
+  showRetroError(title, message) {
+    // Remove any existing error dialog
+    const existing = document.getElementById("chatbot-error-dialog");
+    if (existing) existing.remove();
+
+    const dialog = document.createElement("div");
+    dialog.id = "chatbot-error-dialog";
+    dialog.style.cssText = [
+      "position:absolute","top:50%","left:50%",
+      "transform:translate(-50%,-50%)",
+      "z-index:99999","width:320px",
+      "background:#d4d0c8",
+      "border:2px solid #fff",
+      "outline:2px solid #808080",
+      "font-family:Tahoma,sans-serif",
+      "font-size:12px","box-shadow:4px 4px 8px rgba(0,0,0,0.6)",
+    ].join(";");
+
+    dialog.innerHTML = `
+      <div style="background:linear-gradient(to right,#0a246a,#3a6ea5);color:#fff;padding:3px 6px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="display:flex;align-items:center;gap:6px;"><img src="/imgs/icons/error.png" onerror="this.style.display='none'" style="width:16px;height:16px;"> ${title}</span>
+        <button onclick="document.getElementById('chatbot-error-dialog').remove()" style="background:#d4d0c8;border:1px solid #808080;color:#000;width:16px;height:14px;font-size:10px;cursor:pointer;padding:0;line-height:1;">&#x2715;</button>
+      </div>
+      <div style="padding:16px;display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:32px;line-height:1;">&#x26A0;</span>
+        <p style="margin:0;line-height:1.5;white-space:pre-line;">${message}</p>
+      </div>
+      <div style="text-align:center;padding:0 16px 12px;">
+        <button onclick="document.getElementById('chatbot-error-dialog').remove()" style="min-width:75px;padding:3px 12px;background:#d4d0c8;border-top:1px solid #fff;border-left:1px solid #fff;border-right:1px solid #808080;border-bottom:1px solid #808080;cursor:pointer;font-family:Tahoma,sans-serif;font-size:12px;">OK</button>
+      </div>
+    `;
+
+    // Attach to the chatbot window container so it stays in-frame
+    const container = document.getElementById("chatbot") || document.body;
+    container.style.position = container.style.position || "relative";
+    container.appendChild(dialog);
   }
 
   showTyping() {
