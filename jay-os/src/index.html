@@ -71,6 +71,10 @@
                 <img src='/imgs/icons/credits.webp'>
                 <p>readme.txt</p>
             </div>
+            <div class='apps' id="paint_app">
+                <img src='/imgs/icons/ms_paint.webp'>
+                <p>MS Paint</p>
+            </div>
         </div>
         <div class="desktop-col">
             <div class='apps' id="rubiks-cube_app">
@@ -198,6 +202,9 @@
             </div>
             <div class="taskbar-app taskbar-hover taskbar-pinned" id="music-player_bottom">
                 <img src="/imgs/icons/music-player.svg" alt="WinAmp" /><span class="taskbar-app-label">WinAmp</span>
+            </div>
+            <div class="taskbar-app taskbar-hover" id="paint_bottom">
+                <img src="/imgs/icons/ms_paint.webp" alt="MS Paint" /><span class="taskbar-app-label">MS Paint</span>
             </div>
         </section>
 
@@ -1431,6 +1438,33 @@
             <input type="range" id="mp-volume" class="mp-slider" min="0" max="1" step="0.01" value="0.7">
         </div>
         <div class="mp-playlist" id="mp-playlist"></div>
+    </div>
+
+    <!-- MS Paint AI window -->
+    <div id="paint" class="paint-window" style="display:none;">
+        <div class="title-bar" id="titleBar" style="background:linear-gradient(to right,#1a7a2a,#2ea045);">
+            <div class="title">
+                <img src="/imgs/icons/ms_paint.webp" style="width:14px;height:14px;vertical-align:middle;margin-right:5px;">MS Paint ✨ AI
+            </div>
+            <div class="window-controls">
+                <div class="window-button-98 minimize"></div>
+                <div class="window-button-98 restore"></div>
+                <div class="window-button-98 close"></div>
+            </div>
+        </div>
+        <div class="paint-ai-toolbar">
+            <button id="paint-magic-btn" class="paint-magic-btn">✨ Magic AI</button>
+            <input id="paint-ai-prompt" class="paint-ai-prompt" type="text"
+                   placeholder="Style hint… (e.g. oil painting, neon, watercolor)" maxlength="200">
+            <span id="paint-ai-status" class="paint-ai-status"></span>
+        </div>
+        <div id="paint-content" class="content" style="height:calc(100% - 35px - 38px); overflow:hidden;">
+            <iframe id="paint-iframe"
+                    data-src="https://jspaint.vercel.app"
+                    src="about:blank"
+                    style="width:100%;height:100%;border:none;"
+                    allow="clipboard-read; clipboard-write"></iframe>
+        </div>
     </div>
 
     <div id="chatbot" class="chatbot" style="display: none;">

@@ -2,6 +2,7 @@ import "./style.css";
 import Desktop from "./desktop";
 import Chatbot from "./chatbot";
 import MusicPlayer from "./music-player";
+import PaintAI from "./paint-ai";
 
 const desktop = new Desktop();
 window._desktop = desktop;
@@ -13,3 +14,6 @@ chatbot.activateEvents();
 
 const musicPlayer = new MusicPlayer();
 musicPlayer.activateEvents();
+
+const paintAI = new PaintAI();
+paintAI.activateEvents();

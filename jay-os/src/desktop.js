@@ -291,6 +291,18 @@ class Desktop {
   };
 
   openWindow = (appName) => {
+    // Limit taskbar to 5 simultaneous open apps
+    const _tb = document.getElementById(appName + "_bottom");
+    if (_tb && !_tb.classList.contains("taskbar-opened")) {
+      const openCount = document.querySelectorAll(".taskbar-app.taskbar-opened").length;
+      if (openCount >= 5) {
+        this.showRetroError(
+          "Too Many Windows",
+          "You cannot have more than 5 windows open at once.\n\nPlease close a window before opening another."
+        );
+        return;
+      }
+    }
     const currentWindow = document.getElementById(appName);
     currentWindow.style.display = "block";
     try {
@@ -419,6 +431,40 @@ class Desktop {
     currentWindow.style.width     = 'calc(100vw / 1.1)';
     currentWindow.style.height    = 'calc((100vh - ' + taskbarH + 'px) / 1.1)';
   };
+
+  showRetroError(title, message) {
+    const existing = document.getElementById("desktop-retro-error");
+    if (existing) existing.remove();
+
+    const dialog = document.createElement("div");
+    dialog.id = "desktop-retro-error";
+    dialog.style.cssText = [
+      "position:fixed","top:50%","left:50%",
+      "transform:translate(-50%,-50%)",
+      "z-index:999999","width:320px",
+      "background:#d4d0c8",
+      "border:2px solid #fff",
+      "outline:2px solid #808080",
+      "font-family:Tahoma,sans-serif",
+      "font-size:12px","box-shadow:4px 4px 8px rgba(0,0,0,0.6)",
+    ].join(";");
+
+    dialog.innerHTML = `
+      <div style="background:linear-gradient(to right,#0a246a,#3a6ea5);color:#fff;padding:3px 6px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="display:flex;align-items:center;gap:6px;"><img src="/imgs/icons/error.png" onerror="this.style.display='none'" style="width:16px;height:16px;"> ${title}</span>
+        <button onclick="document.getElementById('desktop-retro-error').remove()" style="background:#d4d0c8;border:1px solid #808080;color:#000;width:16px;height:14px;font-size:10px;cursor:pointer;padding:0;line-height:1;">&#x2715;</button>
+      </div>
+      <div style="padding:16px;display:flex;gap:12px;align-items:flex-start;">
+        <span style="font-size:32px;line-height:1;">&#x26A0;</span>
+        <p style="margin:0;line-height:1.5;white-space:pre-line;">${message}</p>
+      </div>
+      <div style="text-align:center;padding:0 16px 12px;">
+        <button onclick="document.getElementById('desktop-retro-error').remove()" style="min-width:75px;padding:3px 12px;background:#d4d0c8;border-top:1px solid #fff;border-left:1px solid #fff;border-right:1px solid #808080;border-bottom:1px solid #808080;cursor:pointer;font-family:Tahoma,sans-serif;font-size:12px;">OK</button>
+      </div>
+    `;
+
+    document.body.appendChild(dialog);
+  }
 
   minimizeWindow = (currentWindow) => {
     if (currentWindow.dataset.maximized) {
