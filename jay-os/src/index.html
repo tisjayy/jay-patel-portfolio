@@ -151,8 +151,14 @@
             </div><!-- end .xp-columns -->
             <!-- Footer bar: log off / turn off -->
             <div class="xp-start-footer">
-                <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); window.open('https://github.com/tisjayy','_blank')"><img src="/imgs/buttons/logoff.png" class="xp-footer-ico" alt="Log Off"><span>Log Off</span></button>
-                <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style')"><img src="/imgs/buttons/turnoff.png" class="xp-footer-ico" alt="Shut Down"><span>Shut Down</span></button>
+                <div class="xp-footer-item">
+                    <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); window.open('https://github.com/tisjayy','_blank')"><img src="/imgs/buttons/key-log-icon.webp" class="xp-footer-ico" alt="Log Off"></button>
+                    <span class="xp-footer-label">Log Off</span>
+                </div>
+                <div class="xp-footer-item">
+                    <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style')"><img src="/imgs/buttons/shutdown-icon.webp" class="xp-footer-ico" alt="Shut Down"></button>
+                    <span class="xp-footer-label">Shut Down</span>
+                </div>
             </div>
         </article>
 
