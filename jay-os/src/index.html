@@ -71,20 +71,22 @@
                 <img src='/imgs/icons/credits.webp'>
                 <p>readme.txt</p>
             </div>
-            <div class='apps' id="paint_app">
-                <img src='/imgs/icons/ms_paint.webp'>
-                <p>MS Paint</p>
-            </div>
+
         </div>
         <div class="desktop-col">
             <div class='apps' id="rubiks-cube_app">
                 <img src='/imgs/icons/rubikscube1.webp'>
                 <p>Rubik's Cube</p>
             </div>
+                        <div class='apps' id="paint_app">
+                <img src='/imgs/icons/ms_paint.webp'>
+                <p>AI Paint</p>
+            </div>
             <div class='apps' id="music-player_app">
                 <img src='/imgs/icons/music-player.svg'>
                 <p>WinAmp</p>
             </div>
+
         </div>
         <div class="desktop-col desktop-col-right">
             <div class='apps' id="contact_app">
@@ -204,7 +206,7 @@
                 <img src="/imgs/icons/music-player.svg" alt="WinAmp" /><span class="taskbar-app-label">WinAmp</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="paint_bottom">
-                <img src="/imgs/icons/ms_paint.webp" alt="MS Paint" /><span class="taskbar-app-label">MS Paint</span>
+                <img src="/imgs/icons/ms_paint.webp" alt="MS Paint" /><span class="taskbar-app-label">AI Paint</span>
             </div>
         </section>
 
@@ -1442,9 +1444,9 @@
 
     <!-- MS Paint AI window -->
     <div id="paint" class="paint-window" style="display:none;">
-        <div class="title-bar" id="titleBar" style="background:linear-gradient(to right,#1a7a2a,#2ea045);">
+        <div class="title-bar readme-title-bar" id="titleBar">
             <div class="title">
-                <img src="/imgs/icons/ms_paint.webp" style="width:14px;height:14px;vertical-align:middle;margin-right:5px;">MS Paint ✨ AI
+                <img src="/imgs/icons/ms_paint.webp" style="width:14px;height:14px;vertical-align:middle;margin-right:5px;">AI Paint
             </div>
             <div class="window-controls">
                 <div class="window-button-98 minimize"></div>
@@ -1452,18 +1454,28 @@
                 <div class="window-button-98 close"></div>
             </div>
         </div>
-        <div class="paint-ai-toolbar">
-            <button id="paint-magic-btn" class="paint-magic-btn">✨ Magic AI</button>
-            <input id="paint-ai-prompt" class="paint-ai-prompt" type="text"
-                   placeholder="Style hint… (e.g. oil painting, neon, watercolor)" maxlength="200">
-            <span id="paint-ai-status" class="paint-ai-status"></span>
-        </div>
-        <div id="paint-content" class="content" style="height:calc(100% - 35px - 38px); overflow:hidden;">
+        <div id="paint-content" class="content" style="height:calc(100% - 28px); overflow:hidden; position:relative;">
             <iframe id="paint-iframe"
                     data-src="https://jspaint.vercel.app"
                     src="about:blank"
                     style="width:100%;height:100%;border:none;"
                     allow="clipboard-read; clipboard-write"></iframe>
+            <!-- Drag shield: covers iframe during widget drag so mousemove isn't eaten -->
+            <div id="paint-drag-shield" style="display:none;position:absolute;inset:0;z-index:998;"></div>
+            <!-- Floating Magic AI pill widget -->
+            <div id="paint-ai-widget" class="paint-ai-widget">
+                <div class="pai-pill">
+                    <div class="pai-drag-handle" id="pai-titlebar" title="Drag">⠿</div>
+                    <input id="paint-ai-prompt" class="pai-input" type="text"
+                           placeholder="Describe a style… e.g. oil painting, neon" maxlength="200">
+                    <button id="paint-magic-btn" class="pai-btn" disabled
+                            title="Waiting for jspaint to load…">
+                        <svg class="pai-send-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                        <span class="pai-btn-label">Generate</span>
+                    </button>
+                </div>
+                <div class="pai-statusbar"><span id="paint-ai-status"></span></div>
+            </div>
         </div>
     </div>
 

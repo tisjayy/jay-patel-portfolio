@@ -3627,78 +3627,145 @@ footer .open-windows-menu[style*="flex"] .xp-start-right {
 
 /* ── MS Paint AI Window ──────────────────────────────────────────────── */
 .paint-window {
-  width: 74vw;
-  height: 84vh;
-  min-width: 520px;
-  min-height: 420px;
-  border: 1px solid #003C74;
-  border-radius: 6px 6px 4px 4px;
-  box-shadow: inset 1px 1px 0 #9DB9E8, 2px 4px 16px rgba(0,0,50,0.55);
   position: absolute;
+  width: 56vw;
+  min-width: 480px;
+  min-height: 360px;
+  /* Use top + bottom instead of height + transform-Y so the 1.1× zoom
+     on body > * doesn't push the bottom edge into the fixed taskbar.
+     bottom: 40px → visually ≈ 44px above viewport bottom, taskbar is 34px. */
+  top: 4vh;
+  bottom: 40px;
+  height: auto;
+  left: 48vw;
+  transform: translateX(-50%);
   z-index: 10;
-  top: 40vh;
-  left: 50vw;
-  transform: translate(-50%, -50%);
+  background: #6487DC;
+  box-shadow: 2px 4px 16px rgba(0,0,50,0.55);
+  font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
   transition: width 0.1s, height 0.1s ease;
-  background: #d4d0c8;
   overflow: hidden;
 }
 
-/* AI toolbar strip sitting between the title bar and the iframe */
-.paint-ai-toolbar {
+/* ── Floating Magic AI Pill Widget ──────────────────────────────────── */
+.paint-ai-widget {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+  width: 420px;
+  max-width: 90%;
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  user-select: none;
+  border-radius: 28px;
+}
+
+/* The main Gemini-style pill */
+.pai-pill {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 8px;
-  height: 38px;
-  background: #d4d0c8;
-  border-bottom: 1px solid #a0a0a0;
-  box-sizing: border-box;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(28, 28, 30, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+/* ── Loading glow pulse ── */
+.paint-ai-widget.is-loading .pai-pill {
+  animation: pai-glow-pulse 1.5s ease-in-out infinite;
+  border-color: rgba(99, 179, 237, 0.6);
+}
+@keyframes pai-glow-pulse {
+  0%, 100% { box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+  50%       { box-shadow: 0 0 20px rgba(99,179,237,0.4); }
+}
+
+/* Drag handle — six-dot grip on the left */
+.pai-drag-handle {
   flex-shrink: 0;
-}
-
-.paint-magic-btn {
-  font-family: Tahoma, sans-serif;
-  font-size: 11px;
-  padding: 3px 10px;
-  height: 22px;
-  background: #d4d0c8;
-  border-top:    1px solid #fff;
-  border-left:   1px solid #fff;
-  border-right:  1px solid #808080;
-  border-bottom: 1px solid #808080;
-  cursor: pointer;
-  white-space: nowrap;
+  color: rgba(255,255,255,0.35);
+  font-size: 16px;
   line-height: 1;
+  cursor: grab;
+  padding: 2px 2px 2px 0;
+  letter-spacing: -1px;
+  transition: color 0.15s;
 }
-.paint-magic-btn:hover  { background: #e8e4d8; }
-.paint-magic-btn:active {
-  border-top:    1px solid #808080;
-  border-left:   1px solid #808080;
-  border-right:  1px solid #fff;
-  border-bottom: 1px solid #fff;
-}
-.paint-magic-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.pai-drag-handle:hover { color: rgba(255,255,255,0.65); }
+.pai-drag-handle:active { cursor: grabbing; }
 
-.paint-ai-prompt {
+.pai-input {
   flex: 1;
   min-width: 0;
-  font-family: Tahoma, sans-serif;
-  font-size: 11px;
-  padding: 2px 5px;
-  height: 22px;
-  border: 2px inset #808080;
-  background: #fff;
-  color: #000;
-  box-sizing: border-box;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-family: inherit;
+  font-size: 14px;
+  padding: 8px 0;
+  caret-color: #63B3ED;
+}
+.pai-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.pai-input:disabled {
+  color: rgba(255,255,255,0.25);
 }
 
-.paint-ai-status {
-  font-family: Tahoma, sans-serif;
+/* Circular send button */
+.pai-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #3a3a3c;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  padding: 0;
+}
+.pai-btn:hover:not(:disabled) {
+  background: #48484a;
+  transform: scale(1.06);
+}
+.pai-btn:active:not(:disabled) {
+  transform: scale(0.94);
+}
+.pai-btn:disabled {
+  background: rgba(58,58,60,0.4);
+  cursor: not-allowed;
+  transform: none;
+  color: rgba(255,255,255,0.3);
+}
+
+.pai-send-icon {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* Hide text label — icon only */
+.pai-btn-label { display: none; }
+
+/* Status row below the pill */
+.pai-statusbar {
+  padding: 4px 14px 0;
+  min-height: 16px;
+  font-family: inherit;
   font-size: 11px;
-  color: #007700;
+  color: rgba(255,255,255,0.55);
   white-space: nowrap;
-  max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
 }

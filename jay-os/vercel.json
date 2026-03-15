@@ -3,9 +3,11 @@
   "outputDirectory": "dist",
   "framework": null,
   "functions": {
-    "api/chat.js": { "maxDuration": 30 }
+    "api/chat.js":    { "maxDuration": 30 },
+    "api/imagine.js": { "maxDuration": 30 }
   },
   "rewrites": [
-    { "source": "/api/chat", "destination": "/api/chat" }
+    { "source": "/api/chat",    "destination": "/api/chat" },
+    { "source": "/api/imagine", "destination": "/api/imagine" }
   ]
 }
