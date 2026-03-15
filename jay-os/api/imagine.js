@@ -66,7 +66,7 @@ function kvCommand(cmd, ...args) {
 async function kvIncr(key) {
   const newVal = await kvCommand('INCR', key);
   if (newVal === 1) {
-    // First write today — set 24 h expiry
+    // First write today â€” set 24 h expiry
     await kvCommand('EXPIRE', key, String(TTL_SECONDS));
   }
   return Number(newVal);
@@ -79,11 +79,15 @@ async function kvGet(key) {
 }
 
 module.exports = async function handler(req, res) {
-  // ── CORS ─────────────────────────────────────────────────────────────────
-  const allowedOrigin = process.env.ALLOWED_ORIGIN || 'https://jay-patel.vercel.app';
+  // â”€â”€ CORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  const allowedOrigins = new Set(
+    process.env.ALLOWED_ORIGIN
+      ? [process.env.ALLOWED_ORIGIN]
+      : ['https://www.jyptl.com', 'https://jay-patel-os.vercel.app']
+  );
   const origin = req.headers['origin'] || '';
   const isLocalhost = /^https?:\/\/localhost(:\d+)?$/.test(origin);
-  const isAllowed   = origin === allowedOrigin || isLocalhost;
+  const isAllowed   = allowedOrigins.has(origin) || isLocalhost || origin === '';
 
   if (isAllowed) {
     res.setHeader('Access-Control-Allow-Origin', origin);
@@ -101,7 +105,7 @@ module.exports = async function handler(req, res) {
 
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  // ── Global daily cap ──────────────────────────────────────────────────────
+  // â”€â”€ Global daily cap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const globalCount = await kvGet(GLOBAL_KEY);
   if (globalCount !== null && globalCount >= GLOBAL_DAILY_LIMIT) {
     return res.status(429).json({
@@ -110,7 +114,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  // ── Per-IP daily cap ──────────────────────────────────────────────────────
+  // â”€â”€ Per-IP daily cap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const ip = (
     req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
     req.socket?.remoteAddress ||
@@ -125,7 +129,7 @@ module.exports = async function handler(req, res) {
     });
   }
 
-  // ── Validate body ─────────────────────────────────────────────────────────
+  // â”€â”€ Validate body â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const { imageDataURL, prompt = '', width, height } = req.body ?? {};
   if (!imageDataURL) return res.status(400).json({ error: 'imageDataURL is required' });
 
@@ -133,7 +137,7 @@ module.exports = async function handler(req, res) {
   const region = process.env.AWS_REGION || 'us-east-1';
   if (!token) return res.status(500).json({ error: 'AWS_BEARER_TOKEN_BEDROCK is not configured' });
 
-  // Strip "data:image/png;base64," prefix → raw base64 string
+  // Strip "data:image/png;base64," prefix â†’ raw base64 string
   const base64 = imageDataURL.replace(/^data:image\/[a-z+]+;base64,/, '');
 
   const outW = snapDim(width);
@@ -206,81 +210,4 @@ module.exports = async function handler(req, res) {
     outgoing.write(body);
     outgoing.end();
   });
-};
-
-
-  const { imageDataURL, prompt = '', width, height } = req.body ?? {};
-  if (!imageDataURL) return res.status(400).json({ error: 'imageDataURL is required' });
-
-  const token  = process.env.AWS_BEARER_TOKEN_BEDROCK;
-  const region = process.env.AWS_REGION || 'us-east-1';
-  if (!token) return res.status(500).json({ error: 'AWS_BEARER_TOKEN_BEDROCK is not configured' });
-
-  // Strip "data:image/png;base64," prefix → raw base64 string
-  const base64 = imageDataURL.replace(/^data:image\/[a-z+]+;base64,/, '');
-
-  const outW = snapDim(width);
-  const outH = snapDim(height);
-
-  const body = JSON.stringify({
-    taskType: 'IMAGE_VARIATION',
-    imageVariationParams: {
-      images:             [base64],
-      text:               prompt || 'high quality, detailed, clean artwork',
-      negativeText:       'low quality, blurry, distorted, watermark, ugly, deformed',
-      similarityStrength: 0.7,
-    },
-    imageGenerationConfig: {
-      numberOfImages: 1,
-      width:          outW,
-      height:         outH,
-      cfgScale:       8.0,
-      quality:        'standard',
-    },
-  });
-
-  return new Promise((resolve) => {
-    const options = {
-      hostname: `bedrock-runtime.${region}.amazonaws.com`,
-      path:     '/model/amazon.nova-canvas-v1:0/invoke',
-      method:   'POST',
-      headers: {
-        Authorization:    `Bearer ${token}`,
-        'Content-Type':   'application/json',
-        'Content-Length': Buffer.byteLength(body),
-      },
-    };
-
-    const outgoing = https.request(options, (r) => {
-      const chunks = [];
-      r.on('data', (c) => chunks.push(c));
-      r.on('end', () => {
-        const raw = Buffer.concat(chunks).toString();
-
-        if (r.statusCode !== 200) {
-          res.status(r.statusCode).json({ error: raw });
-          return resolve();
-        }
-
-        try {
-          const json      = JSON.parse(raw);
-          const imgBase64 = json.images?.[0];
-          if (!imgBase64) throw new Error('Bedrock returned no images');
-          res.status(200).json({ imageDataURL: `data:image/png;base64,${imgBase64}` });
-        } catch (e) {
-          res.status(500).json({ error: e.message });
-        }
-        resolve();
-      });
-    });
-
-    outgoing.on('error', (e) => {
-      res.status(500).json({ error: e.message });
-      resolve();
-    });
-
-    outgoing.write(body);
-    outgoing.end();
-  });
-
 };
