@@ -27,21 +27,39 @@ function snapDim(n) {
 }
 
 /**
- * Minimal Vercel KV client using the REST token Vercel injects automatically.
+ * Minimal Vercel KV client using the REST API over https (no fetch required).
  * Falls back gracefully (allows request) if KV env vars are not configured.
  */
-async function kvCommand(cmd, ...args) {
-  const url   = process.env.KV_REST_API_URL;
-  const token = process.env.KV_REST_API_TOKEN;
-  if (!url || !token) return null; // KV not configured — skip rate limiting
+function kvCommand(cmd, ...args) {
+  const baseUrl = process.env.KV_REST_API_URL;
+  const token   = process.env.KV_REST_API_TOKEN;
+  if (!baseUrl || !token) return Promise.resolve(null);
 
-  const endpoint = `${url}/${[cmd, ...args].map(encodeURIComponent).join('/')}`;
-  const r = await fetch(endpoint, {
-    headers: { Authorization: `Bearer ${token}` },
+  const path     = '/' + [cmd, ...args].map(encodeURIComponent).join('/');
+  const parsed   = new URL(baseUrl);
+  const hostname = parsed.hostname;
+  const basePath = parsed.pathname.replace(/\/$/, '');
+
+  return new Promise((resolve) => {
+    const options = {
+      hostname,
+      path:    basePath + path,
+      method:  'GET',
+      headers: { Authorization: `Bearer ${token}` },
+    };
+    const req = https.request(options, (r) => {
+      const chunks = [];
+      r.on('data', (c) => chunks.push(c));
+      r.on('end', () => {
+        try {
+          const json = JSON.parse(Buffer.concat(chunks).toString());
+          resolve(json.result ?? null);
+        } catch (_) { resolve(null); }
+      });
+    });
+    req.on('error', () => resolve(null));
+    req.end();
   });
-  if (!r.ok) return null;
-  const json = await r.json();
-  return json.result ?? null;
 }
 
 /** Atomically increment a counter and set TTL on first write. Returns new value. */
