@@ -147,8 +147,8 @@ module.exports = async function handler(req, res) {
     taskType: 'IMAGE_VARIATION',
     imageVariationParams: {
       images:             [base64],
-      text:               prompt || 'high quality, detailed, clean artwork',
-      negativeText:       'low quality, blurry, distorted, watermark, ugly, deformed',
+      text:               prompt ? `${prompt} Microsoft Paint Style, digital pixel art, solid colors` : 'Microsoft Paint Drawing, clean lines, Solid Background',
+      negativeText: 'pencils, pens, desk, paper texture, hand, shadow, photorealistic, real world, table, office supplies',
       similarityStrength: 0.7,
     },
     imageGenerationConfig: {
