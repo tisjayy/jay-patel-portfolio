@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -17,12 +17,13 @@
     <!-- Preload critical images to prevent flash-of-unloaded-content -->
     <link rel="preload" as="image" href="/imgs/windows.webp">
     <!-- Prefetch experience card images during idle time before user opens Experience -->
-    <link rel="prefetch" as="image" href="/imgs/icons/WorkHistory.jpg">
-    <link rel="prefetch" as="image" href="/imgs/icons/Projects.jpg">
+    <link rel="prefetch" as="image" href="/imgs/icons/WorkHistory.webp">
+    <link rel="prefetch" as="image" href="/imgs/icons/Projects.webp">
     <link rel="prefetch" as="image" href="/imgs/icons/resume.webp">
-    <link rel="prefetch" as="image" href="/imgs/icons/AskAI.png">
-    <link rel="prefetch" as="image" href="/imgs/about-me/profile.jpg">
+    <link rel="prefetch" as="image" href="/imgs/icons/AskAI.webp">
+    <link rel="prefetch" as="image" href="/imgs/about-me/profile.webp">
     <link rel="prefetch" as="image" href="/imgs/icons/ArcadeBanner.webp">
+    <script defer src="/_vercel/speed-insights/script.js"></script>
 </head>
 
 <body dir="ltr" style="overflow: hidden;" id="body">
@@ -102,7 +103,7 @@
     <footer style="z-index:9999999" id="footer">
         <section id="windows-icon-section" class="windows-hover">
             <button id="start-btn" class="xp-start-btn">
-                <img src="/imgs/icons/windowslogo.png" alt="Windows XP" id="windows-xp-logo" />
+                <img src="/imgs/icons/windowslogo.webp" alt="Windows XP" id="windows-xp-logo" />
                 <span class="xp-start-text">start</span>
             </button>
         </section>
@@ -112,7 +113,7 @@
             <!-- Left column: blue banner + app list -->
             <section class="xp-start-left">
                 <div class="xp-user-banner">
-                    <img src="/imgs/about-me/profile.jpg" alt="Jay Patel" class="xp-user-avatar" />
+                    <img src="/imgs/about-me/profile.webp" alt="Jay Patel" class="xp-user-avatar" />
                     <span class="xp-user-name">Jay Patel</span>
                 </div>
                 <div class="xp-prog-list">
@@ -294,7 +295,7 @@
                         <input id="search-bar" class="form-control" type="search" placeholder="Search">
                     </div>
                     <div id="nav-buttons" class="col d-flex align-items-center gap-2">
-                        <img class="ms-2" id="profile" src="/imgs/about-me/profile.jpeg" alt="">
+                        <img loading="lazy" class="ms-2" id="profile" src="/imgs/about-me/profile.webp" alt="">
                     </div>
                 </div>
             </div>
@@ -307,7 +308,7 @@
                         <div id="post-top-bar" class="p-2 d-flex justify-content-between align-items-center">
                             <div style="display: flex;">
                                 <div>
-                                    <img id="post-profile-story" src="/imgs/about-me/profile.jpeg" alt="">
+                                    <img loading="lazy" id="post-profile-story" src="/imgs/about-me/profile.webp" alt="">
                                 </div>
                                 <div style="display: flex; flex-direction: column;">
                                     <label class="d-inline ps-2">
@@ -328,7 +329,7 @@
                             </div>
                         </div>
                         <div class="image-container">
-                            <img class="post" src="/imgs/about-me/childhood.webp" id="post_1" alt="">
+                            <img loading="lazy" class="post" src="/imgs/about-me/childhood.webp" id="post_1" alt="">
                             <div class="next-photo" id="next_1"></div>
                             <div class="prev-photo" id="prev_1"></div>
 
@@ -372,7 +373,7 @@
                             </div>
 
                             <div class="d-flex mt-2 ms-2 ps-2">
-                                <img class="border me-2" id="subtitle-profile" src="/imgs/about-me/tina.webp"
+                                <img loading="lazy" class="border me-2" id="subtitle-profile" src="/imgs/about-me/tina.webp"
                                     alt="">
                                 <p>Liked by <span id="weight-600">mom</span> and <span id="weight-600">1256
                                         others</span></p>
@@ -381,12 +382,12 @@
                                 <div class="d-flex flex-wrap">
                                     <h6 class="ms-1">jrefusta</h6>
                                     <p style="text-align: justify;  flex-basis: 100%; line-height: 1.5;" class="ms-1">
-                                        Hello there! 👋 I'm Joan, and these are some of my very first baby pictures. I
+                                        Hello there! ?? I'm Joan, and these are some of my very first baby pictures. I
                                         was born and raised in El Masnou,
                                         Barcelona, Spain, a charming coastal town by the sea.<br><br> As you can
                                         imagine, I
                                         don't hold many memories from this time, but
-                                        my parents have always told me that I was a curious and cheerful baby 👶.
+                                        my parents have always told me that I was a curious and cheerful baby ??.
                                     </p>
                                 </div>
 
@@ -410,7 +411,7 @@
                         <div id="post-top-bar" class="p-2 d-flex justify-content-between">
                             <div style="display: flex;">
                                 <div>
-                                    <img id="post-profile-story" src="/imgs/about-me/profile.jpeg" alt="">
+                                    <img loading="lazy" id="post-profile-story" src="/imgs/about-me/profile.webp" alt="">
 
                                 </div>
                                 <div style="display: flex; flex-direction: column;">
@@ -432,7 +433,7 @@
                             </div>
                         </div>
                         <div class="image-container">
-                            <img class="post" src="/imgs/about-me/childhood_1.webp" id="post_2" alt="">
+                            <img loading="lazy" class="post" src="/imgs/about-me/childhood_1.webp" id="post_2" alt="">
                             <div class="next-photo" id="next_2"></div>
                             <div class="prev-photo" id="prev_2"></div>
 
@@ -473,7 +474,7 @@
                             </div>
 
                             <div class="d-flex mt-2 ms-2 ps-2">
-                                <img class="border me-2" id="subtitle-profile" src="/imgs/about-me/sister.jpeg"
+                                <img loading="lazy" class="border me-2" id="subtitle-profile" src="/imgs/about-me/sister.webp"
                                     alt="">
                                 <p>Liked by <span id="weight-600">sister</span> and <span id="weight-600">678
                                         others</span></p>
@@ -486,7 +487,7 @@
                                         with my parents, who provided unwavering
                                         support, and with my sister, my partner in crime. <br><br> Together, we
                                         shared unforgettable moments filled with
-                                        laughter and adventure.🪁
+                                        laughter and adventure.??
                                     </p>
                                 </div>
 
@@ -496,10 +497,10 @@
                                 <div class="d-flex justify-content-between pe-4">
                                     <div class="d-flex">
                                         <h6 class="ms-1">sister</h6>
-                                        <p class="ms-1">Those were the days! We always had so much fun! 🤹‍♀️
+                                        <p class="ms-1">Those were the days! We always had so much fun! ?????
                                         </p>
                                     </div>
-                                    <img id="comment-like" class="mt-1"
+                                    <img loading="lazy" id="comment-like" class="mt-1"
                                         src="https://cdn-icons-png.flaticon.com/128/1077/1077035.png" alt="">
                                 </div>
                                 <div>
@@ -513,7 +514,7 @@
                         <div id="post-top-bar" class="p-2 d-flex justify-content-between align-items-center">
                             <div style="display: flex;">
                                 <div>
-                                    <img id="post-profile-story" src="/imgs/about-me/profile.jpeg" alt="">
+                                    <img loading="lazy" id="post-profile-story" src="/imgs/about-me/profile.webp" alt="">
                                 </div>
                                 <div style="display: flex; flex-direction: column;">
                                     <label class="d-inline ps-2">
@@ -534,7 +535,7 @@
                             </div>
                         </div>
                         <div class="image-container">
-                            <img class="post" src="/imgs/about-me/nintendo-ds.webp" id="post_3" alt="">
+                            <img loading="lazy" class="post" src="/imgs/about-me/nintendo-ds.webp" id="post_3" alt="">
                             <div class="next-photo" id="next_3"></div>
                             <div class="prev-photo" id="prev_3"></div>
 
@@ -576,7 +577,7 @@
                             </div>
 
                             <div class="d-flex mt-2 ms-2 ps-2">
-                                <img class="border me-2" id="subtitle-profile" src="/imgs/about-me/tina_2.jpeg"
+                                <img loading="lazy" class="border me-2" id="subtitle-profile" src="/imgs/about-me/tina_2.webp"
                                     alt="">
                                 <p>Liked by <span id="weight-600">dad</span> and <span id="weight-600">901
                                         others</span></p>
@@ -594,7 +595,7 @@
                                         During those years I spent a lot of time in front of a screen, whether it was a
                                         PC or a console.
                                         <br><br>
-                                        That initial interest eventually turned into a deep passion. 🎮
+                                        That initial interest eventually turned into a deep passion. ??
                                 </div>
 
                                 <div>
@@ -617,7 +618,7 @@
                         <div id="post-top-bar" class="p-2 d-flex justify-content-between align-items-center">
                             <div style="display: flex;">
                                 <div>
-                                    <img id="post-profile-story" src="/imgs/about-me/profile.jpeg" alt="">
+                                    <img loading="lazy" id="post-profile-story" src="/imgs/about-me/profile.webp" alt="">
                                 </div>
                                 <div style="display: flex; flex-direction: column;">
                                     <label class="d-inline ps-2">
@@ -638,7 +639,7 @@
                             </div>
                         </div>
                         <div class="image-container">
-                            <img class="post" src="/imgs/about-me/uni.webp" id="post_4" alt="">
+                            <img loading="lazy" class="post" src="/imgs/about-me/uni.webp" id="post_4" alt="">
                             <div class="next-photo" id="next_4"></div>
                             <div class="prev-photo" id="prev_4"></div>
 
@@ -680,7 +681,7 @@
                             </div>
 
                             <div class="d-flex mt-2 ms-2 ps-2">
-                                <img class="border me-2" id="subtitle-profile"
+                                <img loading="lazy" class="border me-2" id="subtitle-profile"
                                     src="/imgs/about-me/logo-upc.webp" style="background-color: white;" alt="">
                                 <p>Liked by <span id="weight-600">upc</span> and <span id="weight-600">1231
                                         others</span></p>
@@ -696,18 +697,18 @@
                                         ever-evolving landscape of video games that
                                         truly captured my imagination. Ultimately, recognizing my affinity for
                                         problem-solving and innovation, I made the
-                                        decision to pursue Computer Science.💻
+                                        decision to pursue Computer Science.??
                                         <br><br>
                                         Once entering university, I chose to specialize in Computing, which
                                         embrace fields such as Artificial
                                         Intelligence, algorithms and computer graphics. During my education, I
                                         selected relevant subjects such as Video Games,
-                                        Computational Geometry, and Design of curves and surfaces. 📚
+                                        Computational Geometry, and Design of curves and surfaces. ??
                                         <br><br>
                                         Finally, in 2021, I culminated my academic career by graduating as a Computer
                                         Engineer at the Universitat Politècnica de Catalunya (FIB, UPC), where I could
                                         materialize my passion for computing and
-                                        disciplines related to the 3D world. 🎓
+                                        disciplines related to the 3D world. ??
                                         <br><br>
                                     </p>
                                 </div>
@@ -732,7 +733,7 @@
                         <div id="post-top-bar" class="p-2 d-flex justify-content-between align-items-center">
                             <div style="display: flex;">
                                 <div>
-                                    <img id="post-profile-story" src="/imgs/about-me/profile.jpeg" alt="">
+                                    <img loading="lazy" id="post-profile-story" src="/imgs/about-me/profile.webp" alt="">
                                 </div>
                                 <div style="display: flex; flex-direction: column;">
                                     <label class="d-inline ps-2">
@@ -753,7 +754,7 @@
                             </div>
                         </div>
                         <div class="image-container">
-                            <img class="post" src="/imgs/about-me/travel.webp" id="post_5" alt="">
+                            <img loading="lazy" class="post" src="/imgs/about-me/travel.webp" id="post_5" alt="">
                             <div class="next-photo" id="next_5"></div>
                             <div class="prev-photo" id="prev_5"></div>
 
@@ -795,7 +796,7 @@
                             </div>
 
                             <div class="d-flex mt-2 ms-2 ps-2">
-                                <img class="border me-2" id="subtitle-profile"
+                                <img loading="lazy" class="border me-2" id="subtitle-profile"
                                     src="/imgs/about-me/friend1.webp" alt="">
                                 <p>Liked by <span id="weight-600">friend</span> and <span id="weight-600">775
                                         others</span></p>
@@ -817,7 +818,7 @@
                                         These destinations are just a few
                                         among many that I have visited in Spain. Each travel trip has been an
                                         opportunity to disconnect, discover fascinating
-                                        places, and enrich my life with unique experiences. 🚞
+                                        places, and enrich my life with unique experiences. ??
                                     </p>
                                 </div>
 
@@ -827,7 +828,7 @@
                                 <div class="d-flex justify-content-between pe-4">
                                     <div class="d-flex">
                                         <h6 class="ms-1">friend</h6>
-                                        <p class="ms-1">landscape is stunning 🏞</p>
+                                        <p class="ms-1">landscape is stunning ??</p>
                                     </div>
                                 </div>
                                 <div>
@@ -841,7 +842,7 @@
                         <div id="post-top-bar" class="p-2 d-flex justify-content-between align-items-center">
                             <div style="display: flex;">
                                 <div>
-                                    <img id="post-profile-story" src="/imgs/about-me/profile.jpeg" alt="">
+                                    <img loading="lazy" id="post-profile-story" src="/imgs/about-me/profile.webp" alt="">
                                 </div>
                                 <div style="display: flex; flex-direction: column;">
                                     <label class="d-inline ps-2">
@@ -862,7 +863,7 @@
                             </div>
                         </div>
                         <div class="image-container">
-                            <img class="post" src="/imgs/about-me/starduster.webp" id="post_6" alt="">
+                            <img loading="lazy" class="post" src="/imgs/about-me/starduster.webp" id="post_6" alt="">
                             <div class="next-photo" id="next_6"></div>
                             <div class="prev-photo" id="prev_6"></div>
 
@@ -903,8 +904,8 @@
                             </div>
 
                             <div class="d-flex mt-2 ms-2 ps-2">
-                                <img class="border me-2" id="subtitle-profile"
-                                    src="/imgs/about-me/indiedevday.jpeg" alt="">
+                                <img loading="lazy" class="border me-2" id="subtitle-profile"
+                                    src="/imgs/about-me/indiedevday.webp" alt="">
                                 <p>Liked by <span id="weight-600">indiedevday</span> and <span id="weight-600">1734
                                         others</span></p>
                             </div>
@@ -916,7 +917,7 @@
                                         As someone who loves being part of the video game creation process, I've
                                         participated in various Game Jams. Sometimes,
                                         I team up with my friend Victor, and other times, I work as a solodev.
-                                        These events really push my creativity. 👾
+                                        These events really push my creativity. ??
                                         <br><br>
                                         Together, Victor and I took one of our projects, STARDUSTER, and expanded it
                                         into something more significant. We're
@@ -946,7 +947,7 @@
                         <div id="post-top-bar" class="p-2 d-flex justify-content-between align-items-center">
                             <div style="display: flex;">
                                 <div>
-                                    <img id="post-profile-story" src="/imgs/about-me/profile.jpeg" alt="">
+                                    <img loading="lazy" id="post-profile-story" src="/imgs/about-me/profile.webp" alt="">
                                 </div>
                                 <div style="display: flex; flex-direction: column;">
                                     <label class="d-inline ps-2">
@@ -967,7 +968,7 @@
                             </div>
                         </div>
                         <div class="image-container">
-                            <img class="post" src="/imgs/about-me/travel_2.webp" id="post_7" alt="">
+                            <img loading="lazy" class="post" src="/imgs/about-me/travel_2.webp" id="post_7" alt="">
                             <div class="next-photo" id="next_7"></div>
                             <div class="prev-photo" id="prev_7"></div>
 
@@ -1008,7 +1009,7 @@
                             </div>
 
                             <div class="d-flex mt-2 ms-2 ps-2">
-                                <img class="border me-2" id="subtitle-profile"
+                                <img loading="lazy" class="border me-2" id="subtitle-profile"
                                     src="/imgs/about-me/friend2.webp" alt="">
                                 <p>Liked by <span id="weight-600">friend</span> and <span id="weight-600">825
                                         others</span></p>
@@ -1019,11 +1020,11 @@
                                     <p style="text-align: justify;  flex-basis: 100%; line-height: 1.5;" class="ms-1">
 
                                         Additionally, I've had the opportunity to explore international destinations
-                                        such as London, Amsterdam, and Budapest.✈<br><br>
+                                        such as London, Amsterdam, and Budapest.?<br><br>
                                         I particularly enjoyed exploring places further from home., and I am eager to
                                         continue
                                         discovering new places and cultures
-                                        around the globe.🌍
+                                        around the globe.??
                                     </p>
                                 </div>
 
@@ -1048,7 +1049,7 @@
     <div id="resume" class="resume" style="display: none;">
         <div class="title-bar resume-titlebar" id="titleBar">
             <div class="resume-title-left">
-                <img src="/imgs/icons/resume.webp" class="resume-title-icon" alt="">
+                <img loading="lazy" src="/imgs/icons/resume.webp" class="resume-title-icon" alt="">
                 <span class="title">Resume</span>
             </div>
             <div class="window-controls">
@@ -1062,7 +1063,7 @@
             <div class="resume-menu-item" id="resume-menu-file" tabindex="0">
                 File
                 <div class="resume-dropdown" id="resume-dropdown-file">
-                    <div class="resume-dd-item" id="resume-dd-save"><img src="/imgs/buttons/Save.png" class="resume-dd-ico" alt=""> Save</div>
+                    <div class="resume-dd-item" id="resume-dd-save"><img loading="lazy" src="/imgs/buttons/Save.webp" class="resume-dd-ico" alt=""> Save</div>
                     <div class="resume-dd-sep"></div>
                     <div class="resume-dd-item" id="resume-dd-exit">&#x2715; Exit</div>
                 </div>
@@ -1075,20 +1076,20 @@
                 </div>
             </div>
             <div class="resume-menu-item" tabindex="0">Help</div>
-            <div class="resume-menubar-logo"><img src="/imgs/icons/windowslogo.png" alt=""></div>
+            <div class="resume-menubar-logo"><img loading="lazy" src="/imgs/icons/windowslogo.webp" alt=""></div>
         </div>
         <!-- Toolbar -->
         <div class="resume-toolbar">
             <button class="resume-tb-btn" id="resume-tb-save">
-                <img src="/imgs/buttons/Save.png" class="resume-tb-ico" alt="">
+                <img loading="lazy" src="/imgs/buttons/Save.webp" class="resume-tb-ico" alt="">
                 <span>Save</span>
             </button>
             <button class="resume-tb-btn" id="resume-tb-print">
-                <img src="/imgs/icons/resume-print.png" class="resume-tb-ico" alt="" onerror="this.style.fontSize='14px';this.outerHTML='<span style=\'font-size:14px\'>🖨️</span>'">
+                <img loading="lazy" src="/imgs/icons/resume-print.png" class="resume-tb-ico" alt="" onerror="this.style.fontSize='14px';this.outerHTML='<span style=\'font-size:14px\'>???</span>'">
                 <span>Print</span>
             </button>
             <button class="resume-tb-btn" id="resume-tb-contact">
-                <img src="/imgs/icons/contact.webp" class="resume-tb-ico" alt="">
+                <img loading="lazy" src="/imgs/icons/contact.webp" class="resume-tb-ico" alt="">
                 <span>Contact Me</span>
             </button>
         </div>
@@ -1178,29 +1179,29 @@
                         </ul>
                     </nav>
                 </div>
-                <img class="header-image" src="/imgs/experience/smiley.webp" alt="Smiley">
+                <img loading="lazy" class="header-image" src="/imgs/experience/smiley.webp" alt="Smiley">
             </header>
             <div class="company-selection">
                 <div class="company-logo" id="floorfy_company_logo">
-                    <img src="/imgs/experience/RBCimg.webp" alt="RBC">
+                    <img loading="lazy" src="/imgs/experience/RBCimg.webp" alt="RBC">
                 </div>
                 <div class="company-logo" id="nomoko_company_logo">
-                    <img src="/imgs/experience/images.webp" alt="Nomoko">
+                    <img loading="lazy" src="/imgs/experience/images.webp" alt="Nomoko">
                 </div>
                 <div class="company-logo">
-                    <img src="/imgs/experience/tba.webp" alt="TBA">
+                    <img loading="lazy" src="/imgs/experience/tba.webp" alt="TBA">
                 </div>
                 <div class="company-logo">
-                    <img src="/imgs/experience/tba.webp" alt="TBA">
+                    <img loading="lazy" src="/imgs/experience/tba.webp" alt="TBA">
                 </div>
                 <div class="company-logo">
-                    <img src="/imgs/experience/tba.webp" alt="TBA">
+                    <img loading="lazy" src="/imgs/experience/tba.webp" alt="TBA">
                 </div>
                 <div class="company-logo">
-                    <img src="/imgs/experience/tba.webp" alt="TBA">
+                    <img loading="lazy" src="/imgs/experience/tba.webp" alt="TBA">
                 </div>
                 <div class="company-logo">
-                    <img src="/imgs/experience/tba.webp" alt="TBA">
+                    <img loading="lazy" src="/imgs/experience/tba.webp" alt="TBA">
                 </div>
             </div>
             <div class="timeline" id="floorfy_timeline" style=" display:none">
@@ -1237,11 +1238,11 @@
                   <div class="nf-hero-btns">
                     <button class="nf-btn nf-btn-play" id="nf-view-resume">&#9654; View Resume</button>
                     <button class="nf-btn nf-btn-info" id="nf-more-info">&#x2139; More Info</button>
-                    <button class="nf-btn-ai-icon" id="nf-ask-ai" title="Ask AI"><img src="/imgs/icons/copilot.webp" alt="Ask AI"></button>
+                    <button class="nf-btn-ai-icon" id="nf-ask-ai" title="Ask AI"><img loading="lazy" src="/imgs/icons/copilot.webp" alt="Ask AI"></button>
                   </div>
                 </div>
                 <div class="nf-hero-img">
-                  <img src="/imgs/about-me/profile.jpg" alt="Jay Patel">
+                  <img loading="lazy" src="/imgs/about-me/profile.webp" alt="Jay Patel">
                 </div>
               </div>
               <div class="nf-overall-wrap">
@@ -1321,29 +1322,29 @@
             <div class="xp-explorer-toolbar">
                 <div class="xp-tb-group">
                     <button class="xp-tb-btn" id="readme-back-btn" onclick="window._readmeGoBack()">
-                        <img src="/imgs/about/green_arrow.png" class="xp-tb-ico-img" alt="">
+                        <img loading="lazy" src="/imgs/about/green_arrow.webp" class="xp-tb-ico-img" alt="">
                         <span class="xp-tb-label">Back</span>
                     </button>
                     <button class="xp-tb-btn" disabled>
-                        <img src="/imgs/about/green_arrow.png" class="xp-tb-ico-img xp-tb-ico-fwd" alt="">
+                        <img loading="lazy" src="/imgs/about/green_arrow.webp" class="xp-tb-ico-img xp-tb-ico-fwd" alt="">
                         <span class="xp-tb-label">Forward</span>
                     </button>
                 </div>
                 <div class="xp-tb-sep"></div>
                 <div class="xp-tb-group">
                     <button class="xp-tb-btn" disabled>
-                        <img src="/imgs/about/Folder%20Conflict.ico" class="xp-tb-ico-img" alt="">
+                        <img loading="lazy" src="/imgs/about/Folder%20Conflict.ico" class="xp-tb-ico-img" alt="">
                         <span class="xp-tb-label">Up</span>
                     </button>
                 </div>
                 <div class="xp-tb-sep"></div>
                 <div class="xp-tb-group">
                     <button class="xp-tb-btn">
-                        <img src="/imgs/about/Windows%20Explorer.ico" class="xp-tb-ico-img" alt="">
+                        <img loading="lazy" src="/imgs/about/Windows%20Explorer.ico" class="xp-tb-ico-img" alt="">
                         <span class="xp-tb-label">Search</span>
                     </button>
                     <button class="xp-tb-btn">
-                        <img src="/imgs/about/Computer%20Folder.ico" class="xp-tb-ico-img" alt="">
+                        <img loading="lazy" src="/imgs/about/Computer%20Folder.ico" class="xp-tb-ico-img" alt="">
                         <span class="xp-tb-label">Folders</span>
                     </button>
                 </div>
@@ -1352,7 +1353,7 @@
             <div class="xp-address-bar">
                 <div class="xp-address-label">Address</div>
                 <div class="xp-address-content">
-                    <img src="/imgs/icons/credits.webp" class="xp-addr-icon" alt="">
+                    <img loading="lazy" src="/imgs/icons/credits.webp" class="xp-addr-icon" alt="">
                     <span class="xp-address-text" id="readme-address-text">My Documents/readme.txt</span>
                 </div>
                 <button class="xp-addr-dropdown">&#9660;</button>
@@ -1365,7 +1366,7 @@
                     <!-- FILE LIST VIEW (Documents.vue) -->
                     <div id="readme-file-list" class="xp-doc-list" style="display:none;">
                         <div class="xp-doc-item" onclick="window._readmeFocusFile(this)" ondblclick="window._readmeOpenDoc()">
-                            <img src="/imgs/icons/credits.webp" class="xp-doc-icon" alt="readme.txt">
+                            <img loading="lazy" src="/imgs/icons/credits.webp" class="xp-doc-icon" alt="readme.txt">
                             <div class="xp-doc-info">
                                 <p class="xp-doc-name">readme.txt</p>
                                 <p class="xp-doc-meta">Text Document</p>
@@ -1377,7 +1378,7 @@
                     <div id="readme-about-view" class="xp-about-content">
                         <div class="xp-about-header">
                             <h1 class="xp-about-h1">About</h1>
-                            <img src="/imgs/icons/windowslogo.png" class="xp-about-badge" alt="Windows XP">
+                            <img loading="lazy" src="/imgs/icons/windowslogo.webp" class="xp-about-badge" alt="Windows XP">
                         </div>
                         <hr class="xp-about-hr">
                         <div class="xp-about-body">
@@ -1446,7 +1447,7 @@
     <div id="paint" class="paint-window" style="display:none;">
         <div class="title-bar readme-title-bar" id="titleBar">
             <div class="title">
-                <img src="/imgs/icons/ms_paint.webp" style="width:14px;height:14px;vertical-align:middle;margin-right:5px;">AI Paint
+                <img loading="lazy" src="/imgs/icons/ms_paint.webp" style="width:14px;height:14px;vertical-align:middle;margin-right:5px;">AI Paint
             </div>
             <div class="window-controls">
                 <div class="window-button-98 minimize"></div>
@@ -1465,7 +1466,7 @@
             <!-- Floating Magic AI pill widget -->
             <div id="paint-ai-widget" class="paint-ai-widget">
                 <div class="pai-pill">
-                    <div class="pai-drag-handle" id="pai-titlebar" title="Drag">⠿</div>
+                    <div class="pai-drag-handle" id="pai-titlebar" title="Drag">?</div>
                     <input id="paint-ai-prompt" class="pai-input" type="text"
                            placeholder="Describe a style… e.g. oil painting, neon" maxlength="200">
                     <button id="paint-magic-btn" class="pai-btn" disabled
@@ -1519,7 +1520,7 @@
         });
       })();
 
-      // ── Battery easter egg ──
+      // -- Battery easter egg --
       (function() {
         var dead = false;
         var wrap = document.getElementById('battery-icon-wrap');
@@ -1543,7 +1544,7 @@
         });
       })();
 
-      // ── CRT tray toggle ──
+      // -- CRT tray toggle --
       (function() {
         var overlay = document.getElementById('crt-overlay');
         var btn     = document.getElementById('expand-other-apps');
@@ -1578,7 +1579,7 @@
         setCheck();
       })();
 
-      // ── Clock easter egg ──
+      // -- Clock easter egg --
       (function() {
         window._clockOffset = 0;
         window._clockAltFormat = false;
@@ -1623,7 +1624,7 @@
                 <p>Power BI dashboard from model outputs stored in MySQL for visualization and analysis.</p>
             </div>
             <div class="proj-screenshots">
-                <img class="proj-img" src="/imgs/Projects/nyc_taxi/nyctaxi_1.png" alt="NYC Taxi Dashboard" title="Click to open full size">
+                <img loading="lazy" class="proj-img" src="/imgs/Projects/nyc_taxi/nyctaxi_1.webp" alt="NYC Taxi Dashboard" title="Click to open full size">
             </div>
         </div>
     </div>
@@ -1645,8 +1646,8 @@
                 <p>Containerized with Docker and deployed on Azure Container Apps with a Streamlit + WebRTC interface.</p>
             </div>
             <div class="proj-screenshots">
-                <img class="proj-img" src="/imgs/Projects/emotion_detection/emotion1.png" alt="Emotion Detection 1" title="Click to open full size">
-                <img class="proj-img" src="/imgs/Projects/emotion_detection/emotion2.png" alt="Emotion Detection 2" title="Click to open full size">
+                <img loading="lazy" class="proj-img" src="/imgs/Projects/emotion_detection/emotion1.webp" alt="Emotion Detection 1" title="Click to open full size">
+                <img loading="lazy" class="proj-img" src="/imgs/Projects/emotion_detection/emotion2.webp" alt="Emotion Detection 2" title="Click to open full size">
             </div>
         </div>
     </div>
@@ -1667,7 +1668,7 @@
                 <p>Token embedding + positional encoding, multi-head self-attention with masking to prevent future token leakage, greedy decoding, and BLEU score evaluation.</p>
             </div>
             <div class="proj-screenshots">
-                <img class="proj-img" src="/imgs/Projects/transformers/transformers_architecture.png" alt="Transformer Architecture" title="Click to open full size">
+                <img loading="lazy" class="proj-img" src="/imgs/Projects/transformers/transformers_architecture.webp" alt="Transformer Architecture" title="Click to open full size">
             </div>
         </div>
     </div>
@@ -1723,12 +1724,12 @@
 
         var NF_SECTIONS = [
          
-          { id: 'experience',   label: 'Work History',  sub: 'Employment',      color: '#b71c1c', icon: '/imgs/icons/WorkHistory.jpg', cover: true },
-          { id: 'projects',     label: 'Projects',      sub: 'My Work',         color: '#1b5e20', icon: '/imgs/icons/Projects.jpg',    cover: true },
-          { id: 'resume',       label: 'Resume',        sub: 'PDF Viewer',      color: '#e65100', icon: '/imgs/icons/Resume.png', cover: true },
-          { id: 'chatbot',      label: 'Ask AI',        sub: 'Chat with Jay',   color: '#0d47a1', icon: '/imgs/icons/AskAI.png',       cover: true },
+          { id: 'experience',   label: 'Work History',  sub: 'Employment',      color: '#b71c1c', icon: '/imgs/icons/WorkHistory.webp', cover: true },
+          { id: 'projects',     label: 'Projects',      sub: 'My Work',         color: '#1b5e20', icon: '/imgs/icons/Projects.webp',    cover: true },
+          { id: 'resume',       label: 'Resume',        sub: 'PDF Viewer',      color: '#e65100', icon: '/imgs/icons/Resume.webp', cover: true },
+          { id: 'chatbot',      label: 'Ask AI',        sub: 'Chat with Jay',   color: '#0d47a1', icon: '/imgs/icons/AskAI.webp',       cover: true },
 
-          { id: 'rubiks-cube',  label: "Rubik's Cube",  sub: '3D Puzzle',       color: '#f57f17', icon: '/imgs/icons/bigshort.jpg', cover: true },
+          { id: 'rubiks-cube',  label: "Rubik's Cube",  sub: '3D Puzzle',       color: '#f57f17', icon: '/imgs/icons/bigshort.webp', cover: true },
           { id: 'arcade',       label: 'Arcade',        sub: 'Mini Games',      color: '#004d40', icon: '/imgs/icons/ArcadeBanner.webp', cover: true },
           { id: 'contact',      label: 'Contact',       sub: 'Get In Touch',    color: '#6a1b9a', icon: '/imgs/icons/contact.webp' },
           { id: 'music-player', label: 'WinAmp',        sub: 'Music Player',    color: '#1565c0', icon: '/imgs/icons/music-player.svg' },
@@ -1762,7 +1763,7 @@
               ? 'background-image:url(' + s.icon + ');background-size:cover;background-position:center;'
               : 'background:linear-gradient(135deg,' + s.color + ' 0%,#141414 100%)';
             card.innerHTML = '<div class="nf-card-thumb" style="' + thumbStyle + '">'
-              + (s.cover ? '' : '<img src="' + s.icon + '" alt="' + s.label + '" class="nf-card-icon">')
+              + (s.cover ? '' : '<img loading="lazy" src="' + s.icon + '" alt="' + s.label + '" class="nf-card-icon">')
               + (done ? '<div class="nf-card-check">&#10003;</div>' : '')
               + '</div>'
               + '<div class="nf-card-bar"><div class="nf-progress-fill" style="width:' + (done?'100%':'0%') + '"></div></div>'
@@ -1894,9 +1895,9 @@
       };
     </script>
     <script>
-      // ── Resume window interactivity ──
+      // -- Resume window interactivity --
       (function () {
-        // Menu item click → toggle .rm-open
+        // Menu item click ? toggle .rm-open
         document.querySelectorAll('.resume-menu-item').forEach(function (item) {
           item.addEventListener('click', function (e) {
             e.stopPropagation();
@@ -1905,7 +1906,7 @@
             if (!wasOpen && item.querySelector('.resume-dropdown')) item.classList.add('rm-open');
           });
         });
-        // Click outside → close all dropdowns
+        // Click outside ? close all dropdowns
         document.addEventListener('click', function () {
           document.querySelectorAll('.resume-menu-item').forEach(function (i) { i.classList.remove('rm-open'); });
         });
@@ -1914,7 +1915,7 @@
           document.querySelectorAll('.resume-menu-item').forEach(function (i) { i.classList.remove('rm-open'); });
         }
 
-        // Save (dropdown + toolbar) → download PDF
+        // Save (dropdown + toolbar) ? download PDF
         function doSave() {
           var iframe = document.getElementById('resume-iframe');
           if (!iframe || !iframe.src || iframe.src === 'about:blank') return;
@@ -1929,7 +1930,7 @@
         var tbSave = document.getElementById('resume-tb-save');
         if (tbSave) tbSave.addEventListener('click', doSave);
 
-        // Exit → close window
+        // Exit ? close window
         var ddExit = document.getElementById('resume-dd-exit');
         if (ddExit) ddExit.addEventListener('click', function () {
           var win = document.getElementById('resume');
@@ -1939,7 +1940,7 @@
           closeDropdowns();
         });
 
-        // View > Minimize → hide window (taskbar item keeps it restoreable)
+        // View > Minimize ? hide window (taskbar item keeps it restoreable)
         var ddMin = document.getElementById('resume-dd-minimize');
         if (ddMin) ddMin.addEventListener('click', function () {
           var minBtn = document.querySelector('#resume .window-button.minimize');
@@ -1947,7 +1948,7 @@
           closeDropdowns();
         });
 
-        // View > Maximize → click the restore/maximize button
+        // View > Maximize ? click the restore/maximize button
         var ddMax = document.getElementById('resume-dd-maximize');
         if (ddMax) ddMax.addEventListener('click', function () {
           var restoreBtn = document.querySelector('#resume .window-button.restore');
@@ -1955,7 +1956,7 @@
           closeDropdowns();
         });
 
-        // Toolbar: Zoom → open PDF in new tab
+        // Toolbar: Zoom ? open PDF in new tab
         var tbZoom = document.getElementById('resume-tb-zoom');
         if (tbZoom) tbZoom.addEventListener('click', function () {
           var src = document.getElementById('resume-iframe').src;
@@ -1971,7 +1972,7 @@
           }
         });
 
-        // Toolbar: Contact Me → open contact window
+        // Toolbar: Contact Me ? open contact window
         var tbContact = document.getElementById('resume-tb-contact');
         if (tbContact) tbContact.addEventListener('click', function () {
           var contactWin = document.getElementById('contact');

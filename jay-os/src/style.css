@@ -186,6 +186,8 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #000;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: antialiased;
   -webkit-text-stroke: 0px !important;
