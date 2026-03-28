@@ -1,0 +1,138 @@
+<!--
+    Windows XP Nody Greeter Theme
+    by Markus Hernandez
+-->
+<!DOCTYPE html>
+<html lang="en-us">
+    <!-- Metadata -->
+    <head>
+        <title>Welcome</title>
+        <link rel="stylesheet" href="css/xp.css"/>
+    </head>
+    <!-- Body -->
+    <body>
+        <!-- Main Login Screen Content -->
+        <div id="main-content">
+            <!-- Header -->
+            <div id="header"></div>
+            <div id="headerStripe"></div>
+            <!-- Login Screen Content -->
+            <div id="center">
+                <div id="centerLeft">
+                    <img src="img/logo.png" id="logo"/>
+                    <span id="text-under-logo">
+                        To begin, click your user name
+                    </span>
+                </div>
+                <div id="centerDivider"></div>
+                <div id="centerRight">
+                    <div id="userListings">
+                        <template id="user-template">
+                            <div class="user-border-wrapper">
+                                <div class="user">
+                                    <div class="profile-picture-wrapper">
+                                        <img src="img/bike.png" class="profile-picture">
+                                    </div>
+                                    <span class="user-name">
+                                        Markus
+                                    </span>
+                                    <div class="password-box">
+                                        <span class="password-msg">
+                                            Type your password
+                                        </span>
+                                        <form class="password-form">
+                                            <input type="password" class="password"/>
+                                            <input type="image" src="img/continue.png" id="password-entry-button" class="img-button"/>
+                                        </form>
+                                    </div>
+                                    <div class="password-error-popup">
+                                        <div class="popup-arrow-border">
+                                            <div class="popup-arrow"></div>
+                                        </div>
+                                        <div class="password-error-title">
+                                            <img src="img/error.png" class="password-error-icon"/>
+                                            Did you forget your password?
+                                        </div>
+                                        <div>
+                                            Please type your password again.
+                                            </br>
+                                            Be sure to use the correct uppercase and lowercase letters.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div id="footerStripe"></div>
+            <div id="footer">
+                <div id="shutdown-group">
+                    <img src="img/shutdown.png" id="shutdown-options" class="img-button"/>
+                    <span>Turn off computer</span>
+                </div>
+                <div id="account-message">
+                    After you log on, you can add or change accounts.
+                    <br/>
+                    Just go to Control Panel and click User Accounts.
+                </div>
+            </div>
+        </div>
+        <!-- Shutdown Prompt Overlay -->
+        <div id="shutdown-prompt-overlay">
+            <div id="shutdown-prompt">
+                <div id="shutdown-prompt-header">
+                    <span>Turn off computer</span>
+                    <img src="img/logo-small.png" id="logo-small"/>
+                </div>
+                <div id="shutdown-prompt-header-stripe"></div>
+                <div id="shutdown-prompt-options">
+                    <div class="shutdown-prompt-option">
+                        <img src="img/suspend.png" id="standby-button" class="img-button"/>
+                        <span>Stand By</span>
+                    </div>
+                    <div class="shutdown-prompt-option">
+                        <img src="img/shutdown.png" id="shutdown-button" class="img-button"/>
+                        <span>Turn Off</span>
+                    </div>
+                    <div class="shutdown-prompt-option">
+                        <img src="img/restart.png" id="restart-button" class="img-button"/>
+                        <span>Restart</span>
+                    </div>
+                </div>
+                <div id="shutdown-prompt-footer">
+                    <div id="shutdown-cancel-button-outline">
+                        <div id="shutdown-cancel-button-border">
+                            <div id="shutdown-cancel-button">
+                                Cancel
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Welcome Screen Template, Replaces Body Content -->
+        <template id="welcome-template">
+            <!-- Header -->
+            <div id="header"></div>
+            <div id="headerStripe"></div>
+            <!-- Login Screen Content -->
+            <div id="center">
+                <div id="centerLeft"></div>
+                <div id="centerRight">
+                    <span id="welcome">welcome</span>
+                </div>
+            </div>
+            <!-- Footer -->
+            <div id="footerStripe"></div>
+            <div id="footer"></div>
+        </template>
+    </body>
+
+    <!-- Scripts -->
+    <script src="js/key-constants.js" type="module"></script>
+    <script src="js/login.js" type="module"></script>
+    <script src="js/shutdown-prompt.js" type="module"></script>
+    <script src="js/primary.js" type="module"></script>
+</html>

@@ -8,8 +8,338 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel='stylesheet' type='text/css' href='style.css' />
-    <style id="xp-wait-cursor">html { cursor: url('/imgs/cursors/default_wait.cur'), wait !important; }</style>
-    <script>window.addEventListener('load', function(){ var s = document.getElementById('xp-wait-cursor'); if(s) s.remove(); });</script>
+    <style id="xp-login-css">
+    /* XP Login Screen – scoped under #xp-login-overlay */
+    #xp-login-overlay {
+        --primary-bg: #5A7EDC;
+        --header-bg: #00309C;
+        --header-stripe-0: #466DCD;
+        --header-stripe-1: #C7DDFF;
+        --header-stripe-2: #B0C9F7;
+        --header-stripe-3: #5A7EDC;
+        --radial-gradient-inner: #91B1EF;
+        --radial-gradient-mid: #7698E6;
+        --radial-gradient-outer: #5A7EDC;
+        --center-divider-inner: #90ADED;
+        --center-divider-outer: #5A7EDC;
+        --user-listing-0: #0E3997;
+        --user-listing-1: #5A7EDC;
+        --profile-picture-border-normal: white;
+        --profile-picture-border-inner: #FFEE00;
+        --profile-picture-border-outer: #FFB600;
+        --footer-bg-left: #3833AC;
+        --footer-bg-right: #00309C;
+        --footer-stripe-0: #003399;
+        --footer-stripe-1: #F99736;
+        --footer-stripe-2: #C2814D;
+        --footer-stripe-3: #00309C;
+        --shutdown-prompt-bg-0: var(--primary-bg);
+        --shutdown-prompt-bg-1: #90a9e9;
+        --button-background-1: #F7F3EF;
+        --button-background-2: #E5F0E2;
+        --button-background-3: #D6D3C6;
+        --button-border: #003C74;
+        --button-outline-1: #043292;
+        --button-outline-2: #C3C3DF;
+        --button-normal-border-1: #FFFFFF;
+        --button-normal-border-2: #D6D0C5;
+        --button-hover-border-1: #FFF0CF;
+        --button-hover-border-2: #E59700;
+        --button-select-border-1: #CEE7FF;
+        --button-select-border-2: #6982EE;
+        --shadow-color: rgba(15, 37, 104, 0.6);
+        --header-height: 8%;
+        --footer-height: 10%;
+        --stripe-height: 2px;
+        --center-divider-width: 1px;
+        --center-divider-height: 100%;
+        --logo-size: 136px;
+        --logo-text-gap: 16px;
+        --image-button-size: 24px;
+        --user-listing-width: 368px;
+        --user-listing-horizontal-gap: 12px;
+        --user-listing-padding: 8px;
+        --profile-picture-size: 48px;
+        --profile-picture-border-radius: 6px;
+        --profile-picture-border-size: 2px;
+        --shutdown-prompt-width: 320px;
+        --shutdown-prompt-height: 200px;
+        --shutdown-header-height: 20%;
+        --shutdown-prompt-option-font-size: 12px;
+        --shutdown-option-button-size: 32px;
+        --footer-content-margin-side: 24px;
+        --footer-content-margin-top: 20px;
+        --primary-font-family: 'Tahoma', Tahoma, sans-serif;
+        --primary-font-size: 18px;
+        --primary-font-color: white;
+        --message-font-size: 12px;
+        position: fixed;
+        inset: 0;
+        z-index: 999999999;
+        -webkit-user-select: none;
+        user-select: none;
+        cursor: default;
+        background-color: var(--primary-bg);
+        font: var(--primary-font-size) var(--primary-font-family);
+        color: var(--primary-font-color);
+        text-shadow: 0px 0px var(--primary-font-color);
+        transition: opacity 0.5s ease;
+        opacity: 1;
+        overflow: hidden;
+    }
+    #xp-login-overlay.fade-out { opacity: 0; }
+
+    /* Grid layout shared by login + welcome views */
+    #xp-login-overlay .xp-screen {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: var(--primary-bg);
+        display: grid;
+        grid-template-rows: var(--header-height) var(--stripe-height) auto var(--stripe-height) var(--footer-height);
+    }
+    #xp-login-overlay .xp-row-header {
+        grid-row: 1;
+        background-color: var(--header-bg);
+    }
+    #xp-login-overlay .xp-row-header-stripe {
+        grid-row: 2;
+        background: linear-gradient(45deg, var(--header-stripe-0), var(--header-stripe-1), var(--header-stripe-2), var(--header-stripe-3));
+    }
+    #xp-login-overlay .xp-row-center {
+        grid-row: 3;
+        min-height: 0;
+        background: radial-gradient(circle at 5% 5%, var(--radial-gradient-inner) 0, var(--radial-gradient-mid) 6%, var(--radial-gradient-outer) 12%);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    #xp-login-overlay .xp-row-center > * { margin-right: 2%; }
+    #xp-login-overlay .xp-row-center > *:last-child { margin-right: 0; }
+    #xp-login-overlay .xp-row-footer-stripe {
+        grid-row: 4;
+        background: linear-gradient(45deg, var(--footer-stripe-0), var(--footer-stripe-1), var(--footer-stripe-2), var(--footer-stripe-3));
+    }
+    #xp-login-overlay .xp-row-footer {
+        grid-row: 5;
+        background: linear-gradient(90deg, var(--footer-bg-left), var(--footer-bg-right));
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: start;
+    }
+    #xp-login-overlay .xp-row-footer > * {
+        margin: var(--footer-content-margin-top) var(--footer-content-margin-side) 0 var(--footer-content-margin-side);
+    }
+
+    /* Center – left (logo) */
+    #xp-login-overlay #centerLeft { flex: 1 1 0px; text-align: end; }
+    #xp-login-overlay #logo { width: var(--logo-size); }
+    #xp-login-overlay #text-under-logo {
+        display: block;
+        margin: var(--logo-text-gap) calc(var(--logo-size) * 0.165) 0 0;
+    }
+
+    /* Center – divider */
+    #xp-login-overlay #centerDivider {
+        width: var(--center-divider-width);
+        height: var(--center-divider-height);
+        background: linear-gradient(180deg, var(--center-divider-outer), var(--center-divider-inner), var(--center-divider-outer));
+    }
+
+    /* Center – right (user listings) */
+    #xp-login-overlay #centerRight {
+        height: 100%;
+        flex: 1 1 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        overflow: visible;
+    }
+    #xp-login-overlay #userListings { margin: auto 0; }
+    #xp-login-overlay #userListings > * { margin-bottom: 15px; }
+    #xp-login-overlay #userListings > *:last-child { margin-bottom: 0; }
+
+    /* User listing */
+    #xp-login-overlay .user-border-wrapper {
+        width: var(--user-listing-width);
+        background: linear-gradient(90deg, white, var(--primary-bg) 80%);
+        border-radius: var(--profile-picture-border-radius);
+        padding: 1px;
+    }
+    #xp-login-overlay .profile-picture-wrapper {
+        background-color: var(--profile-picture-border-normal);
+        border-radius: var(--profile-picture-border-radius);
+        width: var(--profile-picture-size);
+        height: var(--profile-picture-size);
+        padding: var(--profile-picture-border-size);
+        box-shadow: 1px 1px 2px var(--shadow-color);
+    }
+    #xp-login-overlay .user:hover .profile-picture-wrapper,
+    #xp-login-overlay .user.active .profile-picture-wrapper {
+        background-color: var(--profile-picture-border-inner);
+        box-shadow: 1px 1px 2px var(--shadow-color), inset 0 0 1px 1px var(--profile-picture-border-outer);
+    }
+    #xp-login-overlay .profile-picture {
+        width: var(--profile-picture-size);
+        height: var(--profile-picture-size);
+        object-fit: cover;
+    }
+    #xp-login-overlay .user {
+        position: relative;
+        background-color: var(--primary-bg);
+        outline: 1px solid var(--primary-bg);
+        padding: var(--user-listing-padding) 0 var(--user-listing-padding) var(--user-listing-padding);
+        display: flex;
+        flex-direction: row;
+        gap: var(--user-listing-horizontal-gap);
+    }
+    #xp-login-overlay .user > * { transition: opacity 0.5s; }
+    #xp-login-overlay #centerRight:hover .user:not(.active) > * { opacity: 50%; }
+    #xp-login-overlay #centerRight:hover .user:not(.active):hover > * { opacity: 100%; }
+    #xp-login-overlay .user:hover { cursor: pointer; }
+    #xp-login-overlay .user.active {
+        flex: 1 1 0px;
+        outline: 1px solid transparent;
+        border-right: 0;
+        border-radius: var(--profile-picture-border-radius);
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        background: linear-gradient(90deg, var(--user-listing-0), var(--user-listing-1));
+    }
+    #xp-login-overlay .user-border-wrapper {
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    #xp-login-overlay .user-border-wrapper:hover {
+        transform: scale(1.03);
+        box-shadow: 0 0 12px rgba(255, 238, 0, 0.4);
+    }
+
+    /* Footer – shutdown group */
+    #xp-login-overlay #shutdown-group { display: flex; align-items: center; gap: 8px; }
+    #xp-login-overlay #shutdown-group:hover { cursor: pointer; }
+    #xp-login-overlay #shutdown-group:hover > span { text-decoration: underline; }
+    #xp-login-overlay #shutdown-options {
+        height: var(--image-button-size);
+        box-shadow: 2px 2px 0 var(--shadow-color);
+    }
+    #xp-login-overlay #account-message {
+        font: var(--message-font-size) var(--primary-font-family);
+    }
+
+    /* Image buttons */
+    #xp-login-overlay .img-button { vertical-align: middle; }
+    #xp-login-overlay .img-button:hover { filter: brightness(1.25); }
+    #xp-login-overlay .img-button:active { filter: brightness(0.5); }
+
+    /* Welcome screen */
+    #xp-login-overlay .xp-row-center.welcome-center {
+        justify-content: center;
+    }
+    #xp-login-overlay #welcome-text {
+        font-family: 'Franklin Gothic Demi', 'Franklin Gothic Medium', sans-serif;
+        font-style: italic;
+        font-size: 32px;
+        text-shadow: 2px 2px 0 var(--shadow-color);
+    }
+
+    /* Shutdown prompt overlay */
+    #xp-login-overlay #login-shutdown-overlay {
+        display: none;
+        position: absolute;
+        inset: 0;
+        background-color: rgba(64, 64, 64, 0.1);
+        z-index: 1;
+    }
+    #xp-login-overlay #login-shutdown-overlay.active {
+        display: flex;
+        justify-content: center;
+    }
+    #xp-login-overlay #shutdown-prompt {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(to right, var(--shutdown-prompt-bg-0), var(--shutdown-prompt-bg-1), var(--shutdown-prompt-bg-0));
+        border: 1px solid black;
+        width: var(--shutdown-prompt-width);
+        height: var(--shutdown-prompt-height);
+        margin-top: 26vh;
+    }
+    #xp-login-overlay #shutdown-prompt-header {
+        width: 100%;
+        height: var(--shutdown-header-height);
+        background-color: var(--header-bg);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #xp-login-overlay #shutdown-prompt-header > *:first-child { margin-left: 10px; }
+    #xp-login-overlay #shutdown-prompt-header > *:last-child { margin-right: 10px; }
+    #xp-login-overlay #logo-small { height: 65%; }
+    #xp-login-overlay #shutdown-prompt-header-stripe {
+        width: 100%;
+        height: var(--stripe-height);
+        background: linear-gradient(45deg, var(--header-stripe-0), var(--header-stripe-1), var(--header-stripe-2), var(--header-stripe-3));
+    }
+    #xp-login-overlay #shutdown-prompt-options {
+        font-size: var(--shutdown-prompt-option-font-size);
+        flex-grow: 1;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    #xp-login-overlay .shutdown-prompt-option {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #xp-login-overlay .shutdown-prompt-option > *:first-child { margin-bottom: 8px; }
+    #xp-login-overlay .shutdown-prompt-option .img-button { height: var(--shutdown-option-button-size); }
+    #xp-login-overlay #shutdown-prompt-footer {
+        width: 100%;
+        height: var(--shutdown-header-height);
+        background-color: var(--header-bg);
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
+    #xp-login-overlay #shutdown-prompt-footer > *:last-child { margin-right: 10px; }
+    #xp-login-overlay #shutdown-cancel-button-outline {
+        padding: 1px;
+        border-radius: 2px;
+        background: linear-gradient(170deg, var(--button-outline-1) 35%, var(--button-outline-2));
+    }
+    #xp-login-overlay #shutdown-cancel-button-border {
+        padding: 1px;
+        border: solid 1px var(--button-border);
+        border-radius: 3px;
+        background: linear-gradient(var(--button-normal-border-1), var(--button-normal-border-2));
+    }
+    #xp-login-overlay #shutdown-cancel-button-border:hover {
+        background: linear-gradient(var(--button-hover-border-1), var(--button-hover-border-2));
+    }
+    #xp-login-overlay #shutdown-cancel-button-border:active {
+        background: linear-gradient(var(--button-select-border-1), var(--button-select-border-2));
+    }
+    #xp-login-overlay #shutdown-cancel-button {
+        color: black;
+        font-size: var(--shutdown-prompt-option-font-size);
+        outline: none;
+        border: none;
+        padding: 0 8px;
+        cursor: pointer;
+        background: linear-gradient(180deg, var(--button-background-1), var(--button-background-2) 90%, var(--button-background-3) 95%);
+        text-shadow: none;
+    }
+    @keyframes loginGrayFadeIn {
+        0% { filter: grayscale(0); }
+        15% { filter: grayscale(0); }
+        100% { filter: grayscale(0.90); }
+    }
+    #xp-login-overlay .login-grayscale {
+        animation: loginGrayFadeIn 5s forwards steps(16, end);
+    }
+    </style>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -27,6 +357,159 @@
 </head>
 
 <body dir="ltr" style="overflow: hidden;" id="body">
+    <!-- XP Login Screen Overlay -->
+    <div id="xp-login-overlay">
+        <!-- Login View -->
+        <div id="login-screen" class="xp-screen">
+            <div class="xp-row-header"></div>
+            <div class="xp-row-header-stripe"></div>
+            <div class="xp-row-center">
+                <div id="centerLeft">
+                    <img src="/imgs/login/logo.png" id="logo" alt="Windows XP"/>
+                    <span id="text-under-logo">To begin, click your user name</span>
+                </div>
+                <div id="centerDivider"></div>
+                <div id="centerRight">
+                    <div id="userListings">
+                        <div class="user-border-wrapper">
+                            <div class="user active" id="login-user">
+                                <div class="profile-picture-wrapper">
+                                    <img src="/imgs/login/bike.png" class="profile-picture" alt="Jay Patel">
+                                </div>
+                                <span class="user-name">Jay Patel</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="xp-row-footer-stripe"></div>
+            <div class="xp-row-footer">
+                <div id="shutdown-group">
+                    <img src="/imgs/login/shutdown.png" id="shutdown-options" class="img-button" alt="Shut down"/>
+                    <span>Turn off computer</span>
+                </div>
+                <div id="account-message">
+                    After you log on, you can add or change accounts.<br/>
+                    Just go to Control Panel and click User Accounts.
+                </div>
+            </div>
+        </div>
+        <!-- Welcome View (shown after clicking user) -->
+        <div id="welcome-screen" class="xp-screen" style="display: none;">
+            <div class="xp-row-header"></div>
+            <div class="xp-row-header-stripe"></div>
+            <div class="xp-row-center welcome-center">
+                <span id="welcome-text">welcome</span>
+            </div>
+            <div class="xp-row-footer-stripe"></div>
+            <div class="xp-row-footer"></div>
+        </div>
+        <!-- Shutdown Prompt Overlay -->
+        <div id="login-shutdown-overlay">
+            <div id="shutdown-prompt">
+                <div id="shutdown-prompt-header">
+                    <span>Turn off computer</span>
+                    <img src="/imgs/login/logo-small.png" id="logo-small" alt=""/>
+                </div>
+                <div id="shutdown-prompt-header-stripe"></div>
+                <div id="shutdown-prompt-options">
+                    <div class="shutdown-prompt-option">
+                        <img src="/imgs/login/suspend.png" id="standby-button" class="img-button" alt="Stand By"/>
+                        <span>Stand By</span>
+                    </div>
+                    <div class="shutdown-prompt-option">
+                        <img src="/imgs/login/shutdown.png" id="shutdown-button" class="img-button" alt="Turn Off"/>
+                        <span>Turn Off</span>
+                    </div>
+                    <div class="shutdown-prompt-option">
+                        <img src="/imgs/login/restart.png" id="restart-button" class="img-button" alt="Restart"/>
+                        <span>Restart</span>
+                    </div>
+                </div>
+                <div id="shutdown-prompt-footer">
+                    <div id="shutdown-cancel-button-outline">
+                        <div id="shutdown-cancel-button-border">
+                            <div id="shutdown-cancel-button">Cancel</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    (function() {
+        var overlay = document.getElementById('xp-login-overlay');
+        var loginScreen = document.getElementById('login-screen');
+        var welcomeScreen = document.getElementById('welcome-screen');
+        var user = document.getElementById('login-user');
+        var shutdownGroup = document.getElementById('shutdown-group');
+        var shutdownOverlay = document.getElementById('login-shutdown-overlay');
+        var cancelBtn = document.getElementById('shutdown-cancel-button');
+        var loginCss = document.getElementById('xp-login-css');
+        var loginComplete = false;
+
+        function hideOverlay() {
+            overlay.classList.add('fade-out');
+            setTimeout(function() {
+                overlay.style.display = 'none';
+                overlay.classList.remove('fade-out');
+            }, 500);
+        }
+
+        function showLoginScreen() {
+            loginComplete = false;
+            loginScreen.style.display = '';
+            welcomeScreen.style.display = 'none';
+            shutdownOverlay.classList.remove('active');
+            loginScreen.classList.remove('login-grayscale');
+            overlay.style.display = '';
+            overlay.style.opacity = '1';
+        }
+
+        window._showLoginScreen = showLoginScreen;
+
+        user.addEventListener('click', function(e) {
+            if (loginComplete) return;
+            e.stopPropagation();
+            loginComplete = true;
+            user.classList.add('active');
+            setTimeout(function() {
+                loginScreen.style.display = 'none';
+                welcomeScreen.style.display = 'grid';
+                setTimeout(function() {
+                    hideOverlay();
+                }, 2000);
+            }, 400);
+        });
+
+        document.addEventListener('click', function() {
+            if (!loginComplete) user.classList.remove('active');
+        });
+
+        function hideShutdown() {
+            shutdownOverlay.classList.remove('active');
+            loginScreen.classList.remove('login-grayscale');
+        }
+
+        shutdownGroup.addEventListener('click', function(e) {
+            e.stopPropagation();
+            shutdownOverlay.classList.add('active');
+            loginScreen.classList.add('login-grayscale');
+        });
+
+        cancelBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            hideShutdown();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && shutdownOverlay.classList.contains('active')) {
+                hideShutdown();
+            }
+        });
+    })();
+    </script>
+
     <!-- CRT overlay -->
     <div id="crt-overlay" aria-hidden="true"></div>
 
@@ -160,7 +643,7 @@
             <!-- Footer bar: log off / turn off -->
             <div class="xp-start-footer">
                 <div class="xp-footer-item">
-                    <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); window.open('https://github.com/tisjayy','_blank')"><img src="/imgs/buttons/key-log-icon.webp" class="xp-footer-ico" alt="Log Off"></button>
+                    <button class="xp-footer-btn" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); if(window._showLoginScreen) window._showLoginScreen();"><img src="/imgs/buttons/key-log-icon.webp" class="xp-footer-ico" alt="Log Off"></button>
                     <span class="xp-footer-label">Log Off</span>
                 </div>
                 <div class="xp-footer-item">
@@ -1726,7 +2209,7 @@
          
           { id: 'experience',   label: 'Work History',  sub: 'Employment',      color: '#b71c1c', icon: '/imgs/icons/WorkHistory.webp', cover: true },
           { id: 'projects',     label: 'Projects',      sub: 'My Work',         color: '#1b5e20', icon: '/imgs/icons/projects.webp',    cover: true },
-          { id: 'resume',       label: 'Resume',        sub: 'PDF Viewer',      color: '#e65100', icon: '/imgs/icons/Resume.webp', cover: true },
+          { id: 'resume',       label: 'Resume',        sub: 'PDF Viewer',      color: '#e65100', icon: '/imgs/icons/resume.webp', cover: true },
           { id: 'chatbot',      label: 'Ask AI',        sub: 'Chat with Jay',   color: '#0d47a1', icon: '/imgs/icons/AskAI.webp',       cover: true },
 
           { id: 'rubiks-cube',  label: "Rubik's Cube",  sub: '3D Puzzle',       color: '#f57f17', icon: '/imgs/icons/bigshort.webp', cover: true },
