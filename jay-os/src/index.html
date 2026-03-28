@@ -18,7 +18,7 @@
     <link rel="preload" as="image" href="/imgs/windows.webp">
     <!-- Prefetch experience card images during idle time before user opens Experience -->
     <link rel="prefetch" as="image" href="/imgs/icons/WorkHistory.webp">
-    <link rel="prefetch" as="image" href="/imgs/icons/Projects.webp">
+    <link rel="prefetch" as="image" href="/imgs/icons/projects.webp">
     <link rel="prefetch" as="image" href="/imgs/icons/resume.webp">
     <link rel="prefetch" as="image" href="/imgs/icons/AskAI.webp">
     <link rel="prefetch" as="image" href="/imgs/about-me/profile.webp">
@@ -61,7 +61,7 @@
                 <p>Experience</p>
             </div>
             <div class='apps' id="resume_app">
-                <img src='/imgs/icons/resume.webp'>
+                <img src='/imgs/icons/pdf.ico'>
                 <p>Resume</p>
             </div>
             <div class='apps' id="arcade_app">
@@ -142,7 +142,7 @@
             <section class="xp-start-right">
                 <div class="xp-right-title">My Files</div>
                 <div class="xp-right-link" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('resume_bottom').click()">
-                    <img src="/imgs/icons/resume.webp" class="xp-prog-icon" alt="" /><span>My Resume</span>
+                    <img src="/imgs/icons/pdf.ico" class="xp-prog-icon" alt="" /><span>My Resume</span>
                 </div>
                 <div class="xp-right-link" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('readme_bottom').click()">
                     <img src="/imgs/icons/credits.webp" class="xp-prog-icon" alt="" /><span>readme.txt</span>
@@ -180,7 +180,7 @@
                 <img src="/imgs/icons/contact.webp" alt="Contact" /><span class="taskbar-app-label">Contact</span>
             </div>
             <div class="taskbar-app taskbar-hover taskbar-pinned" id="resume_bottom">
-                <img src="/imgs/icons/resume.webp" alt="Resume" /><span class="taskbar-app-label">Resume</span>
+                <img src="/imgs/icons/pdf.ico" alt="Resume" /><span class="taskbar-app-label">Resume</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="rubiks-cube_bottom">
                 <img src="/imgs/icons/rubikscube1.webp" alt="Rubiks Cube" /><span class="taskbar-app-label">Rubik's Cube</span>
@@ -1725,7 +1725,7 @@
         var NF_SECTIONS = [
          
           { id: 'experience',   label: 'Work History',  sub: 'Employment',      color: '#b71c1c', icon: '/imgs/icons/WorkHistory.webp', cover: true },
-          { id: 'projects',     label: 'Projects',      sub: 'My Work',         color: '#1b5e20', icon: '/imgs/icons/Projects.webp',    cover: true },
+          { id: 'projects',     label: 'Projects',      sub: 'My Work',         color: '#1b5e20', icon: '/imgs/icons/projects.webp',    cover: true },
           { id: 'resume',       label: 'Resume',        sub: 'PDF Viewer',      color: '#e65100', icon: '/imgs/icons/Resume.webp', cover: true },
           { id: 'chatbot',      label: 'Ask AI',        sub: 'Chat with Jay',   color: '#0d47a1', icon: '/imgs/icons/AskAI.webp',       cover: true },
 
@@ -1733,7 +1733,7 @@
           { id: 'arcade',       label: 'Arcade',        sub: 'Mini Games',      color: '#004d40', icon: '/imgs/icons/ArcadeBanner.webp', cover: true },
           { id: 'contact',      label: 'Contact',       sub: 'Get In Touch',    color: '#6a1b9a', icon: '/imgs/icons/contact.webp' },
           { id: 'music-player', label: 'WinAmp',        sub: 'Music Player',    color: '#1565c0', icon: '/imgs/icons/music-player.svg' },
-          { id: 'readme',       label: 'readme.txt',    sub: '',      color: '#1252d0', icon: '/imgs/icons/projects.webp' },
+          { id: 'readme',       label: 'readme.txt',    sub: '',      color: '#1252d0' },
         ];
         function updateProgressUI() {
           var visited = JSON.parse(localStorage.getItem('jay_visited') || '{}');
