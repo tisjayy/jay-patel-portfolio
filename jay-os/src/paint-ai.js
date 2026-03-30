@@ -25,6 +25,10 @@ class PaintAI {
     this._widgetDragCleanup = null;
     /** True once JSPAINT_READY has been received. */
     this._jspaintReady = false;
+    /** Timestamp (ms) when the paint iframe src was last set to jspaint. */
+    this._loadStartTime = 0;
+    /** MutationObserver watching the iframe src attribute. */
+    this._srcObserver = null;
   }
 
   // ── localStorage helpers ────────────────────────────────────────────────
@@ -83,6 +87,11 @@ class PaintAI {
         this._pending.clear();
         this._jspaintReady = false;
         this.setLoadingState(false); // restore UI (button stays locked since _jspaintReady = false)
+        // Reset overlay and hide widget so they're clean for the next open
+        const overlay = document.getElementById('paint-loading-overlay');
+        if (overlay) overlay.style.display = 'none';
+        const widget = document.getElementById('paint-ai-widget');
+        if (widget) widget.style.display = 'none';
       }
     };
 
@@ -100,6 +109,19 @@ class PaintAI {
       ...(promptEl ? [{ target: promptEl, type: 'keydown', fn: onEnter }] : []),
     );
 
+    // -- Loading overlay: show GIF for at least 2 s when paint opens --
+    // Listen for 'jay-app-opened' which fires in the same synchronous tick as
+    // display:block, before any browser repaint — guarantees no black flash.
+    const overlay = document.getElementById('paint-loading-overlay');
+    const onPaintOpen = (e) => {
+      if (e.detail && e.detail.app === 'paint') {
+        this._loadStartTime = Date.now();
+        if (overlay) overlay.style.display = 'flex';
+      }
+    };
+    window.addEventListener('jay-app-opened', onPaintOpen);
+    this._listeners.push({ target: window, type: 'jay-app-opened', fn: onPaintOpen });
+
     // â”€â”€ Widget drag â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     this._activateWidgetDrag();
   }
@@ -113,6 +135,11 @@ class PaintAI {
     if (this._widgetDragCleanup) {
       this._widgetDragCleanup();
       this._widgetDragCleanup = null;
+    }
+
+    if (this._srcObserver) {
+      this._srcObserver.disconnect();
+      this._srcObserver = null;
     }
 
     for (const [, { reject, timeoutId }] of this._pending) {
@@ -226,6 +253,19 @@ class PaintAI {
         if (btn) { btn.disabled = false; btn.title = ''; }
       } else {
         this._applyLocalLimitUI();
+      }
+      // Hide loading overlay only after at least 2 s have elapsed since open
+      const overlay = document.getElementById('paint-loading-overlay');
+      const widget  = document.getElementById('paint-ai-widget');
+      if (overlay && overlay.style.display !== 'none') {
+        const elapsed = Date.now() - this._loadStartTime;
+        const delay   = Math.max(0, 2000 - elapsed);
+        setTimeout(() => {
+          overlay.style.display = 'none';
+          if (widget) widget.style.display = '';
+        }, delay);
+      } else if (widget) {
+        widget.style.display = '';
       }
       return;
     }
