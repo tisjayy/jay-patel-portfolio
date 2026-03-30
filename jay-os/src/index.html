@@ -1928,6 +1928,11 @@
 
     <!-- MS Paint AI window -->
     <div id="paint" class="paint-window" style="display:none;">
+        <!-- Loading overlay: anchored directly to the window root, so sizing
+             is always correct regardless of inner content div height. -->
+        <div id="paint-loading-overlay" style="display:none;position:absolute;top:28px;left:0;right:0;bottom:0;z-index:1000;background:#000;overflow:hidden;">
+            <img src="/paintloading.gif" alt="Loading…" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
         <div class="title-bar readme-title-bar" id="titleBar">
             <div class="title">
                 <img loading="lazy" src="/imgs/icons/ms_paint.webp" style="width:14px;height:14px;vertical-align:middle;margin-right:5px;">AI Paint
@@ -1939,10 +1944,6 @@
             </div>
         </div>
         <div id="paint-content" class="content" style="height:calc(100% - 28px); overflow:hidden; position:relative; padding:0;">
-            <!-- Loading overlay: shown for at least 2 s while jspaint loads -->
-            <div id="paint-loading-overlay" style="display:none;position:absolute;inset:0;z-index:1000;background:#c0c0c0;align-items:center;justify-content:center;">
-                <img src="/paintloading.gif" alt="Loading…" style="max-width:240px;max-height:240px;">
-            </div>
             <iframe id="paint-iframe"
                     data-src="https://jspaint.vercel.app"
                     src="about:blank"
