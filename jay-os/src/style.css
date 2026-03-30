@@ -3686,8 +3686,8 @@ footer .open-windows-menu[style*="flex"] .xp-start-right {
 /* ── MS Paint AI Window ──────────────────────────────────────────────── */
 .paint-window {
   position: absolute;
-  width: 56vw;
-  min-width: 480px;
+  width: 72vw;
+  min-width: 560px;
   min-height: 360px;
   /* Use top + bottom instead of height + transform-Y so the 1.1× zoom
      on body > * doesn't push the bottom edge into the fixed taskbar.
