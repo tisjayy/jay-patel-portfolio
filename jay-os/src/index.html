@@ -511,7 +511,16 @@
     </script>
 
     <!-- CRT overlay -->
-    <div id="crt-overlay" aria-hidden="true"></div>
+    <div id="crt-overlay" aria-hidden="true">
+      <div class="crt-effect">
+        <div class="crt-scanline"></div>
+        <div class="crt-flicker"></div>
+        <div class="crt-vignette"></div>
+        <div class="crt-noise"></div>
+        <div class="crt-aberration"></div>
+        <div class="crt-persistence"></div>
+      </div>
+    </div>
 
     <!-- Mobile warning dialog (Win98 style, only shown on touch/small screens) -->
     <div id="mobile-warning-overlay">
@@ -2039,7 +2048,7 @@
         var popup   = document.getElementById('crt-tray-popup');
         var check   = document.getElementById('crt-popup-check');
         var item    = document.getElementById('crt-toggle-item');
-        var on = false;
+        var on = true;
         function setCheck() {
           check.innerHTML = on ? '&#10003;' : '&#9633;';
           check.style.color = on ? '#316AC5' : '#000';
@@ -2060,10 +2069,14 @@
           e.stopPropagation();
           on = !on;
           overlay.classList.toggle('crt-active', on);
+          document.body.classList.toggle('crt-brightness', on);
           setCheck();
           popup.classList.remove('open');
         });
         document.addEventListener('click', function() { popup.classList.remove('open'); });
+        // Apply default ON state
+        overlay.classList.add('crt-active');
+        document.body.classList.add('crt-brightness');
         setCheck();
       })();
 
