@@ -1,10 +1,10 @@
 // ── Playlist ─────────────────────────────────────────────────────────────────
-// Drop MP3 files into  jay-os/static/audio/  then add entries here:
-// { title: "Song Name", artist: "Artist Name", src: "/audio/filename.mp3" }
+// Drop MP3 files into  jay-os/static/music/  then add entries here:
+// { title: "Song Name", artist: "Artist Name", src: "/music/filename.mp3" }
 const PLAYLIST = [
-  { title: "Champagne Supernova", artist: "Oasis", src: "/imgs/music/Champagne Supernova (Remastered).mp3" },
-  { title: "Last Nite", artist: "The Strokes", src: "/imgs/music/Last Nite - The Strokes (with Lyrics).mp3" },
-  { title: "Weird Fishes / Arpeggi", artist: "Radiohead", src: "/imgs/music/Radiohead - Weird Fishes ⧸ Arpeggi.mp3" },
+  { title: "Champagne Supernova (Live)", artist: "Oasis", src: "/music/Oasis_-_Champagne_Supenova_Live_(mp3.pm).mp3" },
+  { title: "Last Nite", artist: "The Strokes", src: "/music/The_Strokes_-_Last_Nite_(mp3.pm).mp3" },
+  { title: "Weird Fishes / Arpeggi", artist: "Radiohead", src: "/music/Radiohead_-_Weird_Fishes_Arpeggi_(mp3.pm).mp3" },
 ];
 
 class MusicPlayer {
