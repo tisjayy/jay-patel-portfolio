@@ -544,44 +544,18 @@
     </div>
     <aside>
         <div class="desktop-col">
-            <div class='apps' id="chatbot_app">
-                <img src='/imgs/icons/copilot.webp'>
-                <p>Ask AI</p>
-            </div>
             <div class='apps' id="experience_app">
                 <img src='/imgs/icons/experience.webp'>
-                <p>Experience</p>
+                <p>Experience & Projects</p>
             </div>
             <div class='apps' id="resume_app">
                 <img src='/imgs/icons/pdf.ico'>
                 <p>Resume</p>
             </div>
-            <div class='apps' id="arcade_app">
-                <img src='/imgs/icons/arcade.webp'>
-                <p>Arcade</p>
-            </div>
-            <div class='apps' id="readme_app">
+            <div class='apps' id="goals_app">
                 <img src='/imgs/icons/credits.webp'>
-                <p>readme.txt</p>
+                <p>Goals</p>
             </div>
-
-        </div>
-        <div class="desktop-col">
-            <div class='apps' id="rubiks-cube_app">
-                <img src='/imgs/icons/rubikscube1.webp'>
-                <p>Rubik's Cube</p>
-            </div>
-                        <div class='apps' id="paint_app">
-                <img src='/imgs/icons/ms_paint.webp'>
-                <p>AI Paint</p>
-            </div>
-            <div class='apps' id="music-player_app">
-                <img src='/imgs/icons/music-player.svg'>
-                <p>WinAmp</p>
-            </div>
-
-        </div>
-        <div class="desktop-col desktop-col-right">
             <div class='apps' id="contact_app">
                 <img src='/imgs/icons/contact.webp'>
                 <p>Contact</p>
@@ -589,6 +563,34 @@
             <div class='apps' id="github_app">
                 <img src='/imgs/icons/github.webp'>
                 <p>GitHub</p>
+            </div>
+        </div>
+        <div class="desktop-col">
+            <div class='apps' id="chatbot_app">
+                <img src='/imgs/icons/copilot.webp'>
+                <p>Ask AI</p>
+            </div>
+            <div class='apps' id="readme_app">
+                <img src='/imgs/icons/credits.webp'>
+                <p>About Me</p>
+            </div>
+        </div>
+        <div class="desktop-col desktop-col-right">
+            <div class='apps' id="arcade_app">
+                <img src='/imgs/icons/arcade.webp'>
+                <p>Arcade</p>
+            </div>
+            <div class='apps' id="rubiks-cube_app">
+                <img src='/imgs/icons/rubikscube1.webp'>
+                <p>Rubik's Cube</p>
+            </div>
+            <div class='apps' id="paint_app">
+                <img src='/imgs/icons/ms_paint.webp'>
+                <p>AI Paint</p>
+            </div>
+            <div class='apps' id="music-player_app">
+                <img src='/imgs/icons/music-player.svg'>
+                <p>WinAmp</p>
             </div>
         </div>
     </aside>
@@ -610,7 +612,7 @@
                 </div>
                 <div class="xp-prog-list">
                     <div class="xp-prog-item" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('experience_bottom').click()">
-                        <img src="/imgs/icons/experience.webp" class="xp-prog-icon" alt="" /><span>Experience</span>
+                        <img src="/imgs/icons/experience.webp" class="xp-prog-icon" alt="" /><span>Experience & Projects</span>
                     </div>
                     <div class="xp-prog-item" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('arcade_bottom').click()">
                         <img src="/imgs/icons/arcade.webp" class="xp-prog-icon" alt="" /><span>Arcade</span>
@@ -637,7 +639,10 @@
                     <img src="/imgs/icons/pdf.ico" class="xp-prog-icon" alt="" /><span>My Resume</span>
                 </div>
                 <div class="xp-right-link" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('readme_bottom').click()">
-                    <img src="/imgs/icons/credits.webp" class="xp-prog-icon" alt="" /><span>readme.txt</span>
+                    <img src="/imgs/icons/credits.webp" class="xp-prog-icon" alt="" /><span>About Me</span>
+                </div>
+                <div class="xp-right-link" onclick="document.querySelector('.open-windows-menu').removeAttribute('style'); document.getElementById('goals_bottom').click()">
+                    <img src="/imgs/icons/credits.webp" class="xp-prog-icon" alt="" /><span>Goals</span>
                 </div>
                 <div class="xp-right-separator"></div>
                 <div class="xp-right-title">Internet</div>
@@ -681,7 +686,7 @@
                 <img src="/imgs/icons/copilot.webp" alt="Ask AI" /><span class="taskbar-app-label">Ask AI</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="experience_bottom">
-                <img src="/imgs/icons/experience.webp" alt="Experience" /><span class="taskbar-app-label">Experience</span>
+                <img src="/imgs/icons/experience.webp" alt="Experience & Projects" /><span class="taskbar-app-label">Experience & Projects</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="arcade_bottom">
                 <img src="/imgs/icons/arcade.webp" alt="Arcade" /><span class="taskbar-app-label">Arcade</span>
@@ -693,7 +698,10 @@
                 <img src="/imgs/icons/aboutme.webp" alt="About Me" /><span class="taskbar-app-label">About Me</span>
             </div>
             <div class="taskbar-app taskbar-hover" id="readme_bottom">
-                <img src="/imgs/icons/credits.webp" alt="readme.txt" /><span class="taskbar-app-label">readme.txt</span>
+                <img src="/imgs/icons/credits.webp" alt="About Me" /><span class="taskbar-app-label">About Me</span>
+            </div>
+            <div class="taskbar-app taskbar-hover" id="goals_bottom">
+                <img src="/imgs/icons/credits.webp" alt="Goals" /><span class="taskbar-app-label">Goals</span>
             </div>
             <div class="taskbar-app taskbar-hover taskbar-pinned" id="music-player_bottom">
                 <img src="/imgs/icons/music-player.svg" alt="WinAmp" /><span class="taskbar-app-label">WinAmp</span>
@@ -1839,13 +1847,13 @@
                 </div>
                 <div class="xp-tb-sep"></div>
                 <div class="xp-tb-group">
-                    <button class="xp-tb-btn">
-                        <img loading="lazy" src="/imgs/about/Windows%20Explorer.ico" class="xp-tb-ico-img" alt="">
-                        <span class="xp-tb-label">Search</span>
+                    <button class="xp-tb-btn" onclick="window.open('https://www.linkedin.com/in/jay-patel-556b8b241/','_blank')">
+                        <svg class="xp-tb-ico-img" style="width:24px;height:24px;" viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0077b5"/><path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.28-7.14-6.05-8.68-2.96l.01-1.63z" fill="#fff"/></svg>
+                        <span class="xp-tb-label">LinkedIn</span>
                     </button>
-                    <button class="xp-tb-btn">
-                        <img loading="lazy" src="/imgs/about/Computer%20Folder.ico" class="xp-tb-ico-img" alt="">
-                        <span class="xp-tb-label">Folders</span>
+                    <button class="xp-tb-btn" onclick="window.open('https://github.com/tisjayy','_blank')">
+                        <img loading="lazy" src="/imgs/icons/github.webp" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">GitHub</span>
                     </button>
                 </div>
             </div>
@@ -1892,18 +1900,104 @@
                               d.style.display=open?'none':'block';
                               el.querySelector('.xp-more-chevron').style.transform=open?'rotate(0deg)':'rotate(180deg)';
                             })(this)">
-                              <span class="xp-more-label">Read More</span>
-                              <span class="xp-more-chevron"><svg style="transform:rotate(90deg)" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="1,2 5,6 1,10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="6,2 10,6 6,10" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                              <span class="xp-more-label">About Me</span>
+                              <span class="xp-more-chevron" style="transform:rotate(180deg)"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><polyline points="2,4 6,8 10,4" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
                             </div>
-                            <div id="xp-more-content" style="display:none;">
-                              <p class="xp-about-p">I&#39;m a third year undergraduate student at <span class="xp-highlight">York University</span> studying Computer Science. I have an upcoming internship at <span class="xp-highlight">Royal Bank of Canada</span> as a <span class="xp-highlight">Data Developer</span> in Group Risk Management.</p>
+                            <div id="xp-more-content" style="display:block;">
+                              <p class="xp-about-p">You can also see this <a href="/Why%20Me.mp4" target="_blank" class="xp-video-link">video</a> about me.</p>
                               <br>
-                              <p class="xp-about-p">Some of my work includes building <span class="xp-highlight">machine learning models</span>, designing <span class="xp-highlight">data pipelines</span>, experimenting with <span class="xp-highlight">large language models</span>, and contributing to <span class="xp-highlight">open source software</span>. I like solving complex problems and building systems that are both useful and technically interesting.</p>
+                              <p class="xp-about-p">I am a third-year Computer Science student at <span class="xp-highlight">York University&#39;s</span> <span class="xp-highlight">Lassonde School of Engineering</span>, and currently a <span class="xp-highlight">Data Analyst Developer intern</span> at <span class="xp-highlight">RBC</span>. I&#39;m very interested in machine learning and data science. I recently wrote a paper in Reinforcement Learning and how we can refine specifications using AI Feedback. I am very excited to present it at the <span class="xp-highlight">ACM Conference in Montreal</span>. I&#39;m also an open source contributor to the <span class="xp-highlight">Pandas library</span> which is used by millions of people in the field of data science. Outside of tech, I really like playing soccer, martial arts, snowboarding, watching movies, and listening to rock and indie artists. I am also learning to speak French on the side.</p>
                               <br>
-                              <p class="xp-about-p">Outside of programming I spend time improving my fitness, listening to <span class="xp-highlight">rock music</span>, and exploring challenging problems. I also enjoy <span class="xp-highlight">martial arts</span>, <span class="xp-highlight">soccer</span>, and scrolling reddit.</p>
+                              <p class="xp-about-p">I grew up in India, and moved to Canada for my undergrad. Living independently, managing finances and constantly being in a fast paced and diverse environment has taught me a lot of things. I chose to attend York University and enroll in Lassonde because I wanted an education that bridged theoretical computer science with hands-on engineering. York has really helped me be curious about computer science and meet a lot of people in the field that inspire me everyday and I&#39;m very grateful for that. My greatest inspiration remains my dad. He has a very calm and analytical perspective to everything that I deeply admire. Today, that inspiration comes full circle as I help him integrate modern AI tools into his own personal and professional work.</p>
                             </div>
                         </div>
                         
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- goals.txt window -->
+    <div id="goals" class="readme-window goals-window" style="display: none;">
+        <div class="title-bar readme-title-bar" id="titleBar">
+            <div class="title" id="goals-win-title">goals.txt</div>
+            <div class="window-controls">
+                <div class="window-button minimize"></div>
+                <div class="window-button restore"></div>
+                <div class="window-button close"></div>
+            </div>
+        </div>
+        <div class="readme-inner-flex">
+            <div class="xp-menubar">
+                <span class="xp-menu-item">File</span>
+                <span class="xp-menu-item">Edit</span>
+                <span class="xp-menu-item">View</span>
+                <span class="xp-menu-item">Favorites</span>
+                <span class="xp-menu-item">Tools</span>
+                <span class="xp-menu-item">Help</span>
+            </div>
+            <div class="xp-explorer-toolbar">
+                <div class="xp-tb-group">
+                    <button class="xp-tb-btn" disabled>
+                        <img loading="lazy" src="/imgs/about/green_arrow.webp" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">Back</span>
+                    </button>
+                    <button class="xp-tb-btn" disabled>
+                        <img loading="lazy" src="/imgs/about/green_arrow.webp" class="xp-tb-ico-img xp-tb-ico-fwd" alt="">
+                        <span class="xp-tb-label">Forward</span>
+                    </button>
+                </div>
+                <div class="xp-tb-sep"></div>
+                <div class="xp-tb-group">
+                    <button class="xp-tb-btn" disabled>
+                        <img loading="lazy" src="/imgs/about/Folder%20Conflict.ico" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">Up</span>
+                    </button>
+                </div>
+                <div class="xp-tb-sep"></div>
+                <div class="xp-tb-group">
+                    <button class="xp-tb-btn" disabled>
+                        <img loading="lazy" src="/imgs/about/Windows%20Explorer.ico" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">Search</span>
+                    </button>
+                    <button class="xp-tb-btn" disabled>
+                        <img loading="lazy" src="/imgs/about/Computer%20Folder.ico" class="xp-tb-ico-img" alt="">
+                        <span class="xp-tb-label">Folders</span>
+                    </button>
+                </div>
+            </div>
+            <div class="xp-address-bar">
+                <div class="xp-address-label">Address</div>
+                <div class="xp-address-content">
+                    <img loading="lazy" src="/imgs/icons/credits.webp" class="xp-addr-icon" alt="">
+                    <span class="xp-address-text">My Documents/goals.txt</span>
+                </div>
+                <button class="xp-addr-dropdown">&#9660;</button>
+                <button class="xp-go-btn"><span class="xp-go-arrow">&#10148;</span> Go</button>
+            </div>
+            <div class="xp-explorer-main">
+                <div class="xp-content-area">
+                    <div id="goals-about-view" class="xp-about-content">
+                        <div class="xp-about-header">
+                            <h1 class="xp-about-h1">Dreams, Goals & Values</h1>
+                            <img loading="lazy" src="/imgs/icons/windowslogo.webp" class="xp-about-badge" alt="Windows XP">
+                        </div>
+                        <hr class="xp-about-hr">
+                        <div class="xp-about-body">
+                            <p class="xp-about-p"><strong>Dreams and Goals</strong> - Growing up in India and moving to Canada for my undergraduate studies taught me independence and adaptability. I chose to study Computer Science at <span class="xp-highlight">York University&#39;s Lassonde School of Engineering</span> because I wanted an education that bridged theoretical concepts with practical, hands-on engineering. My career goals involve pursuing machine learning and data science to build systems that are both highly useful and technically interesting. I am deeply inspired by my dad&#39;s calm and analytical perspective, and a major personal goal is to continue helping him integrate modern AI tools into his daily life and work.</p>
+                            <br>
+                            <p class="xp-about-p"><strong>Interests and Skills</strong> - My technical skills and interests revolve around building machine learning models, designing data pipelines, experimenting with large language models, and writing open-source software. Outside of tech, I focus on improving my fitness, playing soccer, practicing martial arts, snowboarding, watching movies, listening to rock and indie music, learning French, and scrolling Reddit. My Personal Development Goals are:</p>
+                            <ul class="xp-about-ul">
+                                <li><strong>Critical Thinking:</strong> By August 2026, improve problem-solving by breaking complex tasks into smaller steps to reduce errors. I will also dedicate one hour a week to reviewing team codebases and applying new practices to my projects.</li>
+                                <li><strong>Initiative:</strong> Between now and December 2026, schedule two coffee chats monthly to learn about group risk management. By July 2026, attend at least one department event per month to stay updated and build my network.</li>
+                                <li><strong>Communication:</strong> By July 2026, practice explaining technical details simply during cross-departmental meetings and contribute at least one meaningful insight during weekly team discussions.</li>
+                            </ul>
+                            <br>
+                            <p class="xp-about-p"><strong>Values and Personality</strong> - Living independently and managing my own finances in a fast-paced environment has shaped a highly adaptable and grounded personality. I value curiosity, structured problem-solving, and continuous self-improvement. In the workplace, my learning style is highly collaborative and proactive. I prefer to learn by reviewing existing work, asking questions, and seeking regular, direct feedback from my manager and peers to balance my strengths and weaknesses. I strongly believe that building good solutions requires stepping back to understand the fundamental business needs first.</p>
+                            <br>
+                            <p class="xp-about-p"><strong>Portfolio</strong> - I am currently gaining professional experience as a <span class="xp-highlight">Data Developer &amp; Analyst intern</span> at the <span class="xp-highlight">Royal Bank of Canada</span> within Group Risk Management. In my academic career, I authored a research paper focused on using <span class="xp-highlight">Reinforcement Learning</span> and <span class="xp-highlight">AI Feedback</span> to refine specifications, which I am presenting at the <span class="xp-highlight">ACM Conference in Montreal</span>. I am also an active open-source contributor to the <span class="xp-highlight">Pandas library</span>, directly impacting a tool used by millions of people in the data science community.</p>
+                        </div>
                     </div>
                 </div>
             </div>

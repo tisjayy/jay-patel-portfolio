@@ -386,6 +386,11 @@ aside .apps:hover {
 }
 aside .apps {
   width: 86px;
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   text-align: center;
   padding: 6px 6px 4px 6px;
   cursor: context-menu;
@@ -832,7 +837,7 @@ body {
   border-radius: 6px 6px 4px 4px;
   box-shadow: inset 1px 1px 0 #555, 2px 4px 16px rgba(0,0,0,0.6);
   position: absolute;
-  top: calc(80vh - 250px);
+  top: calc(70vh - 250px);
   left: 50vw;
   z-index: 10;
   transform: translate(-50%, -50%);
@@ -2365,13 +2370,10 @@ footer .show-desktop hr {
   transform: translate(-50%, -50%);
   z-index: 10;
   background: #ECE9D8;
-  border: 1.6px solid #284FFD;
-  border-top-width: 0.8px;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 2px 4px 16px rgba(0,0,50,0.55);
-  font-family: 'Tahoma', 'MS Sans Serif', sans-serif;
-  transition: width 0.1s, height 0.1s ease;
-  overflow: hidden;
+}
+.goals-window {
+  top: 42vh;
+  left: 50vw;
 }
 .readme-title-bar {
   background: linear-gradient(
